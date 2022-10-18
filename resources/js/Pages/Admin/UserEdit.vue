@@ -46,7 +46,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.form.user_institutions)
+        console.log(this.form.selected_institutions)
     },
     methods:{
         adminPanel(){
