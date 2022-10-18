@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Institution;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,9 +40,17 @@ class AdminPanelController extends Controller
             ]);
         }
     }
-    public function editUser(){
+    public function editUser($id){
+        $user = User::find($id);
+        $user->load('institutions');
+        $institutions = Institution::get();
+        foreach($institutions as $institution){
+            $available_institutions[] = $institution->description;
+        }
         if((Auth::user()->isAdmin())){
             return Inertia::render('Admin/UserEdit', [
+                'available_institutions' => $available_institutions,
+                'user' => $user,
                 'status' => session('status'),
             ]);
         }else{

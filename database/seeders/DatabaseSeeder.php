@@ -17,11 +17,27 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
      \App\Models\User::factory()->create([
-         'name' => 'Jacques Tredoux',
          'email' => 'jacques.trdx@gmail.com',
+         'profile_picture' => '',
+         'first_name' => 'Jacques',
+         'surname' => 'Tredoux',
+         'maiden_name' => 'Tredoux',
+         'nickname' => 'JQ',
+         'gender' => 'male',
+         'race' => 'caucasian',
+         'marital_status' => 'single',
+         'weight' => '200',
+         'length' => '185',
+         'birth_place' => 'Gauteng',
+         'date_of_birth' => '1991-07-28',
+         'age' => '31',
+         'nationality' => 'ZA',
+         'language_spoken' => 'English',
+         'religion' => 'Atheist',
+         'uid' => '12312312',
      ]);
     \App\Models\User::factory()->create([
-        'name' => 'Test User',
+        'first_name' => 'Test User',
         'status' => 'Not-Active',
         'email' => 'jacques.trdx@example.com',
     ]);
@@ -80,7 +96,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('people')->insert([
             'id' => '1',
-            'image' => '',
+            'profile_picture' => '',
             'first_name' => 'Jacques',
             'surname' => 'Tredoux',
             'maiden_name' => 'Tredoux',
@@ -100,7 +116,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('people')->insert([
             'id' => '2',
-            'image' => '',
+            'profile_picture' => '',
             'first_name' => 'Gerrie',
             'surname' => 'Tredoux',
             'maiden_name' => 'Tredoux',
@@ -120,7 +136,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('people')->insert([
             'id' => '3',
-            'image' => '',
+            'profile_picture' => '',
             'first_name' => 'Kosie',
             'surname' => 'Tredoux',
             'maiden_name' => 'Tredoux',
