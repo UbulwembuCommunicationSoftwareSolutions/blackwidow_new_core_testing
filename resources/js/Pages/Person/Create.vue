@@ -1,5 +1,5 @@
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/BreezeAuthenticatedLayout.vue";
+import BreezeAuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import BreezeButton from "@/Components/Button.vue";
 import { Link } from "@inertiajs/inertia-vue3";
