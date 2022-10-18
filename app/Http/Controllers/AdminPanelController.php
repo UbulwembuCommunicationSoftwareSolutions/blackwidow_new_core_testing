@@ -50,9 +50,7 @@ class AdminPanelController extends Controller
             );
         }
         foreach($user->institutions as $institution) {
-            $user_institutions[] = array(
-                'label' => $institution->description
-            );
+            $user_institutions[] = $institution->description;
         }
         if((Auth::user()->isAdmin())){
             return Inertia::render('Admin/UserEdit', [
