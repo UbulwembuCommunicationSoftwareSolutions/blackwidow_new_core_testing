@@ -42,7 +42,6 @@ class AdminPanelController extends Controller
     }
     public function editUser($id){
         $user = User::find($id);
-        $user->load('institutions');
         $institutions = Institution::get();
         foreach($institutions as $institution){
             $available_institutions[] =array(
@@ -50,9 +49,16 @@ class AdminPanelController extends Controller
                 'label' => $institution->description
             );
         }
+        foreach($user->institutions as $institution){
+            $user_institutions[] =array(
+                'id' => $institution->id,
+                'label' => $institution->description
+            );
+        }
         if((Auth::user()->isAdmin())){
             return Inertia::render('Admin/UserEdit', [
                 'available_institutions' => $available_institutions,
+                'user_institutions' => $user_institutions,
                 'user' => $user,
                 'status' => session('status'),
             ]);
