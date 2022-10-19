@@ -53,7 +53,7 @@ export default {
             window.location.href = '/admin';
         },
         submitUserForm(){
-            this.form.post(route("user.update",this.props.user.id));
+            this.form.put(route("user.update", this.props.user.id));
         }
     }
 }
