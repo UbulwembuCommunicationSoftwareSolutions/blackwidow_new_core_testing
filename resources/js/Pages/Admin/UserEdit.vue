@@ -54,7 +54,7 @@ export default {
             window.location.href = '/admin';
         },
         submitUserForm(){
-            this.form.post(route("user.update",form.user));
+            this.form.post(route("user.update",this.form.user));
         }
     }
 }
