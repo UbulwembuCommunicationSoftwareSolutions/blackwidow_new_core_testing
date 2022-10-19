@@ -19,7 +19,6 @@ export default {
     },
     setup(props){
         const form = useForm({
-            user : props.user,
             selected_institutions : props.user_institutions,
             available_institutions : props.available_institutions,
             first_name: props.user.first_name,
@@ -54,7 +53,7 @@ export default {
             window.location.href = '/admin';
         },
         submitUserForm(){
-            this.form.post(route("user.update",this.form.user));
+            this.form.post(route("user.update",props.user.id));
         }
     }
 }
