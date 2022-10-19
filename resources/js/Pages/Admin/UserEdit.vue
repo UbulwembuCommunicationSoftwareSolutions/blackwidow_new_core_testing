@@ -51,6 +51,9 @@ export default {
     methods:{
         adminPanel(){
             window.location.href = '/admin';
+        },
+        submitUserForm(){
+            this.form.post(route("user.update"));
         }
     }
 }
@@ -81,7 +84,7 @@ export default {
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
-                    <form action="#" method="POST">
+                    <form @submit.prevent="submitUserForm()" method="POST">
                         <div class="overflow-hidden shadow sm:rounded-md">
                             <div class="bg-white px-4 py-5 sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
@@ -199,7 +202,6 @@ export default {
                                 </div>
                             </div>
                             <div class="mt-5 md:col-span-2 md:mt-0">
-                                <form action="#" method="POST">
                                     <div class="shadow sm:overflow-hidden sm:rounded-md">
                                         <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
                                             <div>
@@ -222,7 +224,6 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
 
                             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">

@@ -34,6 +34,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/user/{id}/edit', 'App\Http\Controllers\AdminPanelController@editUser')->name('admin.user_edit');
 });
 
+
+Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth', 'verified']);
+
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
