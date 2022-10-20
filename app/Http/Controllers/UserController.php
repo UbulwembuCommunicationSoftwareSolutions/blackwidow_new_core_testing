@@ -25,9 +25,8 @@ class UserController extends Controller
         $user->update($data);
         $user->save();
         foreach($selected_institutions as $institution){
-            $new_institutions[] = new Institution(['institution_id' => $institution,'user_id' => $user->id]);
+            $user->institutions()->attach($institution);
         }
-        $user->institutions()->updateOrCreate($new_institutions);
         $request->session()->flash('status', 'User updated successfully!');
         $available_institutions = [];
 
