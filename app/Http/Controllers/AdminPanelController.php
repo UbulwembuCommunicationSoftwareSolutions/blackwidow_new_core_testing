@@ -43,6 +43,7 @@ class AdminPanelController extends Controller
     public function editUser($id){
         $user = User::find($id);
         $institutions = Institution::get();
+        $user_institutions = array();
         foreach($institutions as $institution){
             $available_institutions[] =array(
                 'id' => $institution->id,
