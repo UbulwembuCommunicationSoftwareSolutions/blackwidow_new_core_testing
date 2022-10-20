@@ -22,9 +22,9 @@ class UserController extends Controller
         unset($data['user']);
         unset($data['available_institutions']);
         unset($data['selected_institutions']);
-        dd($data);
         $user->update($data);
         $user->save();
+        die();
         foreach($selected_institutions as $institution){
             $new_institutions[] = new Institution(['institution_id' => $institution,'user_id' => $user->id]);
         }
