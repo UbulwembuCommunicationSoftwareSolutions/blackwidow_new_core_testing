@@ -24,9 +24,7 @@ class UserController extends Controller
         unset($data['selected_institutions']);
         $user->update($data);
         $user->save();
-        foreach($selected_institutions as $institution){
-            $user->institutions()->attach($institution);
-        }
+        $user->institutions()->sync($selected_institutions);
         $request->session()->flash('status', 'User updated successfully!');
         $available_institutions = [];
 
