@@ -15,10 +15,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user ){
-        $data = Request::validate([
-            'first_name' => ['required', 'max:90'],
-            'surname' => ['required'],
-        ]);
+        $data = $request->all();
         dd($data);
         $selected_institutions = $data['selected_institutions'];
         $available_institutions = $data['available_institutions'];
