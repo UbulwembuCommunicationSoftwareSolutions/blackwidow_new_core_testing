@@ -17,8 +17,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        $selected_institutions = $data['selected_institutions'];
-        $new_institutions = array();
+        $selected_institutions = $data['selected_institutions'] ?? [];
         unset($data['user']);
         unset($data['available_institutions']);
         unset($data['selected_institutions']);
@@ -26,8 +25,9 @@ class UserController extends Controller
         $user->save();
         $user->institutions()->sync($selected_institutions);
         $request->session()->flash('status', 'User updated successfully!');
-        $available_institutions = [];
 
+        $available_institutions = array();
+        $user_institutions = array();
 
         $institutions = Institution::get();
         foreach($institutions as $institution){
