@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('user_permission_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_permission_id");
-            $table->foreign('user_permission_id')->references('id')->on('user_permissions');
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->index(['user_id', 'user_permission_id']);
             $table->timestamps();
         });
     }

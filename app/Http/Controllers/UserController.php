@@ -33,6 +33,8 @@ class UserController extends Controller
         }
         $request->session()->flash('status', 'User updated successfully!');
         $available_institutions = [];
+
+
         $institutions = Institution::get();
         foreach($institutions as $institution){
             $available_institutions[] =array(

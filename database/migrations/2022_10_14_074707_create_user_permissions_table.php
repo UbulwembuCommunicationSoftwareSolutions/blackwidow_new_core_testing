@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('permission_object');
             $table->string('permission_action');
+            $table->index(['permission_object', 'permission_action']);
             $table->timestamps();
         });
     }

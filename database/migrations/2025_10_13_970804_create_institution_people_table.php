@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('institution_people', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("institution_id");
-            $table->foreign('institution_id')->references('id')->on('institutions');
             $table->unsignedBigInteger("person_id");
-            $table->foreign('id')->references('id')->on('people');
+            $table->index(['institution_id', 'person_id']);
             $table->timestamps();
         });
     }
