@@ -87,14 +87,32 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function edit(Person $person)
-    {
-        return Inertia::render(
-            'Person/Edit',
-            [
-                'person' => $person
-            ]
-        );
+    public function editPerson($id){
+        $person = Person::find($id);
+        $institutions = Institution::get();
+        $person_institutions = array();
+        $available_institutions = array();
+        foreach($institutions as $institution){
+            $available_institutions[] = array(
+                'id' => $institution->id,
+                'label' => $institution->description
+            );
+        }
+        foreach($person->institutions as $institution) {
+            $person_institutions[] = $institution->id;
+        }
+        if((Auth::person()->isAdmin())){
+            return Inertia::render('Person/Edit', [
+                'available_institutions' => $available_institutions,
+                'person_institutions' => $person_institutions,
+                'person' => $person,
+                'status' => session('status'),
+            ]);
+        }else{
+            return Inertia::render('Unauthorised', [
+                'status' => session('status'),
+            ]);
+        }
     }
 
     /**
