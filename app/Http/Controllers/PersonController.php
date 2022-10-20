@@ -87,6 +87,7 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id){
         $person = Person::find($id);
         $institutions = Institution::get();
@@ -101,7 +102,7 @@ class PersonController extends Controller
         foreach($person->institutions as $institution) {
             $person_institutions[] = $institution->id;
         }
-        if((Auth::person()->isAdmin())){
+        if((Auth::user()->isAdmin())){
             return Inertia::render('Person/Edit', [
                 'available_institutions' => $available_institutions,
                 'person_institutions' => $person_institutions,
@@ -146,7 +147,7 @@ class PersonController extends Controller
         foreach($person->institutions as $institution) {
             $person_institutions[] = $institution->id;
         }
-        return Inertia::render('Admin/PersonEdit', [
+        return Inertia::render('Person/Edit', [
             'available_institutions' => $available_institutions,
             'person_institutions' => $person_institutions,
             'person' => $person,
