@@ -19,18 +19,16 @@ class UserController extends Controller
         $data = $request->all();
         $selected_institutions = $data['selected_institutions'];
         $available_institutions = $data['available_institutions'];
+        $new_institutions = array();
         unset($data['user']);
         unset($data['available_institutions']);
         unset($data['selected_institutions']);
         $user->update($data);
         $user->save();
-        foreach($user->institutions as $institution){
-            $institution->delete();
-        }
         foreach($selected_institutions as $institution){
-            $new_institution = new Institution(['institution_id' => $institution]);
-            $user->institutions()->save($new_institution);
+            $new_institutions[] = new Institution(['institution_id' => $institution,'user_id' => $user->id]);
         }
+        $user->institutions()->updateOrCreate($new_institutions);
         $request->session()->flash('status', 'User updated successfully!');
         $available_institutions = [];
 
