@@ -44,8 +44,9 @@ class AdminPanelController extends Controller
         $user = User::find($id);
         $institutions = Institution::get();
         $user_institutions = array();
+        $available_institutions = array();
         foreach($institutions as $institution){
-            $available_institutions[] =array(
+            $available_institutions[] = array(
                 'id' => $institution->id,
                 'label' => $institution->description
             );
