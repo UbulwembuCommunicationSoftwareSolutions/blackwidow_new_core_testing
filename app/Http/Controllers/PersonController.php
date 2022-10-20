@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Institution;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use Illuminate\Support\Facades\Auth;
@@ -103,21 +104,36 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'content' => 'required',
-        ]);
-
-        $person->title = $request->title;
-        $person->slug = \Str::slug($request->slug);
-        $person->content = $request->name;
+    public function update(Request $request, Person $person ){
+        $data = $request->all();
+        $selected_institutions = $data['selected_institutions'] ?? [];
+        unset($data['person']);
+        unset($data['available_institutions']);
+        unset($data['selected_institutions']);
+        $person->update($data);
         $person->save();
-        sleep(1);
+        $person->institutions()->sync($selected_institutions);
+        $request->session()->flash('status', 'Person updated successfully!');
 
-        return redirect()->route('persons.index')->with('message', 'Person Updated Successfully');
+        $available_institutions = array();
+        $person_institutions = array();
+
+        $institutions = Institution::get();
+        foreach($institutions as $institution){
+            $available_institutions[] =array(
+                'id' => $institution->id,
+                'label' => $institution->description
+            );
+        }
+        foreach($person->institutions as $institution) {
+            $person_institutions[] = $institution->id;
+        }
+        return Inertia::render('Admin/PersonEdit', [
+            'available_institutions' => $available_institutions,
+            'person_institutions' => $person_institutions,
+            'person' => $person,
+            'status' => session('status'),
+        ]);
 
     }
 
