@@ -9,6 +9,8 @@ class Institution extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['institution_id','id','user_id','description'];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_role_user');
