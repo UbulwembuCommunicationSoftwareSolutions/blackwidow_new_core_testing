@@ -18,11 +18,11 @@ class UserController extends Controller
     public function update(Request $request, User $user ){
         $data = $request->all();
         $selected_institutions = $data['selected_institutions'];
-        $available_institutions = $data['available_institutions'];
         $new_institutions = array();
         unset($data['user']);
         unset($data['available_institutions']);
         unset($data['selected_institutions']);
+        dd($data);
         $user->update($data);
         $user->save();
         foreach($selected_institutions as $institution){
