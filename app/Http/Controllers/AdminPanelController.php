@@ -51,6 +51,7 @@ class AdminPanelController extends Controller
                 'label' => $institution->description
             );
         }
+        dd($available_institutions);
         foreach($user->institutions as $institution) {
             $user_institutions[] = $institution->id;
         }
