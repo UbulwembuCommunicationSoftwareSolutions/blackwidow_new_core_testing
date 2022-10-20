@@ -15,11 +15,20 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user ){
-        $data = $request->all();
+        $data = Request::validate([
+            'first_name' => ['required', 'max:90'],
+            'surname' => ['required'],
+        ]);
         dd($data);
+        $selected_institutions = $data['selected_institutions'];
+        $available_institutions = $data['available_institutions'];
+        unset($data['user']);
+        unset($data['available_institutions']);
+        unset($data['selected_institutions']);
         $user->update($data);
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
+        $available_institutions = [];
         $institutions = Institution::get();
         foreach($institutions as $institution){
             $available_institutions[] =array(
