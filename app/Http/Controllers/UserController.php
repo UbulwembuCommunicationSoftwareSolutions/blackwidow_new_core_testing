@@ -28,7 +28,7 @@ class UserController extends Controller
             $institution->delete();
         }
         foreach($selected_institutions as $institution){
-            $new_institution = new Institution(['institution_id' => $institution->id]);
+            $new_institution = new Institution(['institution_id' => $institution]);
             $user->institutions()->save($new_institution);
         }
         $request->session()->flash('status', 'User updated successfully!');
