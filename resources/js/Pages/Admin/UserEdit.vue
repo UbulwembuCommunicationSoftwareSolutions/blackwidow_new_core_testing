@@ -81,7 +81,7 @@ export default {
                 <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
                         <h3 class="text-lg  mt-10 font-medium leading-6 text-gray-900">Personal Information</h3>
-                        <p class="mt-1 text-sm text-gray-600">Use a permanent address where you can receive mail.</p>
+                        <p class="mt-1 text-sm text-gray-600">Basic Information</p>
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
