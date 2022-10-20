@@ -76,8 +76,11 @@ export default {
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+                                                    <a v-if="$page.props.auth.permissions.includes('person_edit')" :href="'/person/'+person.id+'/edit'" class="text-indigo-600 hover:text-indigo-900">
+                                                        Edit<span class="sr-only">
+                                                    </span></a>
                                                 </td>
+
                                             </tr>
 
                                             <!-- More people... -->
