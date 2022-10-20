@@ -87,7 +87,7 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function editPerson($id){
+    public function edit($id){
         $person = Person::find($id);
         $institutions = Institution::get();
         $person_institutions = array();
