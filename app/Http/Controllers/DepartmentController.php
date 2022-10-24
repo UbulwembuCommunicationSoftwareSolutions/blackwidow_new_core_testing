@@ -15,14 +15,14 @@ class DepartmentController extends Controller
     public function index()
     {
         if(Auth::user()->isAdmin()){
-            $people = Department::all();
-            $people->load('institutions');
+            $departments = Department::all();
+            $departments->load('institutions');
         }else{
-            $people = array();
+            $departments = array();
             $institutions = Auth::user()->institutions;
             foreach($institutions as $institution){
                 foreach($institution->people as $department){
-                    $people[] = $department->load('institutions');
+                    $departments[] = $department->load('institutions');
                 }
             }
         }
@@ -30,7 +30,7 @@ class DepartmentController extends Controller
         return Inertia::render(
             'Department/Index',
             [
-                'people' => $people
+                'departments' => $departments
             ]
         );
     }

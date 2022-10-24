@@ -7,7 +7,7 @@ export default {
         Head,
     },
     props:{
-        people :  Object
+        departments :  Object
     }
 }
 </script>
@@ -40,19 +40,25 @@ export default {
                                         <table class="min-w-full mt-4 mb-4 divide-y divide-gray-300">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Description</th>
+                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Institutions</th>
                                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                     <span class="sr-only">Edit</span>
                                                 </th>
                                             </tr>
                                             </thead>
                                             <tbody class="divide-y divide-gray-200 bg-white">
-                                            <tr v-for="(department,index) in people">
+                                            <tr v-for="(department,index) in departments">
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                                     <div class="flex items-center">
                                                         <div class="ml-4">
                                                             <div class="font-medium text-gray-900">{{department.description}}</div>
                                                         </div>
+                                                    </div>
+                                                </td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                    <div v-for="(institution,index) in person.institutions" class="text-gray-900">
+                                                        {{institution.description.replace(/_/g," ").toUpperCase()}}
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
