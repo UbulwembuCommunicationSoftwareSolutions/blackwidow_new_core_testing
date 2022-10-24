@@ -69,8 +69,14 @@ export default {
                 Person of Interest
             </h2>
         </template>
-        <div>
-            {{ session('status') }}
+        <div
+            v-if="$page.props.flash.status"
+            class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert"
+        >
+                    <span class="font-medium">
+                        {{ $page.props.flash.status }}
+                    </span>
         </div>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
