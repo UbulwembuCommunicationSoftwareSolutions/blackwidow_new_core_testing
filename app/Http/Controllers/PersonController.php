@@ -126,6 +126,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person ){
         $data = $request->all();
+        dd($request);
         $selected_institutions = $data['selected_institutions'] ?? [];
         unset($data['person']);
         unset($data['available_institutions']);
