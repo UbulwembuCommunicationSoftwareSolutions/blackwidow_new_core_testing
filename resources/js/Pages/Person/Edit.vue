@@ -60,7 +60,9 @@ export default {
         },
         showModal() {
             console.log("Showing Modal");
+            console.log(this.isModalVisible)
             this.isModalVisible = true;
+            console.log(this.isModalVisible)
         },
         closeModal() {
             this.isModalVisible = false;
