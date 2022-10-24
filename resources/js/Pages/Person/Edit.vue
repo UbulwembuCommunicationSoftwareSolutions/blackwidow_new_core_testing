@@ -86,7 +86,7 @@ export default {
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
-                    <form @submit.prevent="submitPersonForm()" enctype="multipart/form-data">
+                    <form @submit.prevent="submitPersonForm()">
                         <div class="overflow-hidden shadow sm:rounded-md">
                             <div class="bg-white px-4 py-5 sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
