@@ -48,13 +48,13 @@ export default {
         }
     },
     mounted(){
-        console.log(this.form.selected_institutions)
     },
     methods:{
         adminPanel(){
             window.location.href = '/admin';
         },
         submitPersonForm(){
+            console.log(this.form);
             this.form.put(route("person.update", this.form.person.id));
         }
     }
