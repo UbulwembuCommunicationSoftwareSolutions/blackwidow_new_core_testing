@@ -102,6 +102,18 @@ export default {
                     <div class="px-4 sm:px-0">
                         <h3 class="text-lg  mt-10 font-medium leading-6 text-gray-900">Personal Information</h3>
                         <p class="mt-1 text-sm text-gray-600">Basic Information</p>
+                        <button @click="this.showModal()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            <!-- Heroicon name: mini/envelope -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                            </svg>
+                            Update Profile Picture
+                        </button>
+                        <PersonProfilePictureModal
+                            v-if="this.isModalVisible"
+                            @close="this.closeModal()"
+                        />
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
@@ -239,17 +251,6 @@ export default {
             <div class="hidden sm:block" aria-hidden="true">
                 <div class="py-5">
                     <div class="border-t border-gray-200"></div>
-                    <button
-                        type="button"
-                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        @click="this.showModal()"
-                    >
-                        Update Profile Picture
-                    </button>
-                    <PersonProfilePictureModal
-                        v-if="this.isModalVisible"
-                        @close="this.closeModal()"
-                    />
                 </div>
             </div>
         </div>
