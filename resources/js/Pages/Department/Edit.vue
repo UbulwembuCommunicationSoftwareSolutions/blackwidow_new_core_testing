@@ -23,19 +23,6 @@ export default {
             selected_institutions : props.department_institutions,
             available_institutions : props.available_institutions,
             description: props.department.description,
-            surname: props.department.surname,
-            maiden_name: props.department.maiden_name,
-            nickname: props.department.nickname,
-            gender: props.department.gender,
-            race: props.department.race,
-            marital_status: props.department.marital_status,
-            weight: props.department.weight,
-            length: props.department.length,
-            birth_place: props.department.birth_place,
-            age: props.department.age,
-            nationality: props.department.nationality,
-            language_spoken: props.department.language_spoken,
-            religion: props.department.religion,
         });
         return {
             form
