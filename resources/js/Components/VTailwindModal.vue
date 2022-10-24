@@ -21,3 +21,10 @@
         </button>
     </vue-final-modal>
 </template>
+<script>
+export default {
+    name: 'VTailwindModal',
+    inheritAttrs: false
+}
+</script>
+

@@ -9,8 +9,6 @@
 </template>
 
 
-
-
 <script>
 import VTailwindmodal from "@/Components/VTailwindModal.vue";
 export default {
