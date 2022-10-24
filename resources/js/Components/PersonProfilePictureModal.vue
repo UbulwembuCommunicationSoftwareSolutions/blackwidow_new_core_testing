@@ -64,12 +64,19 @@ export default {
                     </form>
                 </div>
                 <div class="mt-5 sm:mt-6">
-                    <button @click="this.submit()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Submit
-                    </button>
-                    <button @click="this.close()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                        Close
-                    </button>
+                    <div class="flex justify-center">
+                        <div class="flex">
+                            <button @click="this.submit()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Submit
+                            </button>
+                        </div>
+                        <div class="flex">
+                            <button @click="this.close()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                                Close
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             </div>
