@@ -91,6 +91,16 @@ const showingNavigationDropdown = ref(false);
                             People
                         </ResponsiveNavLink>
                     </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('person.index')" :active="route().current('person.index')">
+                            Cases
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('person.index')" :active="route().current('person.index')">
+                            Tasks
+                        </ResponsiveNavLink>
+                    </div>
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">

@@ -9,6 +9,10 @@ class Department extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'institution_id',
+        'description'
+    ];
     public function institutions()
     {
         return $this->belongsToMany(Institution::class, 'department_institution');
