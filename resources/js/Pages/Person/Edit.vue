@@ -57,7 +57,7 @@ export default {
             console.log(this.form);
             Inertia.post(`/person/${this.form.person.id}`, {
                 _method: 'put',
-                file_upload: form.file_upload,
+                file_upload: this.form.file_upload,
             })
         }
     }
