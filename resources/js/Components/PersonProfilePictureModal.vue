@@ -21,6 +21,7 @@ export default {
 
         function submit() {
             form.post('/profile_picture/person')
+            this.close();
         }
 
         return { form, submit }
