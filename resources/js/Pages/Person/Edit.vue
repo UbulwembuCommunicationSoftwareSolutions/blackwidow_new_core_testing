@@ -104,17 +104,6 @@ export default {
                         <p class="mt-1 text-sm text-gray-600">Basic Information</p>
                     </div>
                 </div>
-                <button
-                    type="button"
-                    class="btn"
-                    @click="this.showModal()"
-                >
-                    Open Modal!
-                </button>
-                <PersonProfilePictureModal
-                    v-if="this.isModalVisible"
-                    @close="this.closeModal()"
-                />
                 <div class="mt-5 md:col-span-2 md:mt-0">
                     <form @submit.prevent="submitPersonForm()">
                         <div class="overflow-hidden shadow sm:rounded-md">
@@ -254,6 +243,19 @@ export default {
         </div>
 
         </div>
+
+
+            <button
+                type="button"
+                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                @click="this.showModal()"
+            >
+                Update Profile Picture
+            </button>
+            <PersonProfilePictureModal
+                v-if="this.isModalVisible"
+                @close="this.closeModal()"
+            />
         </div>
 
     </AuthenticatedLayout>
