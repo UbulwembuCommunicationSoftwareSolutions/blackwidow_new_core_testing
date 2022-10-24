@@ -5,7 +5,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import Treeselect from 'vue3-treeselect'
 // import the styles
 import 'vue3-treeselect/dist/vue3-treeselect.css'
-import { PersonProfilePictureModal } from "@/Components/PersonProfilePictureModal";
+import PersonProfilePictureModal  from "@/Components/PersonProfilePictureModal.vue";
 
 export default {
     components: {
