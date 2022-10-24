@@ -30,8 +30,6 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/', 'App\Http\Controllers\AdminPanelController@index')->name('admin.panel');
-    Route::get('/users', 'App\Http\Controllers\AdminPanelController@listUsers')->name('admin.users');
-    Route::get('/user/{id}/edit', 'App\Http\Controllers\AdminPanelController@editUser')->name('admin.user_edit');
 });
 
 

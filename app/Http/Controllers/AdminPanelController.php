@@ -24,47 +24,4 @@ class AdminPanelController extends Controller
             ]);
         }
     }
-
-    public function listUsers(){
-        if((Auth::user()->isAdmin())){
-            $users = User::get();
-            $users->load('roles');
-            $users->load('institutions');
-            return Inertia::render('Admin/Users', [
-                'users' => $users,
-                'status' => session('status'),
-            ]);
-        }else{
-            return Inertia::render('Unauthorised', [
-                'status' => session('status'),
-            ]);
-        }
-    }
-    public function editUser($id){
-        $user = User::find($id);
-        $institutions = Institution::get();
-        $user_institutions = array();
-        $available_institutions = array();
-        foreach($institutions as $institution){
-            $available_institutions[] = array(
-                'id' => $institution->id,
-                'label' => $institution->description
-            );
-        }
-        foreach($user->institutions as $institution) {
-            $user_institutions[] = $institution->id;
-        }
-        if((Auth::user()->isAdmin())){
-            return Inertia::render('Admin/UserEdit', [
-                'available_institutions' => $available_institutions,
-                'user_institutions' => $user_institutions,
-                'user' => $user,
-                'status' => session('status'),
-            ]);
-        }else{
-            return Inertia::render('Unauthorised', [
-                'status' => session('status'),
-            ]);
-        }
-    }
 }
