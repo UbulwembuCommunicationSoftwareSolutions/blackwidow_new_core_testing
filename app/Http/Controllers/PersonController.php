@@ -134,9 +134,7 @@ class PersonController extends Controller
         $person->update($data);
         $person->save();
         $person->institutions()->sync($selected_institutions);
-        $request->session()->flash('status', 'Person updated successfully!');
-
-        return Redirect::route('person.edit',$person);
+        return redirect()->route('person.edit')->with('message', 'Person Updated Successfully');
     }
 
 
