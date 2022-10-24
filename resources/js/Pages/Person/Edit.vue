@@ -59,6 +59,7 @@ export default {
             this.form.put(route("person.update", this.form.person.id));
         },
         showModal() {
+            console.log("Showing Modal");
             this.isModalVisible = true;
         },
         closeModal() {
@@ -104,13 +105,13 @@ export default {
                 <button
                     type="button"
                     class="btn"
-                    @click="showModal"
+                    @click="this.showModal()"
                 >
                     Open Modal!
                 </button>
                 <Modal
-                    v-show="isModalVisible"
-                    @close="closeModal"
+                    v-show="this.isModalVisible"
+                    @close="this.closeModal()"
                 />
                 <div class="mt-5 md:col-span-2 md:mt-0">
                     <form @submit.prevent="submitPersonForm()">
