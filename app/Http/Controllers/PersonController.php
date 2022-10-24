@@ -143,10 +143,10 @@ class PersonController extends Controller
         $person = Person::find($request->person_id);
         if($request->hasFile('profile_picture')){
             $fileName = $person->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
-            if(!directoryExists(public_path('person'))){
-                mkdir(public_path('person'));
+            if(!directoryExists(public_path('storage')."/person")){
+                mkdir(public_path('storage')."/person");
             }
-            $request->file('profile_picture')->move(public_path('person'), $fileName);
+            $request->file('profile_picture')->move(public_path('storage')."/person", $fileName);
 
         }
         $person->profile_picture = $fileName;
