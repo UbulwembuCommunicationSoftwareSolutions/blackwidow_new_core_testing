@@ -45,6 +45,7 @@ export default {
     },
     data(){
         return {
+            isModalVisible: false,
             selected: null,
         }
     },
@@ -56,6 +57,12 @@ export default {
         },
         submitPersonForm(){
             this.form.put(route("person.update", this.form.person.id));
+        },
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
         }
     }
 }
@@ -94,7 +101,17 @@ export default {
                         <p class="mt-1 text-sm text-gray-600">Basic Information</p>
                     </div>
                 </div>
-                <PersonProfilePictureModal></PersonProfilePictureModal>
+                <button
+                    type="button"
+                    class="btn"
+                    @click="showModal"
+                >
+                    Open Modal!
+                </button>
+                <Modal
+                    v-show="isModalVisible"
+                    @close="closeModal"
+                />
                 <div class="mt-5 md:col-span-2 md:mt-0">
                     <form @submit.prevent="submitPersonForm()">
                         <div class="overflow-hidden shadow sm:rounded-md">
