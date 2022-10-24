@@ -220,7 +220,7 @@ export default {
                                                             <label for="file_upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                                                 <span>Upload a file</span>
                                                             </label>
-                                                            <input id="file_upload" type="file" @input="form.file_upload = $event.target.files[0]" />
+                                                            <input id="file_upload" type="file" @input="this.form.file_upload = $event.target.files[0]" />
                                                         </div>
                                                         <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                                     </div>
