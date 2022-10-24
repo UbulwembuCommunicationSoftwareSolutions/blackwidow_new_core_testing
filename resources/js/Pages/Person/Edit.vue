@@ -55,7 +55,9 @@ export default {
         },
         submitPersonForm(){
             console.log(this.form);
-            this.form.put(route("person.update", this.form.person.id));
+            this.form.post(`/person/${this.form.person.id}`, {
+                _method: 'put',
+            })
         }
     }
 }
