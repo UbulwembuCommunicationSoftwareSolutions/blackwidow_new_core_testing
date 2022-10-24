@@ -74,26 +74,7 @@ class DatabaseSeeder extends Seeder
             'institution_id' => '1',
             'user_id' => '1',
         ]);
-        DB::table('user_permissions')->insert([
-            'id' => '1',
-            'permission_object' => 'user',
-            'permission_action' => 'edit',
-        ]);
-        DB::table('user_permissions')->insert([
-            'id' => '2',
-            'permission_object' => 'user',
-            'permission_action' => 'create',
-        ]);
-        DB::table('user_permission_user')->insert([
-            'id' => '1',
-            'user_permission_id' => '1',
-            'user_id' => '1',
-        ]);
-        DB::table('user_permission_user')->insert([
-            'id' => '2',
-            'user_permission_id' => '2',
-            'user_id' => '1',
-        ]);
+
         DB::table('people')->insert([
             'id' => '1',
             'profile_picture' => '',
@@ -201,6 +182,66 @@ class DatabaseSeeder extends Seeder
             'department_id' => '3',
             'institution_id' => '2',
         ]);
+
+
+
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'user',
+            'permission_action' => 'edit',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'user',
+            'permission_action' => 'create',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'user',
+            'permission_action' => 'delete',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'user',
+            'permission_action' => 'view',
+        ]);
+
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'department',
+            'permission_action' => 'edit',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'department',
+            'permission_action' => 'create',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'department',
+            'permission_action' => 'delete',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'department',
+            'permission_action' => 'view',
+        ]);
+
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'person',
+            'permission_action' => 'edit',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'person',
+            'permission_action' => 'create',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'person',
+            'permission_action' => 'delete',
+        ]);
+        DB::table('user_permissions')->insert([
+            'permission_object' => 'person',
+            'permission_action' => 'view',
+        ]);
+
+        for ($x = 1; $x <= 12; $x++) {
+            DB::table('user_permission_user')->insert([
+                'user_permission_id' => $x,
+                'user_id' => '1',
+            ]);
+        }
 
 
     }
