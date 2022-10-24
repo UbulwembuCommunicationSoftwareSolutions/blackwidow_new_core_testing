@@ -219,7 +219,7 @@ export default {
                                                         <div class="flex text-sm text-gray-600">
                                                             <label for="file_upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                                                 <span>Upload a file</span>
-                                                                <input id="file_upload" v-model="form.file" name="file_upload" type="file" class="sr-only">
+                                                                <input id="file_upload" name="file_upload" type="file" class="sr-only">
                                                             </label>
                                                             <p class="pl-1">or drag and drop</p>
                                                         </div>
