@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use function PHPUnit\Framework\directoryExists;
 
 
 class PersonController extends Controller
@@ -132,6 +133,13 @@ class PersonController extends Controller
         $person->update($data);
         $person->save();
         $person->institutions()->sync($selected_institutions);
+        if($request->hasFile('file_upload')){
+            $fileName = time().'.'.$request->file->getClientOriginalExtension();
+            if(!directoryExists(public_path('person'))){
+                mkdir(public_path('person'));
+            }
+            $request->file->move(public_path('person'), $fileName);
+        }
         $request->session()->flash('status', 'Person updated successfully!');
 
         $available_institutions = array();
