@@ -1,13 +1,13 @@
 
 <template>
     <div>
-        <v-tailwind-modal v-if="show" @confirm="confirm" @cancel="cancel">
-            <template v-slot:title>Hello, vue-final-modal</template>
-            <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
-        </v-tailwind-modal>
-        <v-button @click="show = true">Update Profile Picture</v-button>
+        <vue-final-modal v-model="showModal">
+            Modal Content Here
+        </vue-final-modal>
+        <button @click="showModal = true">Open Modal</button>
     </div>
 </template>
+
 
 
 
