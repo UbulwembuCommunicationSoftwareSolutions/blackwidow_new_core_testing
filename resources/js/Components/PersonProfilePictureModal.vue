@@ -20,7 +20,7 @@ export default {
         })
 
         function submit() {
-            form.post('/profile_picture/persons')
+            form.post('/profile_picture/person')
         }
 
         return { form, submit }
