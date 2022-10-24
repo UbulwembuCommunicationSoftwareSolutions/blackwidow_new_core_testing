@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use function PHPUnit\Framework\directoryExists;
 
@@ -126,7 +127,6 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person ){
         $data = $request->all();
-        dd($request);
         $selected_institutions = $data['selected_institutions'] ?? [];
         unset($data['person']);
         unset($data['available_institutions']);
@@ -134,6 +134,14 @@ class PersonController extends Controller
         $person->update($data);
         $person->save();
         $person->institutions()->sync($selected_institutions);
+        $request->session()->flash('status', 'Person updated successfully!');
+
+        return Redirect::route('person.edit',$person);
+    }
+
+
+    public function updateProfilePicture(Request $request, Person $person ){
+        $data = $request->all();
         if($request->hasFile('file_upload')){
             $fileName = time().'.'.$request->file->getClientOriginalExtension();
             if(!directoryExists(public_path('person'))){
@@ -142,26 +150,7 @@ class PersonController extends Controller
             $request->file->move(public_path('person'), $fileName);
         }
         $request->session()->flash('status', 'Person updated successfully!');
-
-        $available_institutions = array();
-        $person_institutions = array();
-
-        $institutions = Institution::get();
-        foreach($institutions as $institution){
-            $available_institutions[] =array(
-                'id' => $institution->id,
-                'label' => $institution->description
-            );
-        }
-        foreach($person->institutions as $institution) {
-            $person_institutions[] = $institution->id;
-        }
-        return Inertia::render('Person/Edit', [
-            'available_institutions' => $available_institutions,
-            'person_institutions' => $person_institutions,
-            'person' => $person,
-            'status' => session('status'),
-        ]);
+        return Redirect::route('person.edit',$person);
 
     }
 
