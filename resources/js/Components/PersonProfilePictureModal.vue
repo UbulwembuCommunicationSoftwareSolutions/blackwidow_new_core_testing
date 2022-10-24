@@ -12,14 +12,37 @@ export default {
 <template>
     <div class="modal-backdrop">
         <div class="modal">
-            <slot name="header">
-            </slot>
+            <header class="modal-header">
+                <slot name="header">
+                    This is the default title!
+                </slot>
+                <button
+                    type="button"
+                    class="btn-close"
+                    @click="close"
+                >
+                    x
+                </button>
+            </header>
 
-            <slot name="body">
-            </slot>
+            <section class="modal-body">
+                <slot name="body">
+                    This is the default body!
+                </slot>
+            </section>
 
-            <slot name="footer">
-            </slot>
+            <footer class="modal-footer">
+                <slot name="footer">
+                    This is the default footer!
+                </slot>
+                <button
+                    type="button"
+                    class="btn-green"
+                    @click="close"
+                >
+                    Close Modal
+                </button>
+            </footer>
         </div>
     </div>
 </template>
