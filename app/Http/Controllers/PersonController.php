@@ -146,7 +146,7 @@ class PersonController extends Controller
             if(!directoryExists(public_path('person'))){
                 mkdir(public_path('person'));
             }
-            $request->file->move(public_path('person'), $fileName);
+            $request->file('profile_picture')->move(public_path('person'), $fileName);
 
         }
         $person->profile_picture = $fileName;
