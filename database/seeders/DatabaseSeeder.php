@@ -169,15 +169,15 @@ class DatabaseSeeder extends Seeder
             'person_id' => '3',
             'institution_id' => '2',
         ]);
-        DB::table('department')->insert([
+        DB::table('departments')->insert([
             'id' => '1',
             'description' => 'First Department',
         ]);
-        DB::table('department')->insert([
+        DB::table('departments')->insert([
             'id' => '2',
             'description' => 'Second Department',
         ]);
-        DB::table('department')->insert([
+        DB::table('departments')->insert([
             'id' => '3',
             'description' => 'Third Department',
         ]);
