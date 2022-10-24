@@ -10,6 +10,7 @@ export default {
 </script>
 
 <template>
+    POES
     <div class="modal-backdrop">
         <div class="modal">
             <header class="modal-header">
