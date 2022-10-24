@@ -1,10 +1,29 @@
 <script>
+import { useForm } from '@inertiajs/inertia-vue3'
 export default {
     name: 'PersonProfilePictureModal',
     methods: {
         close() {
             this.$emit('close');
         },
+        submit(){
+
+        }
+    },
+    props :{
+         person : null
+    },
+    setup (props) {
+        const form = useForm({
+            person_id : props.person,
+            profile_picture: null,
+        })
+
+        function submit() {
+            form.post('/persons/profile_picture')
+        }
+
+        return { form, submit }
     },
 };
 </script>
@@ -31,7 +50,7 @@ export default {
                                                 <div class="flex text-sm text-gray-600">
                                                     <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                                         <span>Upload a file</span>
-                                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                        <input id="file-upload"  @input="this.form.profile_picture = $event.target.files[0]" name="file-upload" type="file" class="sr-only">
                                                     </label>
                                                     <p class="pl-1">or drag and drop</p>
                                                 </div>
@@ -45,8 +64,10 @@ export default {
                     </form>
                 </div>
                 <div class="mt-5 sm:mt-6">
+                    <button @click="this.submit()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Submit
+                    </button>
                     <button @click="this.close()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-
                         Close
                     </button>
                 </div>

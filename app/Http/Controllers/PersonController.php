@@ -140,6 +140,7 @@ class PersonController extends Controller
 
     public function updateProfilePicture(Request $request, Person $person ){
         $data = $request->all();
+        dd($request);
         if($request->hasFile('file_upload')){
             $fileName = time().'.'.$request->file->getClientOriginalExtension();
             if(!directoryExists(public_path('person'))){

@@ -113,6 +113,7 @@ export default {
                         </button>
                         <PersonProfilePictureModal
                             v-if="this.isModalVisible"
+                            :person="this.form.person.id"
                             @close="this.closeModal()"
                         />
                     </div>
