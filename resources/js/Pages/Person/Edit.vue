@@ -102,6 +102,7 @@ export default {
                     <div class="px-4 sm:px-0">
                         <h3 class="text-lg  mt-10 font-medium leading-6 text-gray-900">Personal Information</h3>
                         <p class="mt-1 text-sm text-gray-600">Basic Information</p>
+                        <img :src="person.profile_picture">
                         <button @click="this.showModal()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             <!-- Heroicon name: mini/envelope -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
