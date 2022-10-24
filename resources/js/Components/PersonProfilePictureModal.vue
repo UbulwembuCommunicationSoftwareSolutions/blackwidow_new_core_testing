@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <vue-final-modal v-model="showModal">
+        <vue-final-modal v-model="show">
             Modal Content Here
         </vue-final-modal>
         <button @click="showModal = true">Open Modal</button>
