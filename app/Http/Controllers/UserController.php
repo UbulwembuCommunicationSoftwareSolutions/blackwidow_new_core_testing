@@ -83,7 +83,7 @@ class UserController extends Controller
         foreach($user->institutions as $institution) {
             $user_institutions[] = $institution->id;
         }
-        return Inertia::render('Admin/UserEdit', [
+        return Inertia::render('User/Edit', [
             'available_institutions' => $available_institutions,
             'user_institutions' => $user_institutions,
             'user' => $user,
