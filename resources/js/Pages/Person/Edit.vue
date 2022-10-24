@@ -112,7 +112,7 @@ export default {
                     Open Modal!
                 </button>
                 <Modal
-                    v-show="this.isModalVisible"
+                    v-if="this.isModalVisible"
                     @close="this.closeModal()"
                 />
                 <div class="mt-5 md:col-span-2 md:mt-0">
