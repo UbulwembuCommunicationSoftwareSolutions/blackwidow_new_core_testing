@@ -140,16 +140,17 @@ class PersonController extends Controller
 
     public function updateProfilePicture(Request $request ){
         $data = $request->all();
+        $person = Person::find($request->person_id);
         if($request->hasFile('profile_picture')){
-            $fileName = time().'.'.$request->file->getClientOriginalExtension();
+            $fileName = $person->id.'_profile_pic.'.$request->file->getClientOriginalExtension();
             if(!directoryExists(public_path('person'))){
                 mkdir(public_path('person'));
             }
             $request->file->move(public_path('person'), $fileName);
-            $person = Person::find($request->person_id);
-            $person->profile_picture = $fileName;
-            $person->save();
+
         }
+        $person->profile_picture = $fileName;
+        $person->save();
         $request->session()->flash('status', 'Person updated successfully!');
         return Redirect::route('person.edit',$person);
 
