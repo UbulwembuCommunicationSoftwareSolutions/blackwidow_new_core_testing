@@ -63,11 +63,11 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('institutions')->insert([
             'id' => '1',
-            'description' => 'First One',
+            'description' => 'First institute',
         ]);
         DB::table('institutions')->insert([
             'id' => '2',
-            'description' => 'Second One',
+            'description' => 'Second institute',
         ]);
         DB::table('institution_user')->insert([
             'id' => '1',
@@ -167,6 +167,38 @@ class DatabaseSeeder extends Seeder
         DB::table('institution_people')->insert([
             'id' => '3',
             'person_id' => '3',
+            'institution_id' => '2',
+        ]);
+        DB::table('department')->insert([
+            'id' => '1',
+            'description' => 'First Department',
+        ]);
+        DB::table('department')->insert([
+            'id' => '2',
+            'description' => 'Second Department',
+        ]);
+        DB::table('department')->insert([
+            'id' => '3',
+            'description' => 'Third Department',
+        ]);
+        DB::table('department_institution')->insert([
+            'id' => '1',
+            'department_id' => '1',
+            'institution_id' => '1',
+        ]);
+        DB::table('department_institution')->insert([
+            'id' => '2',
+            'department_id' => '2',
+            'institution_id' => '2',
+        ]);
+        DB::table('department_institution')->insert([
+            'id' => '3',
+            'department_id' => '3',
+            'institution_id' => '1',
+        ]);
+        DB::table('department_institution')->insert([
+            'id' => '4',
+            'department_id' => '3',
             'institution_id' => '2',
         ]);
 

@@ -17,7 +17,7 @@ export default {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Admin
+                Departments
             </h2>
         </template>
         <div class="py-12">
@@ -26,8 +26,8 @@ export default {
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="sm:flex sm:items-center">
                             <div class="sm:flex-auto">
-                                <h1 class="text-xl font-semibold text-gray-900">People</h1>
-                                <p class="mt-2 text-sm text-gray-700">A list of all the people in your system including their name, title, email and role.</p>
+                                <h1 class="text-xl font-semibold text-gray-900">Departments</h1>
+                                <p class="mt-2 text-sm text-gray-700">A list of all the departments in your system including their name, title, email and role.</p>
                             </div>
                             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                                 <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add department</button>
@@ -41,9 +41,6 @@ export default {
                                             <thead class="bg-gray-50">
                                             <tr>
                                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Institute</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Role</th>
                                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                     <span class="sr-only">Edit</span>
                                                 </th>
@@ -53,26 +50,9 @@ export default {
                                             <tr v-for="(department,index) in people">
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                                     <div class="flex items-center">
-                                                        <div class="h-10 w-10 flex-shrink-0">
-                                                            <img class="h-10 w-10 rounded-full" :src="department.image" alt="">
-                                                        </div>
                                                         <div class="ml-4">
-                                                            <div class="font-medium text-gray-900">{{department.first_name}}</div>
-                                                            <div class="text-gray-500">{{department.surname}}</div>
+                                                            <div class="font-medium text-gray-900">{{department.description}}</div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div v-for="(institution,index) in department.institutions" class="text-gray-900">
-                                                        {{institution.description.replace(/_/g," ").toUpperCase()}}
-                                                    </div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div class="font-medium text-gray-900">{{department.nationality}}</div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div class="text-gray-900">
-                                                        {{department.uid}}
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
