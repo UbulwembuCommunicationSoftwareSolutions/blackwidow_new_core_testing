@@ -111,7 +111,7 @@ export default {
                 >
                     Open Modal!
                 </button>
-                <Modal
+                <PersonProfilePictureModal
                     v-if="this.isModalVisible"
                     @close="this.closeModal()"
                 />
