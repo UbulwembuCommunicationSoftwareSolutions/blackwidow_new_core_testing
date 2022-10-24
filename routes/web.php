@@ -32,7 +32,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/', 'App\Http\Controllers\AdminPanelController@index')->name('admin.panel');
 });
 
-Route::post('/profile_picture/person', 'App\Http\Controllers\PersonController@updateProfilePicture');
 Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth', 'verified']);
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
 Route::resource('department', App\Http\Controllers\DepartmentController::class)->middleware(['auth', 'verified']);

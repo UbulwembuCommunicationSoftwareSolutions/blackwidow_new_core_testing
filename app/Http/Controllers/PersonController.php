@@ -28,7 +28,6 @@ class PersonController extends Controller
                 }
             }
         }
-
         return Inertia::render(
             'Person/Index',
             [
