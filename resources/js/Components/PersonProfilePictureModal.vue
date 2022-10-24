@@ -17,9 +17,6 @@ export default {
 
             <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
-                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                        <!-- Heroicon name: outline/check -->
-                    </div>
                     <form>
                         <div class="mt-5 md:col-span-2 md:mt-0">
                             <div class="shadow sm:overflow-hidden sm:rounded-md">
@@ -48,7 +45,10 @@ export default {
                     </form>
                 </div>
                 <div class="mt-5 sm:mt-6">
-                    <button type="button" @click="this.close()" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm">
+                    <button @click="this.close()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
                         Close
                     </button>
                 </div>
