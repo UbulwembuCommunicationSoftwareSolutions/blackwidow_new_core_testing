@@ -8,6 +8,7 @@ export default {
     },
     props:{
         users :  Object,
+        departments :  Object,
         auth : Object
     },
     mounted() {
@@ -45,7 +46,7 @@ export default {
                             </svg>
                             <span class="truncate">Departments</span>
 
-                            <span class="bg-gray-100 group-hover:bg-gray-200 ml-auto inline-block py-0.5 px-3 text-xs rounded-full">19</span>
+                            <span class="bg-gray-100 group-hover:bg-gray-200 ml-auto inline-block py-0.5 px-3 text-xs rounded-full">{{departments.length}}</span>
                         </a>
 
                         <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
