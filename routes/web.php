@@ -36,7 +36,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
 
 Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth', 'verified']);
-
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
+Route::resource('department', App\Http\Controllers\DepartmentController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
