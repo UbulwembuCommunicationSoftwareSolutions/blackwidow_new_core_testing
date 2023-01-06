@@ -18,13 +18,8 @@ class DepartmentController extends Controller
             $departments = Department::all();
             $departments->load('institutions');
         }else{
-            $departments = array();
-            $institutions = Auth::user()->institutions;
-            foreach($institutions as $institution){
-                foreach($institution->departments as $department){
-                    $departments[] = $department->load('institutions');
-                }
-            }
+            $departments = Auth::user()->departments;
+            $departments->load('institutions');
         }
 
         return Inertia::render(

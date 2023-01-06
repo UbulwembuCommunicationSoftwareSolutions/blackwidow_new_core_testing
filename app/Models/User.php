@@ -18,13 +18,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(UserRole::class, 'user_role_user');
     }
-    public function institutions()
-    {
-        return $this->belongsToMany(Institution::class, 'institution_user');
-    }
     public function permissions()
     {
         return $this->belongsToMany(UserPermission::class, 'user_permission_user');
+    }
+
+    public function departments()
+    {
+        return $this->belongsToMany(UserDepartment::class, 'department_user');
     }
 
     /**
