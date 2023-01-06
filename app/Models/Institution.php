@@ -17,6 +17,6 @@ class Institution extends Model
     }
     public function departments()
     {
-        return $this->belongsToMany(Department::class, 'department_institution');
+        return $this->hasMany(Department::class);
     }
 }
