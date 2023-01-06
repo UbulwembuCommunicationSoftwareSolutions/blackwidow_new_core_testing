@@ -26,6 +26,7 @@ class DepartmentController extends Controller
                 }
             }
         }
+        dd($departments);
 
         return Inertia::render(
             'Department/Index',
