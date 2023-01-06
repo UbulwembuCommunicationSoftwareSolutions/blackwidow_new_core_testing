@@ -16,10 +16,10 @@ class DepartmentController extends Controller
     {
         if(Auth::user()->isAdmin()){
             $departments = Department::all();
-            $departments->load('institutions');
+            $departments->load('institution');
         }else{
             $departments = Auth::user()->departments;
-            $departments->load('institutions');
+            $departments->load('institution');
         }
 
         return Inertia::render(

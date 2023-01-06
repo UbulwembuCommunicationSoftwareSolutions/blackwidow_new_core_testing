@@ -13,7 +13,7 @@ class Department extends Model
         'institution_id',
         'description'
     ];
-    public function institutions()
+    public function institution()
     {
         return $this->belongsTo(Institution::class);
     }
