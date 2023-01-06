@@ -14,14 +14,14 @@ export default {
     },
     props:{
         user :  Object,
-        available_institutions : Array,
-        user_institutions : Array
+        available_departments : Array,
+        user_departments : Array
     },
     setup(props){
         const form = useForm({
             user : props.user,
-            selected_institutions : props.user_institutions,
-            available_institutions : props.available_institutions,
+            selected_departments : props.user_departments,
+            available_departments : props.available_departments,
             first_name: props.user.first_name,
             surname: props.user.surname,
             maiden_name: props.user.maiden_name,
@@ -47,7 +47,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.form.selected_institutions)
+        console.log(this.form.selected_departments)
     },
     methods:{
         adminPanel(){
@@ -106,8 +106,8 @@ export default {
                                         <input v-model="form.nickname" type="text" name="nickname" id="nickname" autocomplete="nickname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6">
-                                        <treeselect v-model="form.selected_institutions" :multiple="true" :options="form.available_institutions" />
-                                        <treeselect-value :value="form.selected_institutions" />
+                                        <treeselect v-model="form.selected_departments" :multiple="true" :options="form.available_departments" />
+                                        <treeselect-value :value="form.selected_departments" />
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -33,22 +34,22 @@ class UserController extends Controller
     }
     public function edit($id){
         $user = User::find($id);
-        $institutions = Institution::get();
-        $user_institutions = array();
+        $departments = Department::get();
+        $user_departments = array();
         $available_institutions = array();
-        foreach($institutions as $institution){
-            $available_institutions[] = array(
-                'id' => $institution->id,
-                'label' => $institution->description
+        foreach($departments as $department){
+            $available_departments[] = array(
+                'id' => $department->id,
+                'label' => $department->description
             );
         }
-        foreach($user->institutions as $institution) {
-            $user_institutions[] = $institution->id;
+        foreach($user->departments as $department) {
+            $user_departments[] = $department->id;
         }
         if((Auth::user()->isAdmin())){
             return Inertia::render('User/Edit', [
-                'available_institutions' => $available_institutions,
-                'user_institutions' => $user_institutions,
+                'available_departments' => $available_departments,
+                'user_departments' => $user_departments,
                 'user' => $user,
                 'status' => session('status'),
             ]);
