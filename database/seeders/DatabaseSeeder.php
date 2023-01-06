@@ -175,17 +175,6 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
-        DB::table('department_institution')->insert([
-            'id' => '3',
-            'department_id' => '3',
-            'institution_id' => '1',
-        ]);
-        DB::table('department_institution')->insert([
-            'id' => '4',
-            'department_id' => '3',
-            'institution_id' => '2',
-        ]);
-
 
 
         DB::table('user_permissions')->insert([
