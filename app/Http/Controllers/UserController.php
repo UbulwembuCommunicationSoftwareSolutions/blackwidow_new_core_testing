@@ -62,31 +62,31 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        $selected_institutions = $data['selected_institutions'] ?? [];
+        $selected_departments = $data['selected_departments'] ?? [];
         unset($data['user']);
-        unset($data['available_institutions']);
-        unset($data['selected_institutions']);
+        unset($data['available_departments']);
+        unset($data['selected_departments']);
         $user->update($data);
         $user->save();
-        $user->institutions()->sync($selected_institutions);
+        $user->departments()->sync($selected_departments);
         $request->session()->flash('status', 'User updated successfully!');
 
-        $available_institutions = array();
-        $user_institutions = array();
+        $available_departments = array();
+        $user_departments = array();
 
-        $institutions = Institution::get();
-        foreach($institutions as $institution){
-            $available_institutions[] =array(
-                'id' => $institution->id,
-                'label' => $institution->description
+        $departments = Department::get();
+        foreach($departments as $department){
+            $available_departments[] =array(
+                'id' => $department->id,
+                'label' => $department->description
             );
         }
-        foreach($user->institutions as $institution) {
-            $user_institutions[] = $institution->id;
+        foreach($user->departments as $department) {
+            $user_departments[] = $department->id;
         }
         return Inertia::render('User/Edit', [
-            'available_institutions' => $available_institutions,
-            'user_institutions' => $user_institutions,
+            'available_departments' => $available_departments,
+            'user_departments' => $user_departments,
             'user' => $user,
             'status' => session('status'),
         ]);
