@@ -51,6 +51,11 @@ class DatabaseSeeder extends Seeder
             'description' => "system_administrator",
         ]);
 
+        DB::table('user_roles')->insert([
+            'id' => '3',
+            'description' => "interviewer",
+        ]);
+
         DB::table('user_role_user')->insert([
             'id' => '1',
             'user_role_id' => '1',
