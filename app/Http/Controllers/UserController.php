@@ -20,7 +20,7 @@ class UserController extends Controller
         if((Auth::user()->isAdmin())){
             $users = User::get();
             $users->load('roles');
-            $users->load('institutions');
+            $users->load('departments');
             return Inertia::render('User/Index', [
                 'users' => $users,
                 'status' => session('status'),
