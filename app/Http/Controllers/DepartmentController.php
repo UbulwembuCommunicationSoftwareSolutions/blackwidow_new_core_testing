@@ -21,7 +21,7 @@ class DepartmentController extends Controller
             $departments = array();
             $institutions = Auth::user()->institutions;
             foreach($institutions as $institution){
-                foreach($institution->people as $department){
+                foreach($institution->departments as $department){
                     $departments[] = $department->load('institutions');
                 }
             }
