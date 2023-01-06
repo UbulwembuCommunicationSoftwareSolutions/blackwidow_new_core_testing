@@ -162,25 +162,18 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('departments')->insert([
             'id' => '1',
+            "institution_id" => '1',
             'description' => 'First Department',
         ]);
         DB::table('departments')->insert([
             'id' => '2',
+            "institution_id" => '1',
             'description' => 'Second Department',
         ]);
         DB::table('departments')->insert([
             'id' => '3',
+            "institution_id" => '2',
             'description' => 'Third Department',
-        ]);
-        DB::table('department_institution')->insert([
-            'id' => '1',
-            'department_id' => '1',
-            'institution_id' => '1',
-        ]);
-        DB::table('department_institution')->insert([
-            'id' => '2',
-            'department_id' => '2',
-            'institution_id' => '2',
         ]);
         DB::table('department_institution')->insert([
             'id' => '3',
