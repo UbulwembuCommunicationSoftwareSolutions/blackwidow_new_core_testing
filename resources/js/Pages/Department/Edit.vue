@@ -2,26 +2,29 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
-import Treeselect from 'vue3-treeselect'
-// import the styles
-import 'vue3-treeselect/dist/vue3-treeselect.css'
+import VueSelect from "vue-select";
+
+import "vue-select/dist/vue-select.css";
 
 export default {
     components: {
         AuthenticatedLayout,
         Head,
-        Treeselect
+        VueSelect
     },
     props:{
         department :  Object,
         institutions : Array,
+        selected_institute : Object,
     },
     setup(props){
         const form = useForm({
             department : props.department,
+            selected_institute : props.selected_institute,
         });
+        let institutions = props.institutions
         return {
-            form
+            form,institutions
         }
     },
     data(){
@@ -75,7 +78,7 @@ export default {
                                     </div>
 
                                     <div class="col-span-6">
-                                        <treeselect id="institution" v-model="form.department.institution_id" :multiple="false" :options="props.institutions" />
+                                        <VueSelect label="description"  v-model="form.selected_institute" :options="institutions"></VueSelect>
                                     </div>
 
                             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">

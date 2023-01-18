@@ -86,16 +86,14 @@ class DepartmentController extends Controller
     public function edit($id){
         $department = Department::find($id);
         $institutions = Institution::get();
-        $available_institutions = array();
-        foreach($institutions as $institution){
-            $available_institutions[] = array(
-                'id' => $institution->id,
-                'label' => $institution->description
-            );
-        }
+        $selected_institute = array(
+            "id" => $department->institution_id,
+            "description" => $department->institution->description
+        );
         if((Auth::user()->isAdmin())){
             return Inertia::render('Department/Edit', [
-                'available_institutions' => $available_institutions,
+                'institutions' => $institutions,
+                "selected_institute" => $selected_institute,
                 'department' => $department,
                 'status' => session('status'),
             ]);
@@ -115,8 +113,8 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department ){
         $data = $request->all();
-        dd($data);
         $department->update($data['department']);
+        $department->institution_id = $data['selected_institute']['id'];
         $department->save();
         $request->session()->flash('status', 'Department updated successfully!');
 
