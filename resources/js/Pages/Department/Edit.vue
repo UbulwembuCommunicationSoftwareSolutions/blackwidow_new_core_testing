@@ -14,7 +14,7 @@ export default {
     },
     props:{
         department :  Object,
-        available_institutions : Array,
+        institutions : Array,
     },
     setup(props){
         const form = useForm({
@@ -30,7 +30,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.form.selected_institutions)
     },
     methods:{
         adminPanel(){
@@ -76,7 +75,7 @@ export default {
                                     </div>
 
                                     <div class="col-span-6">
-                                        <treeselect id="institution" v-model="form.department.institution_id" :multiple="false" :options="form.available_institutions" />
+                                        <treeselect id="institution" v-model="form.department.institution_id" :multiple="false" :options="institutions" />
                                     </div>
 
                             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
