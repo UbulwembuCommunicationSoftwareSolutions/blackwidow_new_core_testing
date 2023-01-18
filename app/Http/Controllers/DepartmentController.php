@@ -115,6 +115,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department ){
         $data = $request->all();
+        dd($data);
         $department->update($data['department']);
         $department->save();
         $request->session()->flash('status', 'Department updated successfully!');
