@@ -86,7 +86,6 @@ class DepartmentController extends Controller
     public function edit($id){
         $department = Department::find($id);
         $institutions = Institution::get();
-        $department_institutions = array();
         $available_institutions = array();
         foreach($institutions as $institution){
             $available_institutions[] = array(
@@ -94,13 +93,9 @@ class DepartmentController extends Controller
                 'label' => $institution->description
             );
         }
-        foreach($department->institutions as $institution) {
-            $department_institutions[] = $institution->id;
-        }
         if((Auth::user()->isAdmin())){
             return Inertia::render('Department/Edit', [
                 'available_institutions' => $available_institutions,
-                'department_institutions' => $department_institutions,
                 'department' => $department,
                 'status' => session('status'),
             ]);

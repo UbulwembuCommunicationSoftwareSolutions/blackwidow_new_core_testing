@@ -13,7 +13,7 @@ class Institution extends Model
 
     public function people()
     {
-        return $this->belongsToMany(Person::class, 'institution_people');
+        return $this->hasMany(Person::class, 'institution_people');
     }
     public function departments()
     {
