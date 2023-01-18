@@ -75,7 +75,7 @@ export default {
                                     </div>
 
                                     <div class="col-span-6">
-                                        <treeselect id="institution" v-model="form.department.institution_id" :multiple="false" :options="institutions" />
+                                        <treeselect id="institution" v-model="form.department.institution_id" :multiple="false" :options="props.institutions" />
                                     </div>
 
                             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
