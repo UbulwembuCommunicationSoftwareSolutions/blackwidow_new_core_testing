@@ -115,6 +115,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department ){
         $data = $request->all();
+        dd($data);
         unset($data['department']);
         unset($data['available_institutions']);
         $department->update($data);
