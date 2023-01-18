@@ -20,7 +20,7 @@ class User extends Authenticatable
     }
     public function permissions()
     {
-        return $this->belongsToMany(UserPermission::class, 'user_permission_user');
+        return $this->hasMany(UserPermission::class, 'user_permission_user');
     }
 
     public function departments()

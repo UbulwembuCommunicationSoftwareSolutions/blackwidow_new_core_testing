@@ -34,4 +34,11 @@ class Person extends Model
     {
         return $this->belongsToMany(Institution::class, 'institution_people');
     }
+
+    public function incidents()
+    {
+        return $this->hasMany(Institution::class, 'incident_people');
+    }
+
+
 }
