@@ -36,6 +36,6 @@ Route::post('/profile_picture/person', 'App\Http\Controllers\PersonController@up
 Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth', 'verified']);
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
 Route::resource('department', App\Http\Controllers\DepartmentController::class)->middleware(['auth', 'verified']);
-Route::resource('incident', App\Http\Controllers\IncidentController::Controller::class)->middleware(['auth', 'verified']);
+Route::resource('incident', App\Http\Controllers\IncidentController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
