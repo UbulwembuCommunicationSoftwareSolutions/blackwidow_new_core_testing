@@ -115,34 +115,13 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department ){
         $data = $request->all();
-        $selected_institutions = $data['selected_institutions'] ?? [];
         unset($data['department']);
         unset($data['available_institutions']);
-        unset($data['selected_institutions']);
         $department->update($data);
         $department->save();
-        $department->institutions()->sync($selected_institutions);
         $request->session()->flash('status', 'Department updated successfully!');
 
-        $available_institutions = array();
-        $department_institutions = array();
-
-        $institutions = Institution::get();
-        foreach($institutions as $institution){
-            $available_institutions[] =array(
-                'id' => $institution->id,
-                'label' => $institution->description
-            );
-        }
-        foreach($department->institutions as $institution) {
-            $department_institutions[] = $institution->id;
-        }
-        return Inertia::render('Department/Edit', [
-            'available_institutions' => $available_institutions,
-            'department_institutions' => $department_institutions,
-            'department' => $department,
-            'status' => session('status'),
-        ]);
+        return redirect()->route('departments.index')->with('message', 'Department Updated Successfully');
 
     }
 
