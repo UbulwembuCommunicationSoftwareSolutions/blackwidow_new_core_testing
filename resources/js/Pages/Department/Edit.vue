@@ -19,8 +19,6 @@ export default {
     setup(props){
         const form = useForm({
             department : props.department,
-            available_institutions : props.available_institutions,
-            description: props.department.description,
         });
         return {
             form
@@ -74,7 +72,7 @@ export default {
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="description" class="block text-sm font-medium text-gray-700">First name</label>
-                                        <input v-model="form.description" type="text" name="description" id="description" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.department.description" type="text" name="description" id="description" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
 
                                     <div class="col-span-6">
