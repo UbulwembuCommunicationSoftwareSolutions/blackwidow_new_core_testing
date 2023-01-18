@@ -121,7 +121,7 @@ class DepartmentController extends Controller
         $department->save();
         $request->session()->flash('status', 'Department updated successfully!');
 
-        return redirect()->route('departments.index')->with('message', 'Department Updated Successfully');
+        return redirect()->route('department.index')->with('message', 'Department Updated Successfully');
 
     }
 
