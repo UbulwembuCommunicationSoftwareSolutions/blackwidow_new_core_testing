@@ -4,7 +4,9 @@ import { Head } from '@inertiajs/inertia-vue3';
 import DataTable from 'datatables.net-vue3'
 import DataTablesLib from 'datatables.net';
 
-import 'datatables.net-dt';
+<style>
+    @import 'datatables.net-dt';
+</style>
 
 DataTable.use(DataTablesLib);
 
