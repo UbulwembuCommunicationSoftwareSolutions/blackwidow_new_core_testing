@@ -73,7 +73,7 @@ export default {
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="bg-white">
-                                                                    <tr v-for="(incident, id) in incidents" :key="person.email" :class="id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                                                    <tr v-for="(incident, id) in incidents" :key="incident.id" :class="id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.description }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.user_id }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
