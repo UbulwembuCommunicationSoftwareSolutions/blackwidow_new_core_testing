@@ -56,7 +56,7 @@ class IncidentController extends Controller
                 $incident->description
             ];
         }
-        return response()->json($array);
+        return json_encode($array);
     }
 
     /**
