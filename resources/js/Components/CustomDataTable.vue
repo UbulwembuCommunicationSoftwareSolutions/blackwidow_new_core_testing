@@ -54,11 +54,11 @@ export default {
 <template>
     <div>
         <div class="flex">
-            <div class="flex">
+            <div>
                 <label class="w-32">Start Date:</label>
                 <input class="mb-4" id="startDate" @input="reload()" type="date" v-model="this.startDate"/>
             </div>
-            <div class="flex">
+            <div>
                 <label class="w-32">End Date:</label>
                 <input class="mb-4" id="endDate" @input="reload()" type="date" v-model="this.endDate"/>
             </div>
