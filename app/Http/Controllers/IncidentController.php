@@ -36,6 +36,29 @@ class IncidentController extends Controller
         );
     }
 
+    public function ajaxIncidents(){
+        if(Auth::user()->isAdmin()){
+            $incidents = Incident::all();
+            $incidents->load('department');
+        }else{
+            $incidents = array();
+            $departments = Auth::user()->departments;
+            foreach($departments as $department){
+                foreach($department->incidents as $incident){
+                    $incidents[] = $incident->load('department');
+                }
+            }
+        }
+        $array = array();
+        foreach($incidents as $incident){
+            $array['data'][] = [
+                $incident->id,
+                $incident->description
+            ];
+        }
+        return response()->json($array);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
