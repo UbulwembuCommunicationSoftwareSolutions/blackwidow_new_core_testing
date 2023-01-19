@@ -176,6 +176,38 @@ class DatabaseSeeder extends Seeder
             'description' => 'Third Department',
         ]);
 
+        DB::table('incidents')->insert([
+            'description' => 'First Testing Incident',
+            'user_id' => '1',
+            'department_id' => '1',
+            'category_id' => '1',
+            'sub_category_id' => '1',
+            'sub_sub_category_id' => '1',
+            'priority_id' => '1',
+            'status_id' => '1',
+            'gps_lat' => '1',
+            'gps_lng' => '1',
+            'source_id' => '1',
+            'active' => '1',
+            'accepted_at' => '1',
+            'allocated_at' => '1',
+            'referred_at' => '1',
+            'escalated_at' => '1',
+            'resolved_at' => '1',
+            'closed_at' => '1',
+            'created_at' => '1',
+            'updated_at' => '1',
+            'due_date' => '1',
+            'occurred_at' => '1',
+            'geoFenceCoords' => '1',
+            'case_reference' => '1',
+            'client_reference_number' => '1',
+            'saps_case_number' => '1',
+            'saps_station', 50 => '1',
+            'investigation_officer_id' => '1',
+            'unique_id' => '1',
+        ]);
+
 
         DB::table('user_permissions')->insert([
             'permission_object' => 'user',
