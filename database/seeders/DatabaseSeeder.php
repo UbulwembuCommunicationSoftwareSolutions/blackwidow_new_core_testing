@@ -177,9 +177,9 @@ class DatabaseSeeder extends Seeder
         ]);
         for ($x = 0; $x <= 10000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
-            $f->format($x);
+            $number = $f->format($x);
             DB::table('incidents')->insert([
-                'description' => $f.' Testing Incident',
+                'description' => $number.'th Testing Incident',
                 'user_id' => '1',
                 'department_id' => '1',
                 'category_id' => '1',
