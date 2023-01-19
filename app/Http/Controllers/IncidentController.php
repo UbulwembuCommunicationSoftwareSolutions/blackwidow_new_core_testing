@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Institution;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Incident;
@@ -91,22 +91,22 @@ class IncidentController extends Controller
 
     public function edit($id){
         $incident = Incident::find($id);
-        $institutions = Institution::get();
-        $incident_institutions = array();
-        $available_institutions = array();
-        foreach($institutions as $institution){
-            $available_institutions[] = array(
-                'id' => $institution->id,
-                'label' => $institution->description
+        $departments = Department::get();
+        $incident_departments = array();
+        $available_departments = array();
+        foreach($departments as $department){
+            $available_departments[] = array(
+                'id' => $department->id,
+                'label' => $department->description
             );
         }
-        foreach($incident->institutions as $institution) {
-            $incident_institutions[] = $institution->id;
+        foreach($incident->departments as $department) {
+            $incident_departments[] = $department->id;
         }
         if((Auth::user()->isAdmin())){
             return Inertia::render('Incident/Edit', [
-                'available_institutions' => $available_institutions,
-                'incident_institutions' => $incident_institutions,
+                'available_departments' => $available_departments,
+                'incident_departments' => $incident_departments,
                 'incident' => $incident,
                 'status' => session('status'),
             ]);
@@ -126,13 +126,13 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident ){
         $data = $request->all();
-        $selected_institutions = $data['selected_institutions'] ?? [];
+        $selected_departments = $data['selected_departments'] ?? [];
         unset($data['incident']);
-        unset($data['available_institutions']);
-        unset($data['selected_institutions']);
+        unset($data['available_departments']);
+        unset($data['selected_departments']);
         $incident->update($data);
         $incident->save();
-        $incident->institutions()->sync($selected_institutions);
+        $incident->departments()->sync($selected_departments);
         return redirect()->route('incident.edit',$incident)->with('success', 'Incident Updated Successfully');
     }
 
