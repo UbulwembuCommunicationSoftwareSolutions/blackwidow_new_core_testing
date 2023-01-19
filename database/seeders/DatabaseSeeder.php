@@ -203,7 +203,7 @@ class DatabaseSeeder extends Seeder
             'case_reference' => '1',
             'client_reference_number' => '1',
             'saps_case_number' => '1',
-            'saps_station', 50 => '1',
+            'saps_station'  => '1',
             'investigation_officer_id' => '1',
             'unique_id' => '1',
         ]);
