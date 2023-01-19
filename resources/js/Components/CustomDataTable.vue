@@ -27,22 +27,20 @@ export default {
         loadData(){
             console.log("Loading Data from "+this.ajaxUrl);
             this.$forceUpdate();  // Notice we have to use a $ here
-                let dataTable =   document.getElementById('dataTable');
-            dataTable.DataTable( {
+            $('.dataTable').DataTable( {
                 buttons: [
                     'excel'
                 ]
             } );
-            dataTable.DataTable().ajax.url( this.ajaxUrl );
-            dataTable.DataTable().rows().clear().draw();
-            dataTable.DataTable().ajax.reload();
+            $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
+            $('.dataTable').DataTable().rows().clear().draw();
+            $('.dataTable').DataTable().ajax.reload();
         },
         reload(){
             this.$forceUpdate();  // Notice we have to use a $ here
-            let dataTable = document.getElementById('dataTable');
-            dataTable.DataTable().ajax.url( this.ajaxUrl );
-            dataTable.DataTable().rows().clear().draw();
-            dataTable.DataTable().ajax.reload();
+            $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
+            $('.dataTable').DataTable().rows().clear().draw();
+            $('.dataTable').DataTable().ajax.reload();
         },
     }
 }
