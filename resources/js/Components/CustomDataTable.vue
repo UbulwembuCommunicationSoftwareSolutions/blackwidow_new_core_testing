@@ -22,6 +22,7 @@ export default {
     },
     methods: {
         loadData(){
+            console.log("Loading Data");
             this.$forceUpdate();  // Notice we have to use a $ here
             let dataTable = $('.dataTable');
             dataTable.DataTable( {
