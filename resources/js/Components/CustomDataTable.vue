@@ -30,7 +30,10 @@ export default {
             $('.dataTable').DataTable( {
                 buttons: [
                     'excel'
-                ]
+                ],
+                language: {
+                    lengthMenu: 'Show _MENU_'
+                }
             } );
             $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
             $('.dataTable').DataTable().rows().clear().draw();
