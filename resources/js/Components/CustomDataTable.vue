@@ -1,5 +1,8 @@
 <script>
 import DataTable from 'datatables.net-vue3';
+import DataTablesLib from 'datatables.net';
+
+DataTable.use(DataTablesLib);
 
 export default {
     name: "CustomDataTable",
