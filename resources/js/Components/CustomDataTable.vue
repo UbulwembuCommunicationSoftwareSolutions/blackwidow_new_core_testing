@@ -6,13 +6,13 @@ DataTable.use(DataTablesLib);
 
 export default {
     name: "CustomDataTable",
-    props: [ 'columns','ajaxurl'],
+    props: [ 'columns','ajaxUrl'],
     setup(props) {
         const columns = props.columns;
         const DateToday = new Date();
         let startDate = new Date(new Date().setDate(DateToday.getDate() - 720)).toISOString().substring(0, 10);
         let endDate = new Date(new Date().setDate(DateToday.getDate() + 1)).toISOString().substring(0, 10);
-        let ajaxUrl = props.ajaxurl;
+        let ajaxUrl = props.ajaxUrl;
         return {
             columns,ajaxUrl,startDate,endDate
         }
@@ -25,9 +25,9 @@ export default {
     },
     methods: {
         loadData(){
-            console.log("Loading Data");
+            console.log("Loading Data from "+this.ajaxUrl);
             this.$forceUpdate();  // Notice we have to use a $ here
-            let dataTable = $('.dataTable');
+            let dataTable =  this.$refs['dataTable']
             dataTable.DataTable( {
                 buttons: [
                     'excel'
@@ -39,7 +39,7 @@ export default {
         },
         reload(){
             this.$forceUpdate();  // Notice we have to use a $ here
-            let dataTable = $('.dataTable');
+            let dataTable = this.$refs['dataTable']
             dataTable.DataTable().ajax.url( this.ajaxUrl );
             dataTable.DataTable().rows().clear().draw();
             dataTable.DataTable().ajax.reload();
