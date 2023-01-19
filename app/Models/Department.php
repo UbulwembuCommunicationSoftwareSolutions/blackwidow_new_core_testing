@@ -17,4 +17,8 @@ class Department extends Model
     {
         return $this->belongsTo(Institution::class);
     }
+
+    public function incidents(){
+        return $this->hasMany(Incident::class);
+    }
 }

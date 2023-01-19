@@ -18,13 +18,13 @@ class IncidentController extends Controller
     {
         if(Auth::user()->isAdmin()){
             $incidents = Incident::all();
-            $incidents->load('institutions');
+            $incidents->load('department');
         }else{
             $incidents = array();
-            $institutions = Auth::user()->institutions;
-            foreach($institutions as $institution){
-                foreach($institution->incidents as $incident){
-                    $incidents[] = $incident->load('institutions');
+            $departments = Auth::user()->departments;
+            foreach($departments as $department){
+                foreach($department->incidents as $incident){
+                    $incidents[] = $incident->load('department');
                 }
             }
         }
