@@ -23,20 +23,22 @@ export default {
     methods: {
         loadData(){
             this.$forceUpdate();  // Notice we have to use a $ here
-            $('.dataTable').DataTable( {
+            let dataTable = $('.dataTable');
+            dataTable.DataTable( {
                 buttons: [
                     'excel'
                 ]
             } );
-            $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
-            $('.dataTable').DataTable().rows().clear().draw();
-            $('.dataTable').DataTable().ajax.reload();
+            dataTable.DataTable().ajax.url( this.ajaxUrl );
+            dataTable.DataTable().rows().clear().draw();
+            dataTable.DataTable().ajax.reload();
         },
         reload(){
             this.$forceUpdate();  // Notice we have to use a $ here
-            $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
-            $('.dataTable').DataTable().rows().clear().draw();
-            $('.dataTable').DataTable().ajax.reload();
+            let dataTable = $('.dataTable');
+            dataTable.DataTable().ajax.url( this.ajaxUrl );
+            dataTable.DataTable().rows().clear().draw();
+            dataTable.DataTable().ajax.reload();
         },
     }
 }
@@ -59,7 +61,7 @@ export default {
         </div>
 
         <table class="dataTable display mt-4"
-            id="survey_datatable"
+            id="dataTable"
             width="100%">
         <thead>
             <tr>
