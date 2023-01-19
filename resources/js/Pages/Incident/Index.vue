@@ -21,9 +21,6 @@ export default {
             columns,ajaxUrl
         }
     },
-    props:{
-        incidents :  Object
-    }
 }
 </script>
 
