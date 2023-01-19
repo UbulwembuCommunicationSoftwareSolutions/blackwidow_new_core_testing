@@ -62,11 +62,12 @@ export default {
 
         <table class="dataTable display mt-4"
             id="dataTable"
-            width="100%">
+            >
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Description</th>
+                <th v-for="(column) in this.columns">
+                    {{column}}
+                </th>
             </tr>
         </thead>
         </table>
