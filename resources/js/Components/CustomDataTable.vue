@@ -27,7 +27,7 @@ export default {
         loadData(){
             console.log("Loading Data from "+this.ajaxUrl);
             this.$forceUpdate();  // Notice we have to use a $ here
-            let dataTable =  this.$refs['dataTable']
+            let dataTable =   document.body.getElementById('dataTable');
             dataTable.DataTable( {
                 buttons: [
                     'excel'
@@ -39,7 +39,7 @@ export default {
         },
         reload(){
             this.$forceUpdate();  // Notice we have to use a $ here
-            let dataTable = this.$refs['dataTable']
+            let dataTable = document.body.getElementById('dataTable');
             dataTable.DataTable().ajax.url( this.ajaxUrl );
             dataTable.DataTable().rows().clear().draw();
             dataTable.DataTable().ajax.reload();

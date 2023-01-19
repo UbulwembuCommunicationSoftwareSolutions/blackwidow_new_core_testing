@@ -10,7 +10,7 @@ export default {
         Head,
         CustomDataTable
     },
-    setup(props){
+    setup(){
         const columns = [
             'id',
             'description',
@@ -52,7 +52,7 @@ export default {
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                        <CustomDataTable :columns="this.columns" :ajaxurl="this.ajaxUrl">
+                                        <CustomDataTable :columns="columns" :ajax-url="ajaxUrl">
 
                                         </CustomDataTable>
                                     </div>
