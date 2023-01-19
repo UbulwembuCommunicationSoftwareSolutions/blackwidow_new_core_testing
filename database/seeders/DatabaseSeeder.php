@@ -176,7 +176,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Third Department',
         ]);
         for ($x = 0; $x <= 10000; $x++) {
-            $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+            $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $f->format($x);
             DB::table('incidents')->insert([
                 'description' => $f.' Testing Incident',
