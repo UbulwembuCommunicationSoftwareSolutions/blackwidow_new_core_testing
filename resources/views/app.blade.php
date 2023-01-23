@@ -11,21 +11,7 @@
         @routes
         @vite('resources/js/app.js')
         @inertiaHead
-        <style>
-            body {
-                animation: fadeInAnimation ease 3s;
-                animation-iteration-count: 1;
-                animation-fill-mode: forwards;
-            }
-            @keyframes fadeInAnimation {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 1;
-                }
-            }
-        </style>
+
     </head>
     <body class="font-sans antialiased h-full">
         @inertia
