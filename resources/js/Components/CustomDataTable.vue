@@ -34,7 +34,7 @@ export default {
                 language: {
                     lengthMenu: 'Show _MENU_'
                 },
-                dom: '<"top"ilf>rt<"bottom"p><"clear">'
+                dom: '<"top"lf>irt<"bottom"p><"clear">'
             } );
             $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
             $('.dataTable').DataTable().rows().clear().draw();
