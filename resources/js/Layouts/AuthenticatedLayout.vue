@@ -159,7 +159,7 @@ const userNavigation = [
 
 
     { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
+    { name: 'Admin Panel', href: '/admin' },
     { name: 'Sign out', href: '#' },
 ]
 
