@@ -82,7 +82,7 @@ export default {
 <style>
 @import 'datatables.net-dt';
 
-.dataTables_wrapper .dataTables_length .dataTable_filter select {
+.dataTables_wrapper .dataTables_length select {
     padding: 5px;
     padding-right: 20px;
     margin-left: 20px;
