@@ -14,6 +14,7 @@ export default {
         const columns = [
             'ID',
             'Description',
+            'User'
         ];
         const ajaxUrl = '/ajax/incidents';
 

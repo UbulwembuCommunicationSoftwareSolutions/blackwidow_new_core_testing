@@ -25,12 +25,14 @@ class IncidentController extends Controller
         if(Auth::user()->isAdmin()){
             $incidents = Incident::all();
             $incidents->load('department');
+            $incidents->load('user');
         }else{
             $incidents = array();
             $departments = Auth::user()->departments;
             foreach($departments as $department){
                 foreach($department->incidents as $incident){
                     $incidents[] = $incident->load('department');
+                    $incidents[] = $incident->load('user');
                 }
             }
         }
@@ -38,7 +40,8 @@ class IncidentController extends Controller
         foreach($incidents as $incident){
             $array['data'][] = [
                 $incident->id,
-                $incident->description
+                $incident->description,
+                $incident->user->name
             ];
         }
         return json_encode($array);
