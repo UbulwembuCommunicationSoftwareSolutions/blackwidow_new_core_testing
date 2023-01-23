@@ -54,7 +54,7 @@ export default {
 
 <template>
     <div class="px-4">
-        <div class="flex">
+        <div class="flex mt-4">
             <div>
                 <label class="w-32">Start Date:</label>
                 <input class="mb-4" id="startDate" @input="reload()" type="date" v-model="this.startDate"/>
@@ -88,6 +88,7 @@ export default {
 
 .datatables_paginate {
     padding-bottom : .25em;
+    text-align : center;
     padding-top : 0;
 }
 .bottom{
