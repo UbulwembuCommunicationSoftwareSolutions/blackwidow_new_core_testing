@@ -89,6 +89,7 @@ export default {
 .datatables_paginate {
     padding-bottom : .25em;
     text-align : center;
+    float : none;
     padding-top : 0;
 }
 .bottom{
