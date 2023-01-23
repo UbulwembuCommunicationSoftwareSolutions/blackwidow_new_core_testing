@@ -41,7 +41,7 @@ class IncidentController extends Controller
             $array['data'][] = [
                 $incident->id,
                 $incident->description,
-                $incident->user->name
+                $incident->user->first_name." ".$incident->user->last_name
             ];
         }
         return json_encode($array);

@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Department::class, 'department_user');
     }
 
+    public function incidents()
+    {
+        return $this->hasMany(Incident::class, 'department_user');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
