@@ -65,7 +65,7 @@ export default {
             </div>
         </div>
 
-        <table class="dataTable display stripe compact mt-4 px-4"
+        <table class="dataTable table-auto display stripe compact mt-4 px-4"
             id="dataTable"
             >
         <thead>
