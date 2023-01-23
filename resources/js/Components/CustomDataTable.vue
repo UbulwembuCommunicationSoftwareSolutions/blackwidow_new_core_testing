@@ -87,6 +87,6 @@ export default {
     padding-right: 20px;
 }
 .dataTables_length {
-    margin-left: 10px;
+    margin-left: 20px;
 }
 </style>
