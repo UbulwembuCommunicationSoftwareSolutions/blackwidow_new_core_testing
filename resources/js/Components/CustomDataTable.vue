@@ -61,7 +61,7 @@ export default {
             </div>
             <div>
                 <label class="w-32">End Date:</label>
-                <input class="mb-4" id="endDate" @input="reload()" type="date" v-model="this.endDate"/>
+                <input class="mb-4 ml-4" id="endDate" @input="reload()" type="date" v-model="this.endDate"/>
             </div>
         </div>
 
@@ -86,7 +86,7 @@ export default {
     padding-right: 40px;
 }
 
-.datatables_paginate {
+.dataTables_wrapper .dataTables_paginate { {
     padding-bottom : .25em;
     text-align : center;
     float : none;
