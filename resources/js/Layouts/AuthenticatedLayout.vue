@@ -132,7 +132,7 @@ import {
     TransitionRoot,
 } from '@headlessui/vue'
 import {
-    BriefcaseIcon
+    BriefcaseIcon,
     Bars3BottomLeftIcon,
     BellIcon,
     CalendarIcon,
