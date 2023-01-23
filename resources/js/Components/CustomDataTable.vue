@@ -86,13 +86,13 @@ export default {
     padding-right: 40px;
 }
 
-.dataTables_wrapper .dataTables_paginate { {
+.dataTables_wrapper .dataTables_paginate {
     padding-bottom : .25em;
     text-align : center;
     float : none;
     padding-top : 0;
 }
-.bottom{
+.bottom {
     margin-top: 20px;
     margin-bottom: 20px;
 }
