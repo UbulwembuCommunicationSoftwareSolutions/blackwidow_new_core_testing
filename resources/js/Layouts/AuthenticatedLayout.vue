@@ -48,19 +48,33 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex min-h-0 flex-1 flex-col bg-gray-800">
-                <div class="flex h-16 flex-shrink-0 items-center bg-gray-900 px-4">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+            <template>
+                <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4">
+                    <div class="flex flex-shrink-0 items-center px-4">
+                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
+                    </div>
+                    <div class="mt-5 flex flex-grow flex-col">
+                        <nav class="flex-1 space-y-1 bg-white px-2" aria-label="Sidebar">
+                            <template v-for="item in navigation" :key="item.name">
+                                <div v-if="!item.children">
+                                    <a :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md']">{{ item.name }}</a>
+                                </div>
+                                <Disclosure as="div" v-else class="space-y-1" v-slot="{ open }">
+                                    <DisclosureButton :class="[item.current ? 'bg-gray-100 text-gray-900' : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500']">
+                                        <svg :class="[open ? 'text-gray-400 rotate-90' : 'text-gray-300', 'mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400']" viewBox="0 0 20 20" aria-hidden="true">
+                                            <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
+                                        </svg>
+                                        {{ item.name }}
+                                    </DisclosureButton>
+                                    <DisclosurePanel class="space-y-1">
+                                        <DisclosureButton v-for="subItem in item.children" :key="subItem.name" as="a" :href="subItem.href" class="group flex w-full items-center rounded-md py-2 pl-10 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">{{ subItem.name }}</DisclosureButton>
+                                    </DisclosurePanel>
+                                </Disclosure>
+                            </template>
+                        </nav>
+                    </div>
                 </div>
-                <div class="flex flex-1 flex-col overflow-y-auto">
-                    <nav class="flex-1 space-y-1 px-2 py-4">
-                        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
-                            <component :is="item.icon" :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
-                            {{ item.name }}
-                        </a>
-                    </nav>
-                </div>
-            </div>
+            </template>
         </div>
         <div class="flex flex-col md:pl-64">
             <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
@@ -130,6 +144,9 @@ import {
     MenuItems,
     TransitionChild,
     TransitionRoot,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel
 } from '@headlessui/vue'
 import {
     BriefcaseIcon,
@@ -148,12 +165,57 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 const navigation = [
 
 
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Incidents', href: '/incident', icon: BriefcaseIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+    { name: 'Dashboard', href: '#', current: true },
+    {
+        name: 'Team',
+        current: false,
+        children: [
+            { name: 'Overview', href: '#' },
+            { name: 'Members', href: '#' },
+            { name: 'Calendar', href: '#' },
+            { name: 'Settings', href: '#' },
+        ],
+    },
+    {
+        name: 'Projects',
+        current: false,
+        children: [
+            { name: 'Overview', href: '#' },
+            { name: 'Members', href: '#' },
+            { name: 'Calendar', href: '#' },
+            { name: 'Settings', href: '#' },
+        ],
+    },
+    {
+        name: 'Calendar',
+        current: false,
+        children: [
+            { name: 'Overview', href: '#' },
+            { name: 'Members', href: '#' },
+            { name: 'Calendar', href: '#' },
+            { name: 'Settings', href: '#' },
+        ],
+    },
+    {
+        name: 'Documents',
+        current: false,
+        children: [
+            { name: 'Overview', href: '#' },
+            { name: 'Members', href: '#' },
+            { name: 'Calendar', href: '#' },
+            { name: 'Settings', href: '#' },
+        ],
+    },
+    {
+        name: 'Reports',
+        current: false,
+        children: [
+            { name: 'Overview', href: '#' },
+            { name: 'Members', href: '#' },
+            { name: 'Calendar', href: '#' },
+            { name: 'Settings', href: '#' },
+        ],
+    },
 ]
 const userNavigation = [
 
