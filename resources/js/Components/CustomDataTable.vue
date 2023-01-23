@@ -83,11 +83,10 @@ export default {
 @import 'datatables.net-dt';
 
 .dataTables_wrapper .dataTables_length select {
-    padding-right: 20px;
+    padding-right: 40px;
 }
 .bottom{
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 5px;
 }
 </style>
