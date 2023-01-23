@@ -85,6 +85,11 @@ export default {
 .dataTables_wrapper .dataTables_length select {
     padding-right: 40px;
 }
+
+.datatables_paginate {
+    padding-bottom : .25em;
+    padding-top : 0;
+}
 .bottom{
     margin-top: 20px;
     margin-bottom: 20px;
