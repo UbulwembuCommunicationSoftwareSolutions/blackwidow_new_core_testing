@@ -53,7 +53,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="px-4">
         <div class="flex">
             <div>
                 <label class="w-32">Start Date:</label>
