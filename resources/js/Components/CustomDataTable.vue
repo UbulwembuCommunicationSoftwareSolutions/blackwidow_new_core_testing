@@ -85,7 +85,11 @@ export default {
 .dataTables_wrapper .dataTables_length select {
     padding: 5px;
     padding-right: 20px;
+}
+.dataTables_length{
     margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 </style>
