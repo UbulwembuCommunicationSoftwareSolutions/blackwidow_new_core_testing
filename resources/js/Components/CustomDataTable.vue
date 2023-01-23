@@ -57,11 +57,11 @@ export default {
         <div class="flex mt-4">
             <div>
                 <label class="w-32">Start Date:</label>
-                <input class="mb-4" id="startDate" @input="reload()" type="date" v-model="this.startDate"/>
+                <input class="mb-4 ml-2" id="startDate" @input="reload()" type="date" v-model="this.startDate"/>
             </div>
             <div class="ml-4">
                 <label class="w-32">End Date:</label>
-                <input class="mb-4" id="endDate" @input="reload()" type="date" v-model="this.endDate"/>
+                <input class="mb-4 ml-2" id="endDate" @input="reload()" type="date" v-model="this.endDate"/>
             </div>
         </div>
 
