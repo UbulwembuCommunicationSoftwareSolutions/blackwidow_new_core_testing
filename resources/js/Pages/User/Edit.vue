@@ -22,6 +22,7 @@ export default {
             user : props.user,
             selected_departments : props.user_departments,
             available_departments : props.available_departments,
+            profile_picture: props.user.profile_picture,
             first_name: props.user.first_name,
             surname: props.user.surname,
             maiden_name: props.user.maiden_name,
