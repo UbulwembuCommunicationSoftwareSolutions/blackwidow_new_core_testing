@@ -71,7 +71,6 @@ export default {
     },
     mounted() {
         this.getData()
-        console.log(this.filteredItems);
     },
     methods: {
         sortBy(sortBy) {
@@ -86,6 +85,10 @@ export default {
             axios.get(this.ajaxUrl)
                 .then((res) => {
                     this.returned_data = res.data;
+                    console.log(res.data);
+                    console.log(this.returned_data);
+                    console.log(this.filteredItems);
+
                 })
                 .catch((error) => {
 
