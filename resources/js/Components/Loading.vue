@@ -1,17 +1,10 @@
 <template>
-    <div class="loading">
+    <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
         <div class="loading-icon"></div>
     </div>
 </template>
 
-<style>
-.loading {
-}
 
-.loading-icon {
-// styles for loading icon
-}
-</style>
 
 <script>
 export default {
