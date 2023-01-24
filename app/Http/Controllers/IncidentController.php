@@ -40,14 +40,13 @@ class IncidentController extends Controller
             $incidents
                 ->where('description', 'LIKE', '%' . $search . '%')
                 ->orWhere('id', 'LIKE', '%' . $search . '%')
-                ->orWhere('created_at', 'LIKE', '%' . $search . '%')
-                ->get();
-        }else{
-            $incidents->get();
+                ->orWhere('created_at', 'LIKE', '%' . $search . '%');
         }
 
         $incidents->load('department');
         $incidents->load('user');
+        $incidents->get();
+
         foreach($incidents as $incident){
             $array[] = array(
                 "id" => $incident->id,
