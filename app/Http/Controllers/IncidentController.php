@@ -42,16 +42,22 @@ class IncidentController extends Controller
             if(strlen($request['startTime'])<2){
             }else{
                 $startTime = $request['startTime'];
-                $incidents->where( 'created_at' ,'>=',$startTime);
+                $incidents->filter(function ($incident,$startTime) {
+                    return $incident->created_at >= $startTime;
+                });
             }
         }
         if(array_key_exists('endTime',$request)){
             if(strlen($request['endTime'])<2){
             }else {
                 $endTime = $request['endTime'];
-                $incidents->where( 'created_at' ,'<=',$endTime);
+                $incidents->filter(function ($incident,$endTime) {
+                    return $incident->created_at <= $endTime;
+                });
             }
         }
+
+
 
 
         $array = array();
