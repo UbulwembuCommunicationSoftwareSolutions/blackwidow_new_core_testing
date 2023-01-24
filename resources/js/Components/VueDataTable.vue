@@ -1,23 +1,13 @@
 <template>
     <div>
-        <input v-model="search" placeholder="Search" />
+        <Loading v-if="this.loading"/>
+        <input v-model="search" @input="this.loading=true" placeholder="Search" />
         <select v-model="selectedFilter">
             <option value="all">All</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
         </select>
             <div class="px-4 sm:px-6 lg:px-8">
-                <div class="sm:flex sm:items-center">
-                    <div class="sm:flex-auto">
-                        <h1 class="text-xl font-semibold text-gray-900">Incidents</h1>
-                        <p class="mt-2 text-sm text-gray-700"></p>
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-                            Add Incident</button>
-                    </div>
-                </div>
-                <Loading v-if="this.loading"/>
                 <div class="mt-8 flex flex-col">
                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
