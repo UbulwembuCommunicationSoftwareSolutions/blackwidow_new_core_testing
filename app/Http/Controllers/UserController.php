@@ -72,8 +72,8 @@ class UserController extends Controller
         if($request->hasFile('profile_picture')){
             $fileName = $user->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
             $request->file('profile_picture')->move(public_path('user_files'), $fileName);
+            $user->profile_picture = $fileName;
         }
-        $user->profile_picture = $fileName;
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
 

@@ -143,8 +143,8 @@ class PersonController extends Controller
         if($request->hasFile('profile_picture')){
             $fileName = $person->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
             $request->file('profile_picture')->move(public_path('person_files'), $fileName);
+            $person->profile_picture = $fileName;
         }
-        $person->profile_picture = $fileName;
         $person->save();
         $request->session()->flash('status', 'Person updated successfully!');
         return Redirect::route('person.edit',$person);
