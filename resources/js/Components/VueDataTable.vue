@@ -1,7 +1,7 @@
 <template>
     <div>
         <Loading v-if="this.loading"/>
-        <input v-model="search"  placeholder="Search" />
+        <input v-model="search" @input="this.searchTable()" placeholder="Search" />
         <select v-model="selectedFilter">
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -15,7 +15,7 @@
                                 <table class="min-w-full divide-y divide-gray-300">
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th v-for="(column, key) in this.columns" @click="sortBy(column)">{{ column.toUpperCase() }}</th>
+                                            <th v-for="(column, key) in this.columns">{{ column.toUpperCase() }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -57,34 +57,7 @@ export default {
         }
     },
     computed: {
-        filteredItems() {
-            let filtered = this.returned_data
-            if (this.search) {
-                filtered = filtered.filter(obj => {
-                    return Object.values(obj).some(val => {
-                        return (typeof val === 'string' && val.includes(this.search))
-                    });
-                });
-            }
-            if (this.selectedFilter !== 'all') {
-                filtered = filtered.filter(item => {
-                    return item.status === this.selectedFilter
-                })
-            }
-            if (this.sortBy) {
-                filtered = filtered.sort((a, b) => {
-                    if (a[this.sortBy] < b[this.sortBy]) {
-                        return this.sortDesc ? 1 : -1
-                    }
-                    if (a[this.sortBy] > b[this.sortBy]) {
-                        return this.sortDesc ? -1 : 1
-                    }
-                    return 0
-                })
-            }
-            this.loading = false;
-            return filtered
-        }
+
     },
     mounted() {
         this.getData()
@@ -97,6 +70,20 @@ export default {
                 this.sortBy = sortBy
                 this.sortDesc = false
             }
+        },
+        searchTable(){
+            this.ajaxUrl += '&search='+this.search;
+            axios.get(this.ajaxUrl)
+                .then((res) => {
+                    this.returned_data = res.data;
+                    this.loading = false;
+                })
+                .catch((error) => {
+
+                }).finally(() => {
+
+                }
+            );
         },
         getData(){
             this.loading = true;

@@ -23,7 +23,12 @@ class IncidentController extends Controller
 
     public function ajaxIncidents(){
         $request = Request::all();
-
+        $search = false;
+        if(array_key_exists('search',$request)){
+            if(strlen($request['search'])>2){
+                $search = $request['search'];
+            }
+        }
         if(Auth::user()->isAdmin()){
             $incidents = Incident::all();
             $incidents->load('department');
@@ -40,12 +45,27 @@ class IncidentController extends Controller
         }
         $array = array();
         foreach($incidents as $incident){
-            $array[] = array(
-                "id" => $incident->id,
-                "description" => $incident->description,
-                "user" =>   $incident->user->first_name." ".$incident->user->surname,
-                "created" => $incident->created_at->format('Y-m-d H:i:s')
-            );
+            $add = false;
+            if(strpos($search,$incident->id) !== false) {
+                $add = true;
+            }
+            if(strpos($search,$incident->description) !== false) {
+                $add = true;
+            }
+            if(strpos($search,$incident->user->first_name." ".$incident->user->surname) !== false) {
+                $add = true;
+            }
+            if(strpos($search,$incident->created_at->format('Y-m-d H:i:s')) !== false) {
+                $add = true;
+            }
+            if($add == true){
+                $array[] = array(
+                    "id" => $incident->id,
+                    "description" => $incident->description,
+                    "user" =>   $incident->user->first_name." ".$incident->user->surname,
+                    "created" => $incident->created_at->format('Y-m-d H:i:s')
+                );
+            }
         }
         return json_encode($array);
     }
