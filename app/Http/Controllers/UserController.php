@@ -36,7 +36,8 @@ class UserController extends Controller
         $user = User::find($id);
         $departments = Department::get();
         $selected_departments = array();
-        
+        $available_departments = array();
+
         foreach($departments as $department){
             $available_departments[] = array(
                 'id' => $department->id,
