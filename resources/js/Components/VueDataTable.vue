@@ -13,9 +13,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="item in filteredItems" :key="item.ID">
-                <td>{{ item.id }}</td>
-                <td>{{ item.description }}</td>
+            <tr v-for="item in filteredItems" :key="item.id">
+                <td v-for="(value, key) in item" :key="key">{{value}}</td>
             </tr>
             </tbody>
         </table>
