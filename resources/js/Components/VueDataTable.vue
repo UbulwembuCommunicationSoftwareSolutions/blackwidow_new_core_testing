@@ -68,6 +68,7 @@ export default {
                 filtered = filtered.filter(item => {
                     Object.entries(item).forEach(([key, value]) => {
                         let string = value.toString();
+                        console.log(string.toLowerCase() + ' vs ' + this.search.toLowerCase())
                         return string.toLowerCase().includes(this.search.toLowerCase())
                     });
                 })
@@ -107,10 +108,6 @@ export default {
             axios.get(this.ajaxUrl)
                 .then((res) => {
                     this.returned_data = res.data;
-                    console.log(res.data);
-                    console.log(this.returned_data);
-                    console.log(this.filteredItems);
-
                 })
                 .catch((error) => {
 
