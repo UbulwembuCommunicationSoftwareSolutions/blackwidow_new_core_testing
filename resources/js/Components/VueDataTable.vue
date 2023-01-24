@@ -89,8 +89,10 @@ export default {
     mounted() {
         this.getData()
     },
-    updated(){
-        this.loading = true;
+    watch: {
+        filteredItems: function () {
+           this.loading = true;
+        }
     },
     methods: {
         sortBy(sortBy) {
