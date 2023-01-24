@@ -66,7 +66,9 @@ export default {
             let filtered = this.returned_data
             if (this.search) {
                 filtered = filtered.filter(obj => {
-                    return Object.entries(obj).some(entry => entry.toLowerCase().includes(this.search.toLowerCase()));
+                    return Object.values(obj).some(val => {
+                        return (typeof val === 'string' && val.includes(this.search))
+                    });
                 });
             }
             if (this.selectedFilter !== 'all') {
