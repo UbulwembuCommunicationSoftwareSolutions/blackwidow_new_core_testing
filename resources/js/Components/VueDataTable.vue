@@ -68,7 +68,7 @@ export default {
                 filtered = filtered.filter(item => {
                     Object.entries(item).forEach(([key, value]) => {
                         console.log(value);
-                        return value.toLowerCase().includes(this.search.toLowerCase())
+                        //return value.toLowerCase().includes(this.search.toLowerCase())
                     });
                 })
             }
