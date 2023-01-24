@@ -22,21 +22,6 @@ export default {
             user : props.user,
             selected_departments : props.user_departments,
             available_departments : props.available_departments,
-            profile_picture: props.user.profile_picture,
-            first_name: props.user.first_name,
-            surname: props.user.surname,
-            maiden_name: props.user.maiden_name,
-            nickname: props.user.nickname,
-            gender: props.user.gender,
-            race: props.user.race,
-            marital_status: props.user.marital_status,
-            weight: props.user.weight,
-            length: props.user.length,
-            birth_place: props.user.birth_place,
-            age: props.user.age,
-            nationality: props.user.nationality,
-            language_spoken: props.user.language_spoken,
-            religion: props.user.religion,
         });
         return {
             form
@@ -92,28 +77,28 @@ export default {
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
-                                        <input v-model="form.first_name" type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.first_name" type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="surname" class="block text-sm font-medium text-gray-700">Surname</label>
-                                        <input v-model="form.surname" type="text" name="surname" id="surname" autocomplete="surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.surname" type="text" name="surname" id="surname" autocomplete="surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="maiden_name" class="block text-sm font-medium text-gray-700">Maiden Name</label>
-                                        <input v-model="form.maiden_name" type="text" name="maiden_name" id="maiden_name" autocomplete="maiden-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.maiden_name" type="text" name="maiden_name" id="maiden_name" autocomplete="maiden-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="nickname" class="block text-sm font-medium text-gray-700">Nickname</label>
-                                        <input v-model="form.nickname" type="text" name="nickname" id="nickname" autocomplete="nickname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.nickname" type="text" name="nickname" id="nickname" autocomplete="nickname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6">
-                                        <treeselect v-model="form.selected_departments" :multiple="true" :options="form.available_departments" />
+                                        <treeselect v-model="form.selected_departments" :multiple="true" :options="form.user.available_departments" />
                                         <treeselect-value :value="form.selected_departments" />
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
-                                        <select v-model="form.gender" id="gender" name="gender" autocomplete="gender" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <select v-model="form.user.gender" id="gender" name="gender" autocomplete="gender" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                             <option>Female </option>
                                             <option>Male</option>
                                             <option>Trans Female</option>
@@ -127,7 +112,7 @@ export default {
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="race" class="block text-sm font-medium text-gray-700">Race</label>
-                                        <select v-model="form.race" id="race" name="gender" autocomplete="race" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <select v-model="form.user.race" id="race" name="gender" autocomplete="race" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                             <option>Black</option>
                                             <option>Coloured</option>
                                             <option>Indian</option>
@@ -137,7 +122,7 @@ export default {
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="marital_status" class="block text-sm font-medium text-gray-700">Marital Status</label>
-                                        <select v-model="form.marital_status" id="marital_status" name="gender" autocomplete="marital_status" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <select v-model="form.user.marital_status" id="marital_status" name="gender" autocomplete="marital_status" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                             <option>Married</option>
                                             <option>Cohabiting(Living Together)</option>
                                             <option>Widow/Widower</option>
@@ -148,31 +133,31 @@ export default {
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="weight" class="block text-sm font-medium text-gray-700">Weight(kg)</label>
-                                        <input v-model="form.weight" type="number" name="weight" id="weight" autocomplete="weight" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.weight" type="number" name="weight" id="weight" autocomplete="weight" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="length" class="block text-sm font-medium text-gray-700">Length(cm)</label>
-                                        <input v-model="form.length" type="number" name="length" id="length" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.length" type="number" name="length" id="length" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="birth_place" class="block text-sm font-medium text-gray-700">Birth Place</label>
-                                        <input  v-model="form.birth_place" type="text" name="birth_place" id="birth_place" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input  v-model="form.user.birth_place" type="text" name="birth_place" id="birth_place" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="date_of_birth" class="block text-sm font-medium text-gray-700">Date of Birth</label>
-                                        <input v-model="form.date_of_birth" type="date" name="birth_place" id="date_of_birth" autocomplete="date_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.date_of_birth" type="date" name="birth_place" id="date_of_birth" autocomplete="date_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
-                                        <input v-model="form.age" type="number" name="age" id="age" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.age" type="number" name="age" id="age" autocomplete="length" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="nationality" class="block text-sm font-medium text-gray-700">Nationality</label>
-                                        <input v-model="form.nationality" type="text" name="nationality" id="nationality" autocomplete="maiden-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        <input v-model="form.user.nationality" type="text" name="nationality" id="nationality" autocomplete="maiden-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="language_spoken" class="block text-sm font-medium text-gray-700">Language Spoken</label>
-                                        <select  v-model="form.language_spoken" id="language_spoken" name="nationality" autocomplete="language_spoken" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <select  v-model="form.user.language_spoken" id="language_spoken" name="nationality" autocomplete="language_spoken" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                             <option>Afrikaans</option>
                                             <option>English</option>
                                             <option>isiNdebele</option>
@@ -190,7 +175,7 @@ export default {
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="religion" class="block text-sm font-medium text-gray-700">Religion</label>
-                                        <select v-model="form.religion" id="religion" name="religion" autocomplete="religion" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <select v-model="form.user.religion" id="religion" name="religion" autocomplete="religion" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                             <option>Atheist /Agnostic</option>
                                             <option>Catholic</option>
                                             <option>Christianity</option>
@@ -216,7 +201,7 @@ export default {
                                                         <div class="flex text-sm text-gray-600">
                                                             <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                                                 <span>Upload a file</span>
-                                                                <input id="file-upload"  @input="this.form.profile_picture = $event.target.files[0]" name="file-upload" type="file" class="sr-only">
+                                                                <input id="file-upload"  @input="this.form.user.profile_picture = $event.target.files[0]" name="file-upload" type="file" class="sr-only">
                                                             </label>
                                                             <p class="pl-1">or drag and drop</p>
                                                         </div>
