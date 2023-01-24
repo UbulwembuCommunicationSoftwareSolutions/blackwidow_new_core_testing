@@ -51,15 +51,13 @@ class IncidentController extends Controller
             }
         }
 
-
-
-
         $array = array();
         foreach($incidents as $incident){
             $array['data'][] = [
                 $incident->id,
                 $incident->description,
-                $incident->user->first_name." ".$incident->user->surname
+                $incident->user->first_name." ".$incident->user->surname,
+                $incident->created_at->diffForHumans()
             ];
         }
         return json_encode($array);
