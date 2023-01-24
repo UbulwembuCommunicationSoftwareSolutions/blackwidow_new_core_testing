@@ -30,22 +30,20 @@ class IncidentController extends Controller
             }
         }
         if(Auth::user()->isAdmin()){
-            $incidents = Incident::all();
-            $incidents->load('department');
-            $incidents->load('user');
+            $incidents = Incident::query();
         }else{
             $incidents = array();
             $departments = Auth::user()->departments;
-            foreach($departments as $department){
-                foreach($department->incidents as $incident){
-                    $incidents[] = $incident->load('department');
-                    $incidents[] = $incident->load('user');
-                }
-            }
         }
         $array = array();
-        dd($incidents);
+        $incidents
+            ->where('description', 'LIKE', '%' . $search . '%')
+            ->orWhere('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('created_at', 'LIKE', '%' . $search . '%')
+            ->get();
 
+        $incidents->load('department');
+        $incidents->load('user');
         foreach($incidents as $incident){
             $array[] = array(
                 "id" => $incident->id,
