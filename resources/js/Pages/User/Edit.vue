@@ -17,12 +17,12 @@ export default {
     props:{
         user :  Object,
         available_departments : Array,
-        user_institutions : Array
+        selected_departments : Array
     },
     setup(props){
         const form = useForm({
             user : props.user,
-            selected_departments : props.user_institutions,
+            selected_departments : props.selected_departments,
             available_departments : props.available_departments,
         });
         return {
