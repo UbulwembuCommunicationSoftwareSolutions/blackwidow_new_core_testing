@@ -59,7 +59,7 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 
 <template>
-    <Head :title="'User ' + $page.props.user.first_name + ' ' +  $page.props.user.surname />
+    <Head :title="'User ' + $page.props.user.first_name + ' ' +  $page.props.user.surname" />
 
     <AuthenticatedLayout>
         <template #header>
