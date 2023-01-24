@@ -67,8 +67,14 @@ class UserController extends Controller
         unset($data['available_departments']);
         unset($data['selected_departments']);
         $user->update($data);
-        $user->save();
+
         $user->departments()->sync($selected_departments);
+        if($request->hasFile('profile_picture')){
+            $fileName = $user->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
+            $request->file('profile_picture')->move(public_path('user_files'), $fileName);
+        }
+        $user->profile_picture = $fileName;
+        $user->save();
         $request->session()->flash('status', 'User updated successfully!');
 
         $available_departments = array();
