@@ -17,6 +17,7 @@
                             Add Incident</button>
                     </div>
                 </div>
+                <Loading v-if="this.loading"/>
                 <div class="mt-8 flex flex-col">
                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -42,8 +43,11 @@
 </template>
 
 <script>
+import Loading from '@/Components/Loading.vue';
+
 export default {
     name: "CustomDataTable",
+    components: {Loading},
     props: [ 'columns','ajaxUrl'],
     data() {
         return {
@@ -51,7 +55,8 @@ export default {
             search: '',
             selectedFilter: 'all',
             sortBy: null,
-            sortDesc: false
+            sortDesc: false,
+            loading : false
         }
     },
     setup(props){
@@ -63,6 +68,7 @@ export default {
     },
     computed: {
         filteredItems() {
+            this.loading = true;
             let filtered = this.returned_data
             if (this.search) {
                 filtered = filtered.filter(obj => {
@@ -87,6 +93,7 @@ export default {
                     return 0
                 })
             }
+            this.loading = false;
             return filtered
         }
     },
@@ -103,9 +110,12 @@ export default {
             }
         },
         getData(){
+            this.loading = true;
             axios.get(this.ajaxUrl)
                 .then((res) => {
                     this.returned_data = res.data;
+                    this.loading = false;
+
                 })
                 .catch((error) => {
 
