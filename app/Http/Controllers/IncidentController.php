@@ -44,33 +44,17 @@ class IncidentController extends Controller
             }
         }
         $array = array();
+        $incidents
+            ->where('description', 'like', '%'.$search.'%')
+            ->orWhere('id', 'like', '%'.$search.'%')
+            ->orWhere('created_at', 'like', '%'.$search.'%');
         foreach($incidents as $incident){
-            $add = false;
-            if(!$search){
-                $add = true;
-            }else{
-                if(strpos($search,$incident->id) !== false) {
-                    $add = true;
-                }
-                if(strpos($search,$incident->description) !== false) {
-                    $add = true;
-                }
-                if(strpos($search,$incident->user->first_name." ".$incident->user->surname) !== false) {
-                    $add = true;
-                }
-                if(strpos($search,$incident->created_at->format('Y-m-d H:i:s')) !== false) {
-                    $add = true;
-                }
-            }
-
-            if($add == true){
-                $array[] = array(
-                    "id" => $incident->id,
-                    "description" => $incident->description,
-                    "user" =>   $incident->user->first_name." ".$incident->user->surname,
-                    "created" => $incident->created_at->format('Y-m-d H:i:s')
-                );
-            }
+            $array[] = array(
+                "id" => $incident->id,
+                "description" => $incident->description,
+                "user" =>   $incident->user->first_name." ".$incident->user->surname,
+                "created" => $incident->created_at->format('Y-m-d H:i:s')
+            );
         }
         return json_encode($array);
     }
