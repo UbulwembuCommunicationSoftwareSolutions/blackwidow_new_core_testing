@@ -178,6 +178,10 @@ class DatabaseSeeder extends Seeder
         for ($x = 0; $x <= 10000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
+            $start = new DateTime('2022-01-01 00:00:00');
+            $end = new DateTime('2022-12-31 23:59:59');
+            $randomTimestamp = new DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
+            $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('incidents')->insert([
                 'description' => $number.' Testing Incident',
                 'user_id' => '1',
@@ -191,16 +195,16 @@ class DatabaseSeeder extends Seeder
                 'gps_lng' => '1',
                 'source_id' => '1',
                 'active' => '1',
-                'accepted_at' => '2022-09-08 07:44:14',
-                'allocated_at' => '2022-09-08 07:44:14',
-                'referred_at' => '2022-09-08 07:44:14',
-                'escalated_at' => '2022-09-08 07:44:14',
-                'resolved_at' => '2022-09-08 07:44:14',
-                'closed_at' => '2022-09-08 07:44:14',
-                'created_at' => '2022-09-08 07:44:14',
-                'updated_at' => '2022-09-08 07:44:14',
-                'due_date' => '2022-09-08 07:44:14',
-                'occurred_at' => '2022-09-08 07:44:14',
+                'accepted_at' => $randomTimestamp,
+                'allocated_at' => $randomTimestamp,
+                'referred_at' => $randomTimestamp,
+                'escalated_at' => $randomTimestamp,
+                'resolved_at' => $randomTimestamp,
+                'closed_at' => $randomTimestamp,
+                'created_at' => $randomTimestamp,
+                'updated_at' => $randomTimestamp,
+                'due_date' => $randomTimestamp,
+                'occurred_at' => $randomTimestamp,
                 'geoFenceCoords' => '1',
                 'case_reference' => '1',
                 'client_reference_number' => '1',
