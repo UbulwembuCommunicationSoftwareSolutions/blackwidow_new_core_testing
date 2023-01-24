@@ -163,5 +163,5 @@ const userNavigation = [
     { name: 'Sign out', href: '#' },
 ]
 
-const sidebarOpen = ref(false)
+const sidebarOpen = ref(true)
 </script>
