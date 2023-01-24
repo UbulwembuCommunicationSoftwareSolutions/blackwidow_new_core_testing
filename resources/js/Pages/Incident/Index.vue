@@ -12,10 +12,10 @@ export default {
     },
     setup(){
         const columns = [
-            'ID',
-            'Description',
-            'User',
-            'Created'
+            'id',
+            'description',
+            'user',
+            'created_at'
         ];
         const ajaxUrl = '/ajax/incidents';
 

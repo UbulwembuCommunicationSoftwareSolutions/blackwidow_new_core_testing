@@ -15,7 +15,7 @@
                                 <table class="min-w-full divide-y divide-gray-300">
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th v-for="(value, key) in filteredItems[0]" :key="key">{{ key }}</th>
+                                            <th v-for="(column, key) in this.columns" @click="sortBy(column)">{{ column.toUpperCase() }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
