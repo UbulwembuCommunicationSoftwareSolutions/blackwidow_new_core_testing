@@ -20,8 +20,9 @@ export default {
             profile_picture: null,
         })
 
+
         function submit() {
-            form.post()
+            form.post(props.url)
             this.close();
         }
 
