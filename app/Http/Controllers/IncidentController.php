@@ -41,10 +41,10 @@ class IncidentController extends Controller
         $array = array();
         foreach($incidents as $incident){
             $array[] = array(
-                "ID" => $incident->id,
-                "Description" => $incident->description,
-                "User" =>   $incident->user->first_name." ".$incident->user->surname,
-                "Created" => $incident->created_at
+                "id" => $incident->id,
+                "description" => $incident->description,
+                "user" =>   $incident->user->first_name." ".$incident->user->surname,
+                "created" => $incident->created_at
             );
         }
         return json_encode($array);

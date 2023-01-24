@@ -13,9 +13,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="item in filteredItems" :key="item.id">
-                <td>{{ item.id }}</td>
-                <td>{{ item.description }}</td>
+            <tr v-for="item in filteredItems" :key="item.ID">
+                <td>{{ item.ID }}</td>
+                <td>{{ item.Description }}</td>
             </tr>
             </tbody>
         </table>
