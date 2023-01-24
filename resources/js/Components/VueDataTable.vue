@@ -23,14 +23,14 @@
                             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-300">
                                     <thead class="bg-gray-50">
-                                    <tr>
-                                        <th v-for="(column) in this.columns" @click="sortBy(column)">{{ column }}</th>
-                                    </tr>
+                                        <tr>
+                                            <th v-for="(column) in this.columns" @click="sortBy(column)">{{ column }}</th>
+                                        </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
-                                    <tr v-for="item in filteredItems" :key="item.id">
-                                        <td v-for="(value, key) in item" :key="key">{{value}}</td>
-                                    </tr>
+                                        <tr v-for="item in filteredItems" :key="item.id">
+                                            <td v-for="(value, key) in item" :key="key">{{value}}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -66,7 +66,9 @@ export default {
             let filtered = this.returned_data
             if (this.search) {
                 filtered = filtered.filter(item => {
-                    return item.description.toLowerCase().includes(this.search.toLowerCase())
+                    for (let key in item) {
+                        return item[key].toLowerCase().includes(this.search.toLowerCase())
+                    }
                 })
             }
             if (this.selectedFilter !== 'all') {
