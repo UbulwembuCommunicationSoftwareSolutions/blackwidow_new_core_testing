@@ -38,8 +38,8 @@ class IncidentController extends Controller
                 }
             }
         }
-
-        return ($incidents->toJson());
+        $incidents->toJson();
+        return ($incidents);
     }
 
     /**
