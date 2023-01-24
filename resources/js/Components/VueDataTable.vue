@@ -1,7 +1,7 @@
 <template>
     <div>
         <Loading v-if="this.loading"/>
-        <input v-model="search" @input="this.loading=true" placeholder="Search" />
+        <input v-model="search"  placeholder="Search" />
         <select v-model="selectedFilter">
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -58,7 +58,6 @@ export default {
     },
     computed: {
         filteredItems() {
-            this.loading = true;
             let filtered = this.returned_data
             if (this.search) {
                 filtered = filtered.filter(obj => {
@@ -90,9 +89,11 @@ export default {
     mounted() {
         this.getData()
     },
+    updated(){
+        this.loading = true;
+    },
     methods: {
         sortBy(sortBy) {
-            console.log(sortBy);
             if (this.sortBy === sortBy) {
                 this.sortDesc = !this.sortDesc
             } else {
