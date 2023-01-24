@@ -8,7 +8,7 @@ export default {
     components: {
         AuthenticatedLayout,
         Head,
-        VueD
+        VueDataTable
     },
     setup(){
         const columns = [
