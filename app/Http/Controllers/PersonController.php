@@ -139,7 +139,7 @@ class PersonController extends Controller
 
     public function updateProfilePicture(Request $request ){
         $data = $request->all();
-        $person = Person::find($request->person_id);
+        $person = Person::find($request->object_id);
         if($request->hasFile('profile_picture')){
             $fileName = $person->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
             $request->file('profile_picture')->move(public_path('person_files'), $fileName);

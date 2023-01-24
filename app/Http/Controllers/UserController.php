@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Institution;
+use App\Models\Person;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -75,7 +76,19 @@ class UserController extends Controller
         $request->session()->flash('status', 'User updated successfully!');
 
         return redirect()->route('user.edit',$user);
+    }
 
+    public function updateProfilePicture(Request $request ){
+        $data = $request->all();
+        $user = User::find($request->object_id);
+        if($request->hasFile('profile_picture')){
+            $fileName = $user->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
+            $request->file('profile_picture')->move(public_path('user_files'), $fileName);
+            $user->profile_picture = $fileName;
+        }
+        $user->save();
+        $request->session()->flash('status', 'User updated successfully!');
+        return Redirect::route('user.edit',$user);
 
     }
 }

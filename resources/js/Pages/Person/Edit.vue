@@ -5,14 +5,14 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import Treeselect from 'vue3-treeselect'
 // import the styles
 import 'vue3-treeselect/dist/vue3-treeselect.css'
-import PersonProfilePictureModal  from "@/Components/PersonProfilePictureModal.vue";
+import ProfilePictureModal  from "@/Components/ProfilePictureModal.vue";
 
 export default {
     components: {
         AuthenticatedLayout,
         Head,
         Treeselect,
-        PersonProfilePictureModal
+        ProfilePictureModal
     },
     props:{
         person :  Object,
@@ -111,9 +111,10 @@ export default {
                             </svg>
                             Update Profile Picture
                         </button>
-                        <PersonProfilePictureModal
+                        <ProfilePictureModal
                             v-if="this.isModalVisible"
-                            :person="this.form.person.id"
+                            :object="this.form.person.id"
+                            url="/profile_picture/person"
                             @close="this.closeModal()"
                         />
                     </div>

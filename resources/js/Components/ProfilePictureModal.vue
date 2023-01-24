@@ -1,7 +1,7 @@
 <script>
 import { useForm } from '@inertiajs/inertia-vue3'
 export default {
-    name: 'PersonProfilePictureModal',
+    name: 'ProfilePictureModal',
     methods: {
         close() {
             this.$emit('close');
@@ -11,16 +11,17 @@ export default {
         }
     },
     props :{
-         person : null
+        object : null,
+        url : null
     },
     setup (props) {
         const form = useForm({
-            person_id : props.person,
+            object_id : props.object,
             profile_picture: null,
         })
 
         function submit() {
-            form.post('/profile_picture/person')
+            form.post()
             this.close();
         }
 

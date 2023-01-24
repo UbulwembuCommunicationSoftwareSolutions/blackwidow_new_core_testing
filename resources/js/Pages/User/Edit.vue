@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 import Treeselect from 'vue3-treeselect'
+import ProfilePictureModal from "@/Components/ProfilePictureModal.vue";
 // import the styles
 import 'vue3-treeselect/dist/vue3-treeselect.css'
 
@@ -189,26 +190,35 @@ export default {
                                     </div>
                                 </div>
                             </div>
+                            <ProfilePictureModal
+                                v-if="this.isModalVisible"
+                                :object="this.form.user.id"
+                                url="/profile_picture/user"
+                                @close="this.closeModal()"
+                            />
                             <div class="mt-5 md:col-span-2 md:mt-0">
                                     <div class="shadow sm:overflow-hidden sm:rounded-md">
                                         <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
                                             <div>
-                                                <label class="block text-sm font-medium text-gray-700"> Photo</label>
-                                                <div class="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-                                                    <div class="space-y-1 text-center">
-                                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                <div class="px-4 sm:px-0">
+                                                    <p class="mt-1 text-sm text-gray-600">Profile Picture</p>
+                                                    <img :src="'/user_files/'+user.profile_picture">
+                                                    <button @click="this.showModal()" type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                        <!-- Heroicon name: mini/envelope -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
                                                         </svg>
-                                                        <div class="flex text-sm text-gray-600">
-                                                            <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                                <span>Upload a file</span>
-                                                                <input id="file-upload"  @input="this.form.user.profile_picture = $event.target.files[0]" name="file-upload" type="file" class="sr-only">
-                                                            </label>
-                                                            <p class="pl-1">or drag and drop</p>
-                                                        </div>
-                                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                                    </div>
+                                                        Update Profile Picture
+                                                    </button>
+                                                    <ProfilePictureModal
+                                                        v-if="this.isModalVisible"
+                                                        :object="this.form.person.id"
+                                                        url="/profile_picture/person"
+                                                        @close="this.closeModal()"
+                                                    />
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
