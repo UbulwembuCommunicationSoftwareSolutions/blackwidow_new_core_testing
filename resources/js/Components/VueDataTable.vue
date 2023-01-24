@@ -72,7 +72,7 @@ export default {
             }
         },
         searchTable(){
-            this.ajaxUrl += '&search='+this.search;
+            this.ajaxUrl += '?search='+this.search;
             axios.get(this.ajaxUrl)
                 .then((res) => {
                     this.returned_data = res.data;

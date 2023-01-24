@@ -25,7 +25,7 @@ class IncidentController extends Controller
         $request = Request::all();
         $search = false;
         if(array_key_exists('search',$request)){
-            if(strlen($request['search'])>2){
+            if(strlen($request['search'])>0){
                 $search = $request['search'];
             }
         }
@@ -46,18 +46,23 @@ class IncidentController extends Controller
         $array = array();
         foreach($incidents as $incident){
             $add = false;
-            if(strpos($search,$incident->id) !== false) {
+            if(!$search){
                 $add = true;
+            }else{
+                if(strpos($search,$incident->id) !== false) {
+                    $add = true;
+                }
+                if(strpos($search,$incident->description) !== false) {
+                    $add = true;
+                }
+                if(strpos($search,$incident->user->first_name." ".$incident->user->surname) !== false) {
+                    $add = true;
+                }
+                if(strpos($search,$incident->created_at->format('Y-m-d H:i:s')) !== false) {
+                    $add = true;
+                }
             }
-            if(strpos($search,$incident->description) !== false) {
-                $add = true;
-            }
-            if(strpos($search,$incident->user->first_name." ".$incident->user->surname) !== false) {
-                $add = true;
-            }
-            if(strpos($search,$incident->created_at->format('Y-m-d H:i:s')) !== false) {
-                $add = true;
-            }
+
             if($add == true){
                 $array[] = array(
                     "id" => $incident->id,
