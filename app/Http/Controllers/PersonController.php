@@ -127,10 +127,7 @@ class PersonController extends Controller
     public function update(Request $request, Person $person ){
         $data = $request->all();
         $selected_institutions = $data['selected_institutions'] ?? [];
-        unset($data['person']);
-        unset($data['available_institutions']);
-        unset($data['selected_institutions']);
-        $person->update($data);
+        $person->update($data['person']);
         $person->save();
         $person->institutions()->sync($selected_institutions);
         return redirect()->route('person.edit',$person)->with('success', 'Person Updated Successfully');
