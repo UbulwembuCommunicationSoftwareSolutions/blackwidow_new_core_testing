@@ -36,7 +36,6 @@ class UserController extends Controller
         $user = User::find($id);
         $departments = Department::get();
         $user_departments = array();
-        $available_institutions = array();
         foreach($departments as $department){
             $available_departments[] = array(
                 'id' => $department->id,
@@ -62,12 +61,8 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        $selected_departments = $data['selected_departments'] ?? [];
-        unset($data['available_departments']);
-        unset($data['selected_departments']);
         $user->update($data['user']);
-
-        $user->departments()->sync($selected_departments);
+        $user->departments()->sync($data['selected_departments']);
         if($request->hasFile('profile_picture')){
             $fileName = $user->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
             $request->file('profile_picture')->move(public_path('user_files'), $fileName);
