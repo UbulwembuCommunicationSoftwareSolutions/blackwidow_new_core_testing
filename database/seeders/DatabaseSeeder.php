@@ -178,9 +178,9 @@ class DatabaseSeeder extends Seeder
         for ($x = 0; $x <= 15000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
-            $start = new DateTime('2017-01-01 00:00:00');
-            $end = new DateTime('2022-12-31 23:59:59');
-            $randomTimestamp = new DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
+            $start = new \DateTime('2017-01-01 00:00:00');
+            $end = new \DateTime('2022-12-31 23:59:59');
+            $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
             $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('incidents')->insert([
                 'description' => $number.' Testing Incident',
