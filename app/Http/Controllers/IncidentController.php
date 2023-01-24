@@ -36,11 +36,15 @@ class IncidentController extends Controller
             $departments = Auth::user()->departments;
         }
         $array = array();
-        $incidents
-            ->where('description', 'LIKE', '%' . $search . '%')
-            ->orWhere('id', 'LIKE', '%' . $search . '%')
-            ->orWhere('created_at', 'LIKE', '%' . $search . '%')
-            ->get();
+        if($search){
+            $incidents
+                ->where('description', 'LIKE', '%' . $search . '%')
+                ->orWhere('id', 'LIKE', '%' . $search . '%')
+                ->orWhere('created_at', 'LIKE', '%' . $search . '%')
+                ->get();
+        }else{
+            $incidents->get();
+        }
 
         $incidents->load('department');
         $incidents->load('user');
