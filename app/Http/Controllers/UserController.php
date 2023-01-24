@@ -63,6 +63,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
+        dd($data);
         $user->update($data['user']);
         $user->departments()->sync($data['selected_departments']);
         if($request->hasFile('profile_picture')){
