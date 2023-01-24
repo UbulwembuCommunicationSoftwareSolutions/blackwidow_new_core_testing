@@ -76,25 +76,8 @@ class UserController extends Controller
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
 
-        $available_departments = array();
-        $user_departments = array();
+        return redirect()->route('user.edit',$user);
 
-        $departments = Department::get();
-        foreach($departments as $department){
-            $available_departments[] =array(
-                'id' => $department->id,
-                'label' => $department->description
-            );
-        }
-        foreach($user->departments as $department) {
-            $user_departments[] = $department->id;
-        }
-        return Inertia::render('User/Edit', [
-            'available_departments' => $available_departments,
-            'user_departments' => $user_departments,
-            'user' => $user,
-            'status' => session('status'),
-        ]);
 
     }
 }
