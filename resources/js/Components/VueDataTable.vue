@@ -69,6 +69,9 @@ export default {
             return filtered
         }
     },
+    mounted() {
+        this.getData()
+    },
     methods: {
         sortBy(sortBy) {
             if (this.sortBy === sortBy) {
@@ -91,6 +94,5 @@ export default {
             );
         },
     }
-
 }
 </script>
