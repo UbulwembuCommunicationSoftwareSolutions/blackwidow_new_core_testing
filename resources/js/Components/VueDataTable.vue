@@ -72,8 +72,8 @@ export default {
             }
         },
         searchTable(){
-            this.ajaxUrl += '?search='+this.search;
-            axios.get(this.ajaxUrl)
+            let searchUrl = this.ajaxUrl+'?search='+this.search;
+            axios.get(searchUrl)
                 .then((res) => {
                     this.returned_data = res.data;
                     this.loading = false;
