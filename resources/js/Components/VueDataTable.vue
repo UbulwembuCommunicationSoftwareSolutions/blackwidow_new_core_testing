@@ -14,8 +14,8 @@
             </thead>
             <tbody>
             <tr v-for="item in filteredItems" :key="item.id">
-                <td>{{ item.name }}</td>
-                <td>{{ item.status }}</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.description }}</td>
             </tr>
             </tbody>
         </table>
