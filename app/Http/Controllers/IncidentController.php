@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Models\Incident;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -22,38 +22,41 @@ class IncidentController extends Controller
     }
 
     public function ajaxIncidents(){
-        $query = Incident::query();
         $request = Request::all();
 
-        if(array_key_exists('startTime',$request)){
-            if(strlen($request['startTime'])<2){
-
-            }else{
-                $start = $request['startTime'];
-                $query->where('oss_surveys.created_at','>=',$start);
-            }
-        }
-        if(array_key_exists('endTime',$request)){
-            if(strlen($request['endTime'])<2){
-
-            }else {
-                $end = $request['endTime'];
-                $query->where('oss_surveys.created_at', '<=', $end);
-            }
-        }
-
         if(Auth::user()->isAdmin()){
-            $incidents = $query->get();
+            $incidents = Incident::all();
             $incidents->load('department');
             $incidents->load('user');
         }else{
             $incidents = array();
-            $department_ids = array();
             $departments = Auth::user()->departments;
             foreach($departments as $department){
-                $department_ids[] = $department->id;
+                foreach($department->incidents as $incident){
+                    $incidents[] = $incident->load('department');
+                    $incidents[] = $incident->load('user');
+                }
             }
         }
+        if(array_key_exists('startTime',$request)){
+            if(strlen($request['startTime'])<2){
+            }else{
+                $startTime = $request['startTime'];
+                $incidents->filter(function ($incident,$startTime) {
+                    return $incident->created_at >= $startTime;
+                });
+            }
+        }
+        if(array_key_exists('endTime',$request)){
+            if(strlen($request['endTime'])<2){
+            }else {
+                $endTime = $request['endTime'];
+                $incidents->filter(function ($incident,$endTime) {
+                    return $incident->created_at <= $endTime;
+                });
+            }
+        }
+
 
         $array = array();
         foreach($incidents as $incident){
