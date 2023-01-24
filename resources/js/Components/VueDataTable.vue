@@ -65,13 +65,9 @@ export default {
         filteredItems() {
             let filtered = this.returned_data
             if (this.search) {
-                filtered = filtered.filter(item => {
-                    Object.entries(item).forEach(([key, value]) => {
-                        let string = value.toString();
-                        console.log(string.toLowerCase() + ' vs ' + this.search.toLowerCase())
-                        return string.toLowerCase().includes(this.search.toLowerCase())
-                    });
-                })
+                filtered = filtered.filter(obj => {
+                    return Object.entries(obj).some(entry => entry.toLowerCase().includes(this.search.toLowerCase()));
+                });
             }
             if (this.selectedFilter !== 'all') {
                 filtered = filtered.filter(item => {
