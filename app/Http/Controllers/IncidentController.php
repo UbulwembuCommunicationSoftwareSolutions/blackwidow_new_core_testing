@@ -44,10 +44,8 @@ class IncidentController extends Controller
             }
         }
         $array = array();
-        $incidents
-            ->where('description', 'like', '%'.$search.'%')
-            ->orWhere('id', 'like', '%'.$search.'%')
-            ->orWhere('created_at', 'like', '%'.$search.'%');
+        dd($incidents);
+
         foreach($incidents as $incident){
             $array[] = array(
                 "id" => $incident->id,
