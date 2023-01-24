@@ -34,6 +34,7 @@ export default {
     },
     mounted(){
         console.log(this.form.selected_departments)
+        console.log(this.form.available_departments)
     },
     methods:{
         adminPanel(){
