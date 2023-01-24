@@ -92,6 +92,7 @@ export default {
     },
     methods: {
         sortBy(sortBy) {
+            console.log(sortBy);
             if (this.sortBy === sortBy) {
                 this.sortDesc = !this.sortDesc
             } else {
