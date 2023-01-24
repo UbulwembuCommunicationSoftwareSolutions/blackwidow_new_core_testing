@@ -38,8 +38,16 @@ class IncidentController extends Controller
                 }
             }
         }
-        $incidents->toJson();
-        return ($incidents);
+        $array = array();
+        foreach($incidents as $incident){
+            $array[] = array(
+                "ID" => $incident->id,
+                "Description" => $incident->description,
+                "User" =>   $incident->user->first_name." ".$incident->user->surname,
+                "Created" => $incident->created_at
+            );
+        }
+        return json_encode($array);
     }
 
     /**
