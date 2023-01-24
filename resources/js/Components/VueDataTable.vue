@@ -71,6 +71,7 @@ export default {
     },
     mounted() {
         this.getData()
+        console.log(this.filteredItems);
     },
     methods: {
         sortBy(sortBy) {
