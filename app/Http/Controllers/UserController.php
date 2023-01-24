@@ -64,14 +64,8 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        dd($data);
         $user->update($data['user']);
         $user->departments()->sync($data['selected_departments']);
-        if($request->hasFile('profile_picture')){
-            $fileName = $user->id.'_profile_pic.'.$request->file('profile_picture')->getClientOriginalExtension();
-            $request->file('profile_picture')->move(public_path('user_files'), $fileName);
-            $user->profile_picture = $fileName;
-        }
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
 
