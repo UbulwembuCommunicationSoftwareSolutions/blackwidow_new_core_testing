@@ -38,29 +38,8 @@ class IncidentController extends Controller
                 }
             }
         }
-        if(array_key_exists('startTime',$request)){
-            if(strlen($request['startTime'])<2){
-            }else{
-                $incidents->where('created_at','>',$request['startTime']);
-            }
-        }
-        if(array_key_exists('endTime',$request)){
-            if(strlen($request['endTime'])<2){
-            }else {
-                $incidents->where('created_at','<',$request['endTime']);
-            }
-        }
 
-        $array = array();
-        foreach($incidents as $incident){
-            $array['data'][] = [
-                $incident->id,
-                $incident->description,
-                $incident->user->first_name." ".$incident->user->surname,
-                $incident->created_at->diffForHumans()
-            ];
-        }
-        return json_encode($array);
+        return ($incidents->toJson());
     }
 
     /**

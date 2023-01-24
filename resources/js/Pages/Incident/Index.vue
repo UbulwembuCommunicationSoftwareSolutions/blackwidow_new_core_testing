@@ -1,14 +1,14 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import CustomDataTable from '@/Components/CustomDataTable.vue';
+import VueDataTable from '@/Components/VueDataTable.vue';
 
 
 export default {
     components: {
         AuthenticatedLayout,
         Head,
-        CustomDataTable
+        VueD
     },
     setup(){
         const columns = [
@@ -51,9 +51,9 @@ export default {
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                        <CustomDataTable :columns="columns" :ajax-url="ajaxUrl">
+                                        <VueDataTable :columns="columns" :ajax-url="ajaxUrl">
 
-                                        </CustomDataTable>
+                                        </VueDataTable>
                                     </div>
                                 </div>
                             </div>
