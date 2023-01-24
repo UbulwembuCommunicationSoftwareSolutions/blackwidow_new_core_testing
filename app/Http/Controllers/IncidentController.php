@@ -41,20 +41,13 @@ class IncidentController extends Controller
         if(array_key_exists('startTime',$request)){
             if(strlen($request['startTime'])<2){
             }else{
-                $startEpoch = strtotime($request['startTime']);
-                $incidents->filter(function ($incident,$startEpoch) {
-                    dd($incident->created_at->timestamp);
-                    return $incident->created_at->timestamp >= $startEpoch;
-                });
+                $incidents->where('created_at','>',$request['startTime']);
             }
         }
         if(array_key_exists('endTime',$request)){
             if(strlen($request['endTime'])<2){
             }else {
-                $endEpoch = strtotime($request['endTime']);
-                $incidents->filter(function ($incident,$endEpoch) {
-                    return $incident->created_at->timestamp <= $endEpoch;
-                });
+                $incidents->where('created_at','<',$request['endTime']);
             }
         }
 
