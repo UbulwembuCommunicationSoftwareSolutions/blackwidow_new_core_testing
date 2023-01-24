@@ -35,7 +35,8 @@ class UserController extends Controller
     public function edit($id){
         $user = User::find($id);
         $departments = Department::get();
-        $user_departments = array();
+        $selected_departments = array();
+        
         foreach($departments as $department){
             $available_departments[] = array(
                 'id' => $department->id,
@@ -43,12 +44,12 @@ class UserController extends Controller
             );
         }
         foreach($user->departments as $department) {
-            $user_departments[] = $department->id;
+            $selected_departments[] = $department->id;
         }
         if((Auth::user()->isAdmin())){
             return Inertia::render('User/Edit', [
                 'available_departments' => $available_departments,
-                'user_departments' => $user_departments,
+                'selected_departments' => $selected_departments,
                 'user' => $user,
                 'status' => session('status'),
             ]);

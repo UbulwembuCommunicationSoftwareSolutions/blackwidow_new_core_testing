@@ -15,12 +15,12 @@ export default {
     props:{
         user :  Object,
         available_departments : Array,
-        user_departments : Array
+        selected_departments : Array
     },
     setup(props){
         const form = useForm({
             user : props.user,
-            selected_departments : props.user_departments,
+            selected_departments : props.selected_departments,
             available_departments : props.available_departments,
         });
         return {
