@@ -56,7 +56,7 @@ export default {
             selectedFilter: 'all',
             sortBy: null,
             sortDesc: false,
-            loading : false
+            loading : true
         }
     },
     setup(props){
