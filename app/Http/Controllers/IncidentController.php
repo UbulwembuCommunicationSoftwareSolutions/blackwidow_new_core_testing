@@ -43,6 +43,7 @@ class IncidentController extends Controller
             }else{
                 $startEpoch = strtotime($request['startTime']);
                 $incidents->filter(function ($incident,$startEpoch) {
+                    dd($incident->created_at->timestamp);
                     return $incident->created_at->timestamp >= $startEpoch;
                 });
             }
