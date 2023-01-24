@@ -15,6 +15,7 @@
 // styles for loading icon
 }
 </style>
+
 <script>
 export default {
     name: "Loading"
