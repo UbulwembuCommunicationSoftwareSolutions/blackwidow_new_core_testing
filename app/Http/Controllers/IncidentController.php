@@ -44,7 +44,7 @@ class IncidentController extends Controller
                 "id" => $incident->id,
                 "description" => $incident->description,
                 "user" =>   $incident->user->first_name." ".$incident->user->surname,
-                "created" => $incident->created_at
+                "created" => $incident->created_at->format('Y-m-d H:i:s')
             );
         }
         return json_encode($array);
