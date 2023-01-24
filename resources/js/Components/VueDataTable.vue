@@ -46,7 +46,7 @@ export default {
             selectedFilter: 'all',
             sortBy: null,
             sortDesc: false,
-            loading : true
+            loading : false
         }
     },
     setup(props){
@@ -88,11 +88,6 @@ export default {
     },
     mounted() {
         this.getData()
-    },
-    watch: {
-        filteredItems: function () {
-           this.loading = true;
-        }
     },
     methods: {
         sortBy(sortBy) {
