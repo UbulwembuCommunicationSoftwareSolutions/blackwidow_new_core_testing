@@ -46,7 +46,7 @@
         </TransitionRoot>
 
         <!-- Static sidebar for desktop -->
-        <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+        <div class="hidden md:fixed md:inset-y-0 md:flex md:w-48 md:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex min-h-0 flex-1 flex-col bg-gray-800">
                 <div class="flex h-16 flex-shrink-0 items-center bg-gray-900 px-4">
@@ -163,5 +163,5 @@ const userNavigation = [
     { name: 'Sign out', href: '#' },
 ]
 
-const sidebarOpen = ref(true)
+const sidebarOpen = ref(false)
 </script>

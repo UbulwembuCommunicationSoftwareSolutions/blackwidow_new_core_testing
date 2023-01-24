@@ -22,20 +22,39 @@ class IncidentController extends Controller
     }
 
     public function ajaxIncidents(){
+        $query = Incident::query();
+        $request = Request::all();
+
+        if(array_key_exists('startTime',$request)){
+            if(strlen($request['startTime'])<2){
+
+            }else{
+                $start = $request['startTime'];
+                $query->where('oss_surveys.created_at','>=',$start);
+            }
+        }
+        if(array_key_exists('endTime',$request)){
+            if(strlen($request['endTime'])<2){
+
+            }else {
+                $end = $request['endTime'];
+                $query->where('oss_surveys.created_at', '<=', $end);
+            }
+        }
+
         if(Auth::user()->isAdmin()){
-            $incidents = Incident::all();
+            $incidents = $query->get();
             $incidents->load('department');
             $incidents->load('user');
         }else{
             $incidents = array();
+            $department_ids = array();
             $departments = Auth::user()->departments;
             foreach($departments as $department){
-                foreach($department->incidents as $incident){
-                    $incidents[] = $incident->load('department');
-                    $incidents[] = $incident->load('user');
-                }
+                $department_ids[] = $department->id;
             }
         }
+
         $array = array();
         foreach($incidents as $incident){
             $array['data'][] = [

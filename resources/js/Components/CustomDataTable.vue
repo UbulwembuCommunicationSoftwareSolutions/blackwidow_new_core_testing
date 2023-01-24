@@ -42,6 +42,9 @@ export default {
         },
         reload(){
             this.$forceUpdate();  // Notice we have to use a $ here
+            let startTime = document.getElementById('startDate').value;
+            let endTime = document.getElementById('endDate').value;
+            this.ajaxUrl += '?startTime='+startTime+'&endTime='+endTime;
             $('.dataTable').DataTable().ajax.url( this.ajaxUrl );
             $('.dataTable').DataTable().rows().clear().draw();
             $('.dataTable').DataTable().ajax.reload();
