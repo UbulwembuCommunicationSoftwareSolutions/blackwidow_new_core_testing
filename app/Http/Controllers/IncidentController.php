@@ -42,6 +42,7 @@ class IncidentController extends Controller
             if(strlen($request['startTime'])<2){
             }else{
                 $startTime = $request['startTime'];
+                dd($startTime);
                 $incidents->filter(function ($incident,$startTime) {
                     return $incident->created_at >= $startTime;
                 });
