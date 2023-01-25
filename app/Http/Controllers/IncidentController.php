@@ -43,8 +43,8 @@ class IncidentController extends Controller
                 ->orWhere('created_at', 'LIKE', '%' . $search . '%');
         }
 
-        $incidents->load('department');
-        $incidents->load('user');
+        $incidents->with('department');
+        $incidents->with('user');
         $incidents->get()->paginate(15);
 
         foreach($incidents as $incident){
