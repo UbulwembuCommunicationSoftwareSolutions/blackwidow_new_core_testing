@@ -26,6 +26,9 @@ export default {
         searchTable(){
 
         }
+    },
+    mounted(){
+        console.log(this.incidents);
     }
 }
 </script>
