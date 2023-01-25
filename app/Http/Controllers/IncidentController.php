@@ -45,7 +45,7 @@ class IncidentController extends Controller
 
         $incidents->with('department');
         $incidents->with('user');
-        $incidents->paginate(15);
+        $incidents->take(15);
 
 
         return json_encode($incidents);
