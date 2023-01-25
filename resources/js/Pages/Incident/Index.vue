@@ -4,7 +4,6 @@ import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
 import {Inertia} from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import { router } from '@inertiajs/vue3'
 
 export default {
     props: [ 'incidents' ],
