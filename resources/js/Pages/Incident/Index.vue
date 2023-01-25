@@ -76,7 +76,7 @@ export default {
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="divide-y divide-gray-200 bg-white">
-                                                                    <tr v-for="incident in this.incidents" :key="incident.id">
+                                                                    <tr v-for="incident in incidents.data" :key="incident.id">
                                                                         <td v-for="(value, key) in incident" :key="key">{{value}}</td>
                                                                     </tr>
                                                                     </tbody>
