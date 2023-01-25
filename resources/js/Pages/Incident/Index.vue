@@ -65,7 +65,7 @@ export default {
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <div>
-                                            <div>
+                                            <div class="ml-5 mt-5">
                                                 <label for="text" class="block text-sm font-medium text-gray-700">Search</label>
                                                 <div class="mt-1">
                                                     <input type="text" name="text" id="text" v-model="search" @input="this.searchTable" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
