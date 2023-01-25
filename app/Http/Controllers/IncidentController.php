@@ -37,7 +37,7 @@ class IncidentController extends Controller
 
         $incidents_query->with('department');
         $incidents_query->with('user');
-        $incidents = $incidents_query::paginate(15);
+        $incidents = $incidents_query->paginate(15);
 
         return Inertia::render('Incident/Index', [
             'incidents' => $incidents,
