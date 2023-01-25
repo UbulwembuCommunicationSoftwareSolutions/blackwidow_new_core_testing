@@ -38,6 +38,5 @@ Route::resource('user', App\Http\Controllers\UserController::class)->middleware(
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
 Route::resource('department', App\Http\Controllers\DepartmentController::class)->middleware(['auth', 'verified']);
 Route::resource('incident', App\Http\Controllers\IncidentController::class)->middleware(['auth', 'verified']);
-Route::get('/ajax/incidents', 'App\Http\Controllers\IncidentController@ajaxIncidents')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

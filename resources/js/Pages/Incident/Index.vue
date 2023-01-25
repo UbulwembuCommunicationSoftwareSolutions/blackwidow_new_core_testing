@@ -1,28 +1,39 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import VueDataTable from '@/Components/VueDataTable.vue';
-
 
 export default {
+    props:{
+        incidents :  Object
+    },
     components: {
         AuthenticatedLayout,
         Head,
-        VueDataTable
     },
-    setup(){
-        const columns = [
-            'id',
-            'description',
-            'user',
-            'created_at'
-        ];
-        const ajaxUrl = '/ajax/incidents';
-
-        return{
-            columns,ajaxUrl
+    setup(props){
+        return {
+            incidents : props.incidents;
         }
     },
+    data(){
+        return {
+            search: '',
+            selectedFilter: 'all',
+            sortBy: null,
+            sortDesc: false,
+            loading : false
+        }
+    },
+    methods: {
+        onPagination(page) {
+            this.$inertia.replace({
+                posts: `/incident?page=${page}`,
+            });
+        },
+        searchTable(){
+
+        }
+    }
 }
 </script>
 
@@ -51,9 +62,33 @@ export default {
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                        <VueDataTable :columns="columns" :ajax-url="ajaxUrl">
+                                        <div>
+                                            <Loading v-if="this.loading"/>
+                                            <input v-model="search" @input="this.searchTable()" placeholder="Search" />
+                                            <div class="px-4 sm:px-6 lg:px-8">
+                                                <div class="mt-8 flex flex-col">
+                                                    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                                            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                                                <table class="min-w-full divide-y divide-gray-300">
+                                                                    <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                                                    <tr v-for="incident in this.incidents" :key="incident.id">
+                                                                        <td v-for="(value, key) in incident" :key="key">{{value}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <inertia-paginator :data="this.incidents" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        </VueDataTable>
                                     </div>
                                 </div>
                             </div>

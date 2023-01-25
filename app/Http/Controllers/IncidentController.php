@@ -16,12 +16,6 @@ class IncidentController extends Controller
 {
     public function index()
     {
-        return Inertia::render(
-            'Incident/Index'
-        );
-    }
-
-    public function ajaxIncidents(){
         $request = Request::all();
         $search = false;
         if(array_key_exists('search',$request)){
@@ -44,8 +38,14 @@ class IncidentController extends Controller
         $incidents->with('department');
         $incidents->with('user');
         $incidents->paginate(15);
-        return json_encode($incidents);
+
+        return Inertia::render('Incident/Index', [
+            'incidents' => $incidents,
+        ]);
+
     }
+
+
 
     /**
      * Show the form for creating a new resource.
