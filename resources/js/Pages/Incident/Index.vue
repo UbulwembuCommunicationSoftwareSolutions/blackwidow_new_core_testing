@@ -25,7 +25,7 @@ export default {
     methods: {
         searchTable(){
             this.$inertia.reload(this.route('incident.index'),{
-                query: {
+                data: {
                     search: this.search
                 }
             });
