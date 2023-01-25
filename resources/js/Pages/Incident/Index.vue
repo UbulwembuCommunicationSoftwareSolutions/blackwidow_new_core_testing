@@ -24,11 +24,7 @@ export default {
     },
     methods: {
         searchTable(){
-            Inertia.reload({
-                query: {
-                    search: this.search
-                }
-            })
+            this.$inertia.reload(this.route('incident', {search: this.search}));
         }
     },
     mounted(){
