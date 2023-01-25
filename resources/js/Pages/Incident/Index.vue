@@ -24,7 +24,11 @@ export default {
     },
     methods: {
         searchTable(){
-            this.$inertia.reload(this.route('incident.index',{search: this.search}));
+            this.$inertia.reload(this.route('incident.index'),{
+                query: {
+                    search: this.search
+                }
+            });
         }
     },
     mounted(){
