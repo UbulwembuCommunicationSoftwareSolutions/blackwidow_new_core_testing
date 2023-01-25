@@ -32,6 +32,7 @@ export default {
         }
     },
     mounted(){
+        console.log(this.incidents);
     }
 }
 </script>
