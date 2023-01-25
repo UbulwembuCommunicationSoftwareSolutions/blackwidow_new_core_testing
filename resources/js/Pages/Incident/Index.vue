@@ -69,11 +69,19 @@ export default {
                                                                 <table class="min-w-full divide-y divide-gray-300">
                                                                     <thead class="bg-gray-50">
                                                                     <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Description</th>
+                                                                        <th>User</th>
+                                                                        <th>Created</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="divide-y divide-gray-200 bg-white">
                                                                     <tr v-for="incident in incidents.data" :key="incident.id">
-                                                                        <td v-for="(value, key) in incident" :key="key">{{value}}</td>
+                                                                        <td>{{ incident.id }}</td>
+                                                                        <td>{{ incident.description }}</td>
+                                                                        <td>{{ incident.user.first_name }}</td>
+                                                                        <td>{{ incident.created_at }}</td>
+
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
