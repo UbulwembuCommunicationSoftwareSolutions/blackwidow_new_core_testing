@@ -24,23 +24,23 @@ class IncidentController extends Controller
             }
         }
         if(Auth::user()->isAdmin()){
-            $incidents = Incident::query();
+            $incidents_query = Incident::query();
         }else{
-            $incidents = Incident::query();
+            $incidents_query = Incident::query();
         }
         if($search){
-            $incidents
+            $incidents_query
                 ->where('description', 'LIKE', '%' . $search . '%')
                 ->orWhere('id', 'LIKE', '%' . $search . '%')
                 ->orWhere('created_at', 'LIKE', '%' . $search . '%');
         }
 
-        $incidents->with('department');
-        $incidents->with('user');
-        $new_incidents = Incident::paginate(15);
+        $incidents_query->with('department');
+        $incidents_query->with('user');
+        $incidents = $incidents_query::paginate(15);
 
         return Inertia::render('Incident/Index', [
-            'incidents' => $new_incidents,
+            'incidents' => $incidents,
         ]);
 
     }
