@@ -52,8 +52,6 @@ export default {
         }
     },
     setup(props){
-
-        const laravelData = ref({});
         let columns = props.columns;
         let ajaxUrl = props.ajaxUrl;
         return {
