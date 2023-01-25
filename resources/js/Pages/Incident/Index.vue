@@ -4,6 +4,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
 import {Inertia} from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { router } from '@inertiajs/vue3'
 
 export default {
     props: [ 'incidents' ],
@@ -24,10 +25,13 @@ export default {
     },
     methods: {
         searchTable(){
-            console.log(Inertia.visit().path);
-            console.log(Inertia.visit().query);
-
-            //Inertia.get();
+            inertia.reload({
+                preserveState: true,
+                only: ['incidents'],
+                query: {
+                    search: this.search
+                }
+            })
         }
     },
     mounted(){
