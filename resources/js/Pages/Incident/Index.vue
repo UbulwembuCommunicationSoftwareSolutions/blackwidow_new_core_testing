@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
-import inertia from "lodash";
+import {Inertia} from "@inertiajs/inertia";
 
 export default {
     props: [ 'incidents' ],
@@ -22,10 +22,11 @@ export default {
     },
     methods: {
         searchTable(){
-            inertia.replace({
-                search: this.search
+            Inertia.replace({
+                incidents: `/incident?search=${this.search}`,
             });
-            inertia.render(inertia.current.component, inertia.current.props);
+
+
         }
     },
     mounted(){
