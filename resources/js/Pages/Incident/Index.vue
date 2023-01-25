@@ -44,6 +44,7 @@ export default {
                 Incidents
             </h2>
         </template>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -80,18 +81,18 @@ export default {
                                                                 <table class="min-w-full divide-y divide-gray-300">
                                                                     <thead class="bg-gray-50">
                                                                     <tr>
-                                                                        <th>Id</th>
-                                                                        <th>Description</th>
-                                                                        <th>User</th>
-                                                                        <th>Created</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Id</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"> Description</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="divide-y divide-gray-200 bg-white">
                                                                     <tr v-for="incident in incidents.data" :key="incident.id">
-                                                                        <td>{{ incident.id }}</td>
-                                                                        <td>{{ incident.description }}</td>
-                                                                        <td></td>
-                                                                        <td>{{ incident.created_at }}</td>
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.id }}</td>
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.description }}</td>
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"></td>
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.created_at }}</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
