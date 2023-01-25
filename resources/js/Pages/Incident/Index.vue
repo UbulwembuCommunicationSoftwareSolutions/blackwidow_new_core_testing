@@ -88,7 +88,7 @@ export default {
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="divide-y divide-gray-200 bg-white">
-                                                                    <tr v-for="incident in incidents.data" :key="incident.id">
+                                                                    <tr v-for="(incident,incident_id) in incidents.data" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.id }}</td>
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.description }}</td>
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"></td>
