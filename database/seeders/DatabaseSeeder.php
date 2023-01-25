@@ -183,7 +183,7 @@ class DatabaseSeeder extends Seeder
             $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
             $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('incidents')->insert([
-                'description' => $number.' Testing Incident',
+                'description' => 'Testing Incident nr: '.$number,
                 'user_id' => '1',
                 'department_id' => '1',
                 'category_id' => '1',
