@@ -66,8 +66,7 @@ export default {
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <div>
                                             <Loading v-if="this.loading"/>
-                                            <input v-model="search" placeholder="Search" />
-                                            <primary-button @click="this.searchTable">Search</primary-button>
+                                            <input v-model="search" @input="this.searchTable" placeholder="Search" />
                                             <div class="px-4 sm:px-6 lg:px-8">
                                                 <div class="mt-8 flex flex-col">
                                                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
