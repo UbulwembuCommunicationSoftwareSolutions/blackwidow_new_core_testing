@@ -23,10 +23,8 @@ export default {
     methods: {
         searchTable(){
             Inertia.replace({
-                incidents: `/incident?search=${this.search}`,
+                incidents: '/incident?search='+this.search,
             });
-
-
         }
     },
     mounted(){
