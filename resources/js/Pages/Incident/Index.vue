@@ -28,7 +28,7 @@ export default {
         }
     },
     mounted(){
-        console.log($page.props.ziggy);
+        console.log(this.$page.props.ziggy);
     }
 }
 </script>
