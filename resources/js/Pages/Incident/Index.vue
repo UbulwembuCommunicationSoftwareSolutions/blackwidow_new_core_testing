@@ -12,7 +12,7 @@ export default {
     },
     setup(props){
         return {
-            incidents : props.incidents;
+            incidents : props.incidents
         }
     },
     data(){
@@ -81,7 +81,7 @@ export default {
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <inertia-paginator :data="this.incidents" />
+                                                                <inertia-paginator :data="this.incidents" @pagination="onPagination />
                                                             </div>
                                                         </div>
                                                     </div>
