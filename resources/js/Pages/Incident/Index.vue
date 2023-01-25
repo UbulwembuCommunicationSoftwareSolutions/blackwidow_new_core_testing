@@ -20,11 +20,6 @@ export default {
         }
     },
     methods: {
-        onPagination(page) {
-            this.$inertia.replace({
-                incidents: `/incident?page=${page}`,
-            });
-        },
         searchTable(){
 
         }
