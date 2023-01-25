@@ -24,11 +24,13 @@ export default {
     },
     methods: {
         searchTable(){
-            Inertia.get();
+            console.log(Inertia.visit().path);
+            console.log(Inertia.visit().query);
+
+            //Inertia.get();
         }
     },
     mounted(){
-        console.log(this.$page.props.ziggy);
     }
 }
 </script>
