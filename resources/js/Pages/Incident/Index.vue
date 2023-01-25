@@ -81,12 +81,11 @@ export default {
                                                                         <td>{{ incident.description }}</td>
                                                                         <td></td>
                                                                         <td>{{ incident.created_at }}</td>
-
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <inertia-paginator :data="incidents" @pagination="onPagination"/>
                                                             </div>
+                                                            <inertia-paginator :data="incidents" @pagination="onPagination"/>
                                                         </div>
                                                     </div>
                                                 </div>
