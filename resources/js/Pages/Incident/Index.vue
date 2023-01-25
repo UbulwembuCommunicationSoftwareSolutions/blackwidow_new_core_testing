@@ -21,7 +21,9 @@ export default {
     },
     methods: {
         searchTable(){
-
+            this.$inertia.replace({
+                incidents: '/incident?search='+this.search,
+            });
         }
     },
     mounted(){
