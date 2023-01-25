@@ -81,7 +81,7 @@ export default {
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <inertia-paginator :data="this.incidents" @pagination="onPagination />
+                                                                <inertia-paginator :data="this.incidents" @pagination="onPagination"/>
                                                             </div>
                                                         </div>
                                                     </div>
