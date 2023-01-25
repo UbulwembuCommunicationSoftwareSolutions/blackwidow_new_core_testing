@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         searchTable(){
-            Inertia.get('/incident?search=');
+            Inertia.get('/incident?search='+this.search);
         }
     },
     mounted(){
