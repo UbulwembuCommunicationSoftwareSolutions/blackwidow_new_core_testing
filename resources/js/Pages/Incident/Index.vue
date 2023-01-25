@@ -3,10 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
 import {Inertia} from "@inertiajs/inertia";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 export default {
     props: [ 'incidents' ],
     components: {
+        PrimaryButton,
         AuthenticatedLayout,
         Head,
         Pagination
@@ -58,7 +60,8 @@ export default {
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <div>
                                             <Loading v-if="this.loading"/>
-                                            <input v-model="search" @input="this.searchTable()" placeholder="Search" />
+                                            <input v-model="search" placeholder="Search" />
+                                            <primary-button @click="this.searchTable">Search</primary-button>
                                             <div class="px-4 sm:px-6 lg:px-8">
                                                 <div class="mt-8 flex flex-col">
                                                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
