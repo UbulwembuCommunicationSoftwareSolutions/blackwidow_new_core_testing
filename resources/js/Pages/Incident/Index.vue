@@ -1,7 +1,7 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import Pagination from '@/Components/Pagination'
+import Pagination from '@/Components/Pagination.vue'
 
 export default {
     props: [ 'incidents' ],
