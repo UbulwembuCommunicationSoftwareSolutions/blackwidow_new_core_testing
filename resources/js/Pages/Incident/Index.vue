@@ -23,7 +23,7 @@ export default {
     methods: {
         searchTable(){
             inertia.replace({
-                search: this.search;
+                search: this.search
             });
 
             inertia.visit(inertia.current.url);
