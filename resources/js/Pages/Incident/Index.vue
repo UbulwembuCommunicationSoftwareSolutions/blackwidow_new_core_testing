@@ -25,8 +25,7 @@ export default {
             inertia.replace({
                 search: this.search
             });
-
-            inertia.visit(inertia.current.url);
+            inertia.render(inertia.current.component, inertia.current.props);
         }
     },
     mounted(){
