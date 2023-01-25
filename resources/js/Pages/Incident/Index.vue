@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         searchTable(){
-            Inertia.get('/incident?search='+this.search);
+            Inertia.get('/incident?search=');
         }
     },
     mounted(){
