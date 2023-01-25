@@ -25,8 +25,6 @@ export default {
     methods: {
         searchTable(){
             Inertia.reload({
-                preserveState: true,
-                only: ['incidents'],
                 query: {
                     search: this.search
                 }
