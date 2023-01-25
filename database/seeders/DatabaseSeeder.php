@@ -175,7 +175,7 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
-        for ($x = 0; $x <= 15000; $x++) {
+        for ($x = 0; $x <= 100000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
