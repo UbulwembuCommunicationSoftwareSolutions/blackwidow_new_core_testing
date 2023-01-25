@@ -1,12 +1,14 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
+import Pagination from '@/Components/Pagination'
 
 export default {
     props: [ 'incidents' ],
     components: {
         AuthenticatedLayout,
         Head,
+        Pagination
     },
     data(){
         return {
@@ -85,7 +87,7 @@ export default {
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                            <inertia-paginator :data="incidents" @pagination="onPagination"/>
+                                                            <pagination class="mt-6" :links="incidents.links" />
                                                         </div>
                                                     </div>
                                                 </div>
