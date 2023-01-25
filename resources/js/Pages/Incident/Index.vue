@@ -46,8 +46,8 @@ export default {
             </h2>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
+        <div>
+            <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="sm:flex sm:items-center">
