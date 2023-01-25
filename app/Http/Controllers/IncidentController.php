@@ -47,15 +47,8 @@ class IncidentController extends Controller
         $incidents->with('user');
         $incidents->paginate(15);
 
-        foreach($incidents as $incident){
-            $array[] = array(
-                "id" => $incident->id,
-                "description" => $incident->description,
-                "user" =>   $incident->user->first_name." ".$incident->user->surname,
-                "created" => $incident->created_at->format('Y-m-d H:i:s')
-            );
-        }
-        return json_encode($array);
+
+        return json_encode($incidents);
     }
 
     /**
