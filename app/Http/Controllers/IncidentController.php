@@ -45,7 +45,7 @@ class IncidentController extends Controller
 
         $incidents->load('department');
         $incidents->load('user');
-        $incidents->get();
+        $incidents->get()->paginate(15);
 
         foreach($incidents as $incident){
             $array[] = array(
