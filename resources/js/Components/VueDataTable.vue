@@ -24,9 +24,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div>
-                                    {{ $this.returned_data->links() }}
-                                </div>
                             </div>
                         </div>
                     </div>
