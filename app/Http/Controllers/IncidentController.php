@@ -32,10 +32,8 @@ class IncidentController extends Controller
         if(Auth::user()->isAdmin()){
             $incidents = Incident::query();
         }else{
-            $incidents = array();
-            $departments = Auth::user()->departments;
+            $incidents = Incident::query();
         }
-        $array = array();
         if($search){
             $incidents
                 ->where('description', 'LIKE', '%' . $search . '%')
@@ -46,9 +44,7 @@ class IncidentController extends Controller
         $incidents->with('department');
         $incidents->with('user');
         $incidents->take(15);
-
-
-        return json_encode($incidents);
+        return ($incidents);
     }
 
     /**

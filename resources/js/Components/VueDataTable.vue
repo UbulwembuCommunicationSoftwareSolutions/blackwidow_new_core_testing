@@ -37,6 +37,8 @@
 
 <script>
 import Loading from '@/Components/Loading.vue';
+import { ref } from 'vue';
+import { TailwindPagination } from 'laravel-vue-pagination';
 
 export default {
     name: "CustomDataTable",
@@ -53,6 +55,8 @@ export default {
         }
     },
     setup(props){
+
+        const laravelData = ref({});
         let columns = props.columns;
         let ajaxUrl = props.ajaxUrl;
         return {
@@ -66,31 +70,16 @@ export default {
         this.getData()
     },
     methods: {
-        sortBy(sortBy) {
-            if (this.sortBy === sortBy) {
-                this.sortDesc = !this.sortDesc
-            } else {
-                this.sortBy = sortBy
-                this.sortDesc = false
-            }
-        },
-        searchTable(){
-            let searchUrl = this.ajaxUrl+'?search='+this.search;
-            axios.get(searchUrl)
-                .then((res) => {
-                    this.returned_data = res.data;
-                    this.loading = false;
-                })
-                .catch((error) => {
-
-                }).finally(() => {
-
-                }
-            );
-        },
-        getData(){
+        getData(page = undefined,search = undefined){
             this.loading = true;
-            axios.get(this.ajaxUrl)
+            let ajaxUrl = this.ajaxUrl;
+            if(page!==undefined){
+                ajaxUrl += '?page='+page
+            }
+            if(search!==undefined){
+                ajaxUrl += '&search='+search
+            }
+            axios.get(ajaxUrl)
                 .then((res) => {
                     this.returned_data = res.data;
                     this.loading = false;
