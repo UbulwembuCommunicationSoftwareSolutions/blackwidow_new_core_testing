@@ -3,17 +3,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 
 export default {
-    props:{
-        incidents :  Object
-    },
+    props: [ 'incidents' ],
     components: {
         AuthenticatedLayout,
         Head,
-    },
-    setup(props){
-        return {
-            incidents : props.incidents
-        }
     },
     data(){
         return {
@@ -27,7 +20,7 @@ export default {
     methods: {
         onPagination(page) {
             this.$inertia.replace({
-                posts: `/incident?page=${page}`,
+                incidents: `/incident?page=${page}`,
             });
         },
         searchTable(){
@@ -81,7 +74,7 @@ export default {
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <inertia-paginator :data="this.incidents" @pagination="onPagination"/>
+                                                                <inertia-paginator :data="incidents" @pagination="onPagination"/>
                                                             </div>
                                                         </div>
                                                     </div>
