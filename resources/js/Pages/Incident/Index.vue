@@ -79,7 +79,7 @@ export default {
                                                                     <tr v-for="incident in incidents.data" :key="incident.id">
                                                                         <td>{{ incident.id }}</td>
                                                                         <td>{{ incident.description }}</td>
-                                                                        <td>{{ incident.user.first_name }}</td>
+                                                                        <td></td>
                                                                         <td>{{ incident.created_at }}</td>
 
                                                                     </tr>
