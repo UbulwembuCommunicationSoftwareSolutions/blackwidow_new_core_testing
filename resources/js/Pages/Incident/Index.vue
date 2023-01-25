@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         searchTable(){
-            Inertia.get('/incident?search='+this.search);
+            Inertia.get(props.$route.path);
         }
     },
     mounted(){
@@ -40,6 +40,10 @@ export default {
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Incidents
             </h2>
+            <div>
+                <p>path: {{ props.$route.path }}</p>
+                <p>query: {{ JSON.stringify(props.$route.query) }}</p>
+            </div>
         </template>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
