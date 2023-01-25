@@ -13,6 +13,9 @@
 </template>
 <script>
 export default {
+    name: {
+        "Pagination"
+    },
     props: {
         links: Array
     },

@@ -87,7 +87,7 @@ export default {
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                            <pagination class="mt-6" :links="incidents.links" />
+                                                            <Pagination class="mt-6" :links="incidents.links" />
                                                         </div>
                                                     </div>
                                                 </div>
