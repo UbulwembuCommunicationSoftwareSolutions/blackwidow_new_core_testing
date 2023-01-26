@@ -85,6 +85,7 @@ export default {
                                                                         <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
                                                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
                                                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Department</th>
                                                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                                                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                                             <span class="sr-only">Edit</span>
@@ -96,6 +97,7 @@ export default {
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ incident.id }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.description }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
+                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>
                                                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                                             <a href="#" class="text-indigo-600 hover:text-indigo-900"
