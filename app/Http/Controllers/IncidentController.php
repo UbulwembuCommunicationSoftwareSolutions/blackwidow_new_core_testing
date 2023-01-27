@@ -90,7 +90,26 @@ class IncidentController extends Controller
      */
     public function show(Incident $incident)
     {
+        $request = Request::all();
+        $incident->load('user');
+        $incident->load('department');
+        if(array_key_exists('current_tab',$request)){
+            $currentpage = $request['current_tab'];
+        }else{
+            $currentpage = 1;
+        }
         return Inertia::render('Incident/Show', [
+            'incident' => $incident,
+            'currentpage' => $currentpage
+        ]);
+    }
+
+    public function showWithPoi($id){
+        $incident = Incident::find($id);
+        $incident->load('people');
+        $incident->load('user');
+        $incident->load('department');
+        return Inertia::render('Incident/ShowPoi', [
             'incident' => $incident,
         ]);
     }

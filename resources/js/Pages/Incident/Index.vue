@@ -4,6 +4,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
 import {Inertia} from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Loading from "@/Components/Loading.vue";
 
 export default {
     props: [ 'incidents' ],
@@ -11,7 +12,8 @@ export default {
         PrimaryButton,
         AuthenticatedLayout,
         Head,
-        Pagination
+        Pagination,
+        Loading
     },
     data(){
         return {
@@ -45,7 +47,6 @@ export default {
                 Incidents
             </h2>
         </template>
-
         <div>
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -91,14 +92,18 @@ export default {
                                                                     </thead>
                                                                     <tbody class="bg-white">
                                                                     <tr v-for="(incident,incident_id) in incidents.data" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                                            <inertia-link class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
+                                                                            <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                                           :href="'/incident/'+incident.id">
                                                                                 {{incident.id}}
-                                                                            </inertia-link>
-
+                                                                            </a>
                                                                         </td>
-                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.description }}</td>
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
+                                                                            <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                               :href="'/incident/'+incident.id">
+                                                                                {{incident.description}}
+                                                                            </a>
+                                                                        </td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>

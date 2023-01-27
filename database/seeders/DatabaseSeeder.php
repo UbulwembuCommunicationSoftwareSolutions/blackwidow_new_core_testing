@@ -175,7 +175,7 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
-        for ($x = 0; $x <= 50000; $x++) {
+        for ($x = 0; $x <= 30000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
@@ -191,8 +191,8 @@ class DatabaseSeeder extends Seeder
                 'sub_sub_category_id' => '1',
                 'priority_id' => '1',
                 'status_id' => '1',
-                'gps_lat' => '1',
-                'gps_lng' => '1',
+                'gps_lat' => '-25.747868',
+                'gps_lng' => '28.229271',
                 'source_id' => '1',
                 'active' => '1',
                 'accepted_at' => $randomTimestamp,

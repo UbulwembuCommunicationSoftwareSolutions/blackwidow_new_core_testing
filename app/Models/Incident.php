@@ -16,6 +16,10 @@ class Incident extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function people(){
+        return $this->belongsToMany(Person::class, 'incident_people');
+    }
+
     public function department(){
         return $this->belongsTo(Department::class);
     }
