@@ -95,8 +95,7 @@ export default {
                                                                     <tbody class="bg-white">
                                                                     <tr v-for="(incident,incident_id) in incidents.data" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                                            <inertia-link v-else
-                                                                                          class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
+                                                                            <inertia-link class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
                                                                                           :href="'/incident/'+incident.id">
                                                                                 {{incident.id}}
                                                                             </inertia-link>
