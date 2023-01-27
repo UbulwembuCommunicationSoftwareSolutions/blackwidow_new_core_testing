@@ -90,7 +90,9 @@ class IncidentController extends Controller
      */
     public function show(Incident $incident)
     {
-        //
+        return Inertia::render('Incident/Show', [
+            'incident' => $incident,
+        ]);
     }
 
     /**

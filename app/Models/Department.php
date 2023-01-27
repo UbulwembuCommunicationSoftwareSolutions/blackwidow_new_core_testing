@@ -21,4 +21,8 @@ class Department extends Model
     public function incidents(){
         return $this->hasMany(Incident::class);
     }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
