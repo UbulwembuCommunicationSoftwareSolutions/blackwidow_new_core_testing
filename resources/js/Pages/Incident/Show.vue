@@ -69,10 +69,7 @@ export default {
     methods: {
         changeTab(id){
             this.tabs.forEach((tab) => {
-                tab.current = false;
-                if(tab.id===id){
-                    tab.current = true;
-                }
+               console.log(tab)
             });
         }
     }
