@@ -5,6 +5,8 @@ import Pagination from '@/Components/Pagination.vue'
 import {Inertia} from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Loading from "@/Components/Loading.vue";
+import {ref} from "vue";
+import debounce from "lodash/debounce";
 
 export default {
     props: [ 'incidents','departments' ],
@@ -17,11 +19,27 @@ export default {
     },
     data(){
         return {
-            search: '',
             filter_by: '',
             sort_by: null,
             sort_desc: false,
             loading : false
+        }
+    },
+    setup(){
+        const searchTerm = ref("");
+        const debouncedSearch = debounce(e => {
+            searchTerm.value = e.target.value;
+            console.log(searchTerm.value)
+            Inertia.reload({
+                data: {
+                    search: searchTerm.value
+                }
+            })
+        }, 500)
+
+        return {
+            debouncedSearch,
+            searchTerm,
         }
     },
     methods: {
@@ -94,7 +112,7 @@ export default {
                                                 <div class="ml-5 mt-5">
                                                     <label for="text" class="block text-sm font-medium text-gray-700">Search</label>
                                                     <div class="mt-1">
-                                                        <input type="text" name="search_by" id="search_by" v-model="search" @input="this.searchTable" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
+                                                        <input type="text" name="search_by" id="search_by" v-model="searchTerm" @input="debouncedSearch" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
                                                     </div>
                                                 </div>
                                                 <div class="ml-5 mt-5">
@@ -102,6 +120,7 @@ export default {
                                                     <div class="mt-1">
                                                         <select  v-model="filter_by" v-on:change="filterTable('department')" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                                             <option v-for="department in departments">{{department.description}}</option>
+                                                            <option value="">None</option>
                                                         </select>
                                                     </div>
                                                 </div>

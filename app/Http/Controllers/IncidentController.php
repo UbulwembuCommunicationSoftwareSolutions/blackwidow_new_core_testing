@@ -59,6 +59,12 @@ class IncidentController extends Controller
         $incidents_query->with('department');
         $incidents_query->with('user');
 
+        if($filter_by=='department'){
+            $incidents_query->WhereHas('department', function ($query) use ($filter_value)  {
+                $query->where('description', 'like', '%'.$filter_value.'%');
+            });
+        }
+
         if($search){
             $incidents_query
                 ->where('incidents.description', 'LIKE', '%' . $search . '%')
@@ -72,11 +78,7 @@ class IncidentController extends Controller
                     $query->where('description', 'like', '%'.$search.'%');
                 });
         }
-        if($filter_by=='department'){
-            $incidents_query->WhereHas('department', function ($query) use ($filter_value)  {
-                $query->where('description', 'like', '%'.$filter_value.'%');
-            });
-        }
+
 
         $incidents_query->withCount('people');
 
