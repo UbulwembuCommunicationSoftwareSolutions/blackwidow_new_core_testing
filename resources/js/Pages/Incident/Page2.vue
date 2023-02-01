@@ -23,22 +23,22 @@
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
-                                            <tr v-for="(person,person_id) in incident.people" :key="person.id" :class="person_id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                            <tr v-for="(person,person.id) in incident.people" :key="person.id" :class="person.id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                 <td class="whitespace-nowrap text-sm font-medium text-blue-600 sm:pl-3">
                                                     <a class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                       :href="'/person/'+person_id+'/edit'">
+                                                       :href="'/person/'+person.id+'/edit'">
                                                         {{person.id}}
                                                     </a>
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <a class="mr-1 mb-1 text-sm  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                       :href="'/person/'+person_id+'/edit'">
+                                                       :href="'/person/'+person.id+'/edit'">
                                                         {{person.first_name}}
                                                     </a>
                                                 </td>
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-3">
                                                     <a class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                       :href="'/person/'+person_id+'/edit'">
+                                                       :href="'/person/'+person.id+'/edit'">
                                                         {{person.surname}}
                                                     </a>
                                                 </td>
