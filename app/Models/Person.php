@@ -9,6 +9,12 @@ class Person extends Model
 {
     use HasFactory;
 
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     protected $fillable = [
         'institution_id',
         'id',
@@ -37,7 +43,7 @@ class Person extends Model
 
     public function incidents()
     {
-        return $this->hasMany(Institution::class, 'incident_people');
+        return $this->belongsToMany(Incident::class, 'incident_people');
     }
 
 

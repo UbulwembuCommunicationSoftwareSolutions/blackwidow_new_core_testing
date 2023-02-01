@@ -103,6 +103,9 @@ export default {
                             url="/profile_picture/person"
                             @close="this.closeModal()"
                         />
+                        <div v-for="incident in person.incidents">
+                            <div>Incident {{incident.id}}</div>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">

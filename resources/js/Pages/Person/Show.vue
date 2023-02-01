@@ -27,11 +27,8 @@ export default {
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="sm:flex sm:items-center">
                             <div class="sm:flex-auto">
-                                <h1 class="text-xl font-semibold text-gray-900">Persons</h1>
-                                <p class="mt-2 text-sm text-gray-700">A list of all the persons in your system including their name, title, email and role.</p>
-                            </div>
-                            <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                                <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add person</button>
+                                <h1 class="text-xl font-semibold text-gray-900">Person</h1>
+                                <p class="mt-2 text-sm text-gray-700"></p>
                             </div>
                         </div>
                         <div class="mt-8 mb-8 flex flex-col">
@@ -77,8 +74,8 @@ export default {
                                                 </span>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div v-for="(role,index) in person.roles" class="text-gray-900">
-                                                        {{role.description.replace(/_/g," ").toUpperCase()}}
+                                                    <div v-for="(incident,index) in person.incidents" class="text-gray-900">
+                                                        {{ incident.id }}
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

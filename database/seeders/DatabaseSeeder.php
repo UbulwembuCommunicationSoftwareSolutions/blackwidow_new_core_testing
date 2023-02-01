@@ -102,6 +102,10 @@ class DatabaseSeeder extends Seeder
         $genders[1] = 'Male';
         $genders[2] = 'Female';
         for ($x = 1; $x <= 60000; $x++) {
+            $start = new \DateTime('2017-01-01 00:00:00');
+            $end = new \DateTime('2022-12-31 23:59:59');
+            $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
+            $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('people')->insert([
                 'id' => $x,
                 'profile_picture' => '',
@@ -121,6 +125,7 @@ class DatabaseSeeder extends Seeder
                 'language_spoken' => 'English',
                 'religion' => 'Atheist',
                 'uid' => fake()->uuid,
+                'created_at' => $randomTimestamp
             ]);
             DB::table('incident_people')->insert([
                 'person_id' => $x,

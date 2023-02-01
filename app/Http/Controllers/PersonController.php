@@ -36,12 +36,12 @@ class PersonController extends Controller
                 ->orWhere('people.id', 'LIKE', '%' . $search . '%')
                 ->orWhere('people.surname', 'LIKE', '%' . $search . '%')
                 ->orWhere('people.created_at', 'LIKE', '%' . $search . '%')
-                ->orWhereHas('institution', function ($query) use ($search)  {
+                ->orWhereHas('institutions', function ($query) use ($search)  {
                     $query->where('description', 'like', '%'.$search.'%');
                 });
         }
 
-        $people = $people_query->paginate(10);
+        $people = $people_query->paginate(50);
 
         return Inertia::render('Person/Index', [
             'people' => $people,
@@ -92,7 +92,9 @@ class PersonController extends Controller
      */
     public function show(Person $person)
     {
-        //
+        return Inertia::render('Person/Show', [
+            'person' => $person,
+        ]);
     }
 
     /**
@@ -103,7 +105,7 @@ class PersonController extends Controller
      */
 
     public function edit($id){
-        $person = Person::find($id);
+        $person = Person::with('incidents')->find($id);
         $institutions = Institution::get();
         $person_institutions = array();
         $available_institutions = array();

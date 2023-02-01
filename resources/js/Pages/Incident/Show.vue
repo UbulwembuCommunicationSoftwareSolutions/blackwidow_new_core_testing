@@ -73,7 +73,7 @@ export default {
         Head,
     },
     props: [
-        'incident'
+        'incident','current_page'
     ],
     data(){
         return {
@@ -82,6 +82,10 @@ export default {
     },
     setup(props){
         let incident = props.incident
+        let current_page = null;
+        if(props.current_page > 0){
+            let current_page = props.current_page;
+        }
         const tabs = [
             { name: 'Basic Information', tab: 1, current: true },
             { name: 'Persons of interest', tab: 2, current: false },
@@ -89,8 +93,11 @@ export default {
             { name: 'Case Activity', tab: 4,current: false },
         ]
         return {
-            tabs,incident
+            tabs,incident,current_page
         }
+    },
+    mounted(){
+      this.checkPage();
     },
     methods: {
         loadTab(id){
@@ -103,6 +110,12 @@ export default {
                 }
             });
         },
+        checkPage(){
+            if(this.current_page){
+                console.log("Loading "+this.current_page)
+                this.loadTab(this.current_page);
+            }
+        }
 
     },
 }

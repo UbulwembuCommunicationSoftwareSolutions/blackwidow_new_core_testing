@@ -18,18 +18,47 @@ class IncidentController extends Controller
     {
         $request = Request::all();
         $search = false;
+        $sort_by = false;
+        $sort_desc = false;
+        $filter_by = false;
+        $filter_value = false;
+
         if(array_key_exists('search',$request)){
             if(strlen($request['search'])>0){
                 $search = $request['search'];
             }
         }
+        if(array_key_exists('sort_by',$request)){
+            if(strlen($request['sort_by'])>0){
+                $sort_by = $request['sort_by'];
+            }
+        }
+        if(array_key_exists('sort_desc',$request)){
+            if(strlen($request['sort_desc'])>0){
+                $sort_desc = $request['sort_desc'];
+            }
+        }
+        if(array_key_exists('filter_by',$request)){
+            if(strlen($request['filter_by'])>0){
+                $filter_by = $request['filter_by'];
+            }
+        }
+
+        if(array_key_exists('filter_value',$request)){
+            if(strlen($request['filter_value'])>0){
+                $filter_value = $request['filter_value'];
+            }
+        }
+
         if(Auth::user()->isAdmin()){
             $incidents_query = Incident::query();
         }else{
             $incidents_query = Incident::query();
         }
+
         $incidents_query->with('department');
         $incidents_query->with('user');
+
         if($search){
             $incidents_query
                 ->where('incidents.description', 'LIKE', '%' . $search . '%')
@@ -43,11 +72,27 @@ class IncidentController extends Controller
                     $query->where('description', 'like', '%'.$search.'%');
                 });
         }
+        if($filter_by=='department'){
+            $incidents_query->WhereHas('department', function ($query) use ($filter_value)  {
+                $query->where('description', 'like', '%'.$filter_value.'%');
+            });
+        }
 
-        $incidents = $incidents_query->paginate(10);
+        $incidents_query->withCount('people');
 
+        if($sort_by){
+            if($sort_desc=="true"){
+                $incidents_query->orderBy($sort_by,'DESC');
+            }else{
+                $incidents_query->orderBy($sort_by,'ASC');
+            }
+        }
+
+        $incidents = $incidents_query->paginate(50);
+        $departments = Department::all();
         return Inertia::render('Incident/Index', [
             'incidents' => $incidents,
+            'departments' => $departments
         ]);
 
     }
@@ -100,7 +145,7 @@ class IncidentController extends Controller
         $request = Request::all();
         $incident->load('user');
         $incident->load('department');
-        $incident->load('people');
+        $incident->load('people.institutions');
         if(array_key_exists('current_page',$request)){
             $current_page = $request['current_page'];
         }else{
