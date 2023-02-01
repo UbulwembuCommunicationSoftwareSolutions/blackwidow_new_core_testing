@@ -130,7 +130,8 @@ export default {
                                                     <label for="multi" class="block text-sm font-medium text-gray-700">Institution</label>
                                                 </div>
                                                 <div class="col-span-6">
-                                                    <treeselect v-model="form.selected_departments" :multiple="true" :options="form.available_departments" />
+                                                    <treeselect id="multi" v-model="form.selected_departments" :multiple="true" :options="form.available_departments" />
+                                                    <treeselect-value :value="form.selected_departments" />
                                                 </div>
 
                                                 <div class="col-span-6 sm:col-span-3">

@@ -11,7 +11,7 @@ export default {
     components: {
         AuthenticatedLayout,
         Head,
-        Treeselect,
+        treeselect,
         ProfilePictureModal
     },
     props:{
@@ -141,7 +141,8 @@ export default {
                                         <label for="multi" class="block text-sm font-medium text-gray-700">Institution</label>
                                     </div>
                                     <div class="col-span-6">
-                                        <treeselect v-model="form.selected_institutions" :multiple="true" :options="form.available_institutions" />
+                                        <treeselect id="multi" v-model="form.selected_institutions" :multiple="true" :options="form.available_institutions" />
+                                        <treeselect-value :value="form.selected_institutions" />
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
