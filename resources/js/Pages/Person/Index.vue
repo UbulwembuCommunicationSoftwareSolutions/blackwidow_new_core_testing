@@ -135,6 +135,11 @@ export default {
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
+                                                                <div class="flex mb-6 items-center text-center justify-center">
+                                                                    <div>
+                                                                        <Pagination class="mt-6" :links="people.links" />
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -116,7 +116,11 @@ export default {
                                                                 </table>
 
                                                             </div>
-                                                            <Pagination class="mt-6" :links="incidents.links" />
+                                                            <div class="flex mb-6 items-center text-center justify-center">
+                                                                <div>
+                                                                    <Pagination class="mt-6" :links="incidents.links" />
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
