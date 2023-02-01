@@ -112,6 +112,14 @@ class DatabaseSeeder extends Seeder
                 'religion' => 'Atheist',
                 'uid' => fake()->uuid,
             ]);
+            DB::table('incident_people')->insert([
+                'person_id' => $x,
+                'incident_id' => rand(1,60000),
+            ]);
+            DB::table('institution_people')->insert([
+                'person_id' => $x,
+                'institution_id' => rand(1,3),
+            ]);
         }
 
         DB::table('institution_people')->insert([
@@ -149,7 +157,7 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
-        for ($x = 0; $x <= 60000; $x++) {
+        for ($x = 1; $x <= 60000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
@@ -187,14 +195,6 @@ class DatabaseSeeder extends Seeder
                 'saps_station'  => '1',
                 'investigation_officer_id' => '1',
                 'unique_id' => '1',
-            ]);
-            DB::table('incident_people')->insert([
-                'person_id' => $x,
-                'incident_id' => rand(1,60000),
-            ]);
-            DB::table('institution_people')->insert([
-                'person_id' => $x,
-                'institution_id' => rand(1,3),
             ]);
         }
 
