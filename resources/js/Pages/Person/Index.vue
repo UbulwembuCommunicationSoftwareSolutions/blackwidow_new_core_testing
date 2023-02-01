@@ -2,9 +2,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination.vue'
-import {Inertia} from "@inertiajs/inertia";
+import { Inertia } from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Loading from "@/Components/Loading.vue";
+import debounce from "lodash/debounce"
+import {ref} from 'vue';
 
 export default {
     props: [ 'people' ],
@@ -15,26 +17,27 @@ export default {
         Pagination,
         Loading
     },
-    data(){
+    setup(){
+        const searchTerm = ref("");
+        const debouncedSearch = debounce(e => {
+            searchTerm.value = e.target.value;
+            console.log(searchTerm.value)
+            Inertia.reload({
+                data: {
+                    search: searchTerm.value
+                }
+            })
+        }, 500)
+
         return {
-            search: '',
+            debouncedSearch,
+            searchTerm,
             selectedFilter: 'all',
             sortBy: null,
             sortDesc: false,
             loading : false
         }
     },
-    methods: {
-        searchTable(){
-            this.$inertia.reload({
-                data: {
-                    search: this.search
-                }
-            });
-        }
-    },
-    mounted(){
-    }
 }
 </script>
 
@@ -67,7 +70,7 @@ export default {
                                             <div class="ml-5 mt-5">
                                                 <label for="text" class="block text-sm font-medium text-gray-700">Search</label>
                                                 <div class="mt-1">
-                                                    <input type="text" name="text" id="text" v-model="search" @input="this.searchTable" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
+                                                    <input type="text" name="text" id="text"  v-model="searchTerm" @input="debouncedSearch" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
                                                 </div>
                                             </div>
                                             <Loading v-if="this.loading"/>
