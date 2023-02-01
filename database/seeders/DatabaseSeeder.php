@@ -132,6 +132,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+
         DB::table('departments')->insert([
             "institution_id" => '1',
             'description' => 'First Department',
