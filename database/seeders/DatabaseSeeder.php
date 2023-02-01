@@ -157,12 +157,27 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
+        DB::table('departments')->insert([
+            'id' => '4',
+            "institution_id" => '2',
+            'description' => 'Forth Department',
+        ]);
+        DB::table('departments')->insert([
+            'id' => '5',
+            "institution_id" => '2',
+            'description' => 'Fifth Department',
+        ]);
+        DB::table('departments')->insert([
+            'id' => '3',
+            "institution_id" => '2',
+            'description' => 'Third Department',
+        ]);
         for ($x = 1; $x <= 60000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
             $end = new \DateTime('2022-12-31 23:59:59');
-            $random_department  = rand(1,3);
+            $random_department  = rand(1,5);
             $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
             $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('incidents')->insert([
