@@ -103,8 +103,16 @@ export default {
                             url="/profile_picture/person"
                             @close="this.closeModal()"
                         />
-                        <div v-for="incident in person.incidents">
-                            <div>Incident {{incident.id}}</div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <h3 class="text-lg  mt-10 font-medium leading-6 text-gray-900">This person is involved in cases:</h3>
+                            <div v-for="incident in person.incidents" class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+                                <dt class="text-sm font-medium text-gray-500">
+                                    <a class="mr-1 mb-1 text-sm rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                       :href="'/incident/'+incident.id">
+                                        Incident : {{incident.id}}
+                                    </a>
+                                </dt>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,8 +141,7 @@ export default {
                                         <label for="multi" class="block text-sm font-medium text-gray-700">Institution</label>
                                     </div>
                                     <div class="col-span-6">
-                                        <treeselect id="multi" v-model="form.selected_institutions" :multiple="true" :options="form.available_institutions" />
-                                        <treeselect-value :value="form.selected_institutions" />
+                                        <treeselect v-model="form.selected_institutions" :multiple="true" :options="form.available_institutions" />
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
