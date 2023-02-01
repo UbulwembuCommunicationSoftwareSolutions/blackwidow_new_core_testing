@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
         $genders = array();
         $genders[1] = 'Male';
         $genders[2] = 'Female';
-        for ($x = 1; $x <= 30000; $x++) {
+        for ($x = 1; $x <= 60000; $x++) {
             DB::table('people')->insert([
                 'id' => $x,
                 'profile_picture' => '',
@@ -149,7 +149,7 @@ class DatabaseSeeder extends Seeder
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
-        for ($x = 0; $x <= 30000; $x++) {
+        for ($x = 0; $x <= 60000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
             ]);
             DB::table('incident_people')->insert([
                 'person_id' => $x,
-                'incident_id' => rand(1,30000),
+                'incident_id' => rand(1,60000),
             ]);
             DB::table('institution_people')->insert([
                 'person_id' => $x,
