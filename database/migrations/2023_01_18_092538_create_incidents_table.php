@@ -45,6 +45,8 @@ return new class extends Migration
                 $table->string('saps_station', 50)->nullable();
                 $table->integer('investigation_officer_id')->default(0);
                 $table->string('unique_id')->default('');
+                $table->index(['created_at', 'description']);
+
             });
         }
 
