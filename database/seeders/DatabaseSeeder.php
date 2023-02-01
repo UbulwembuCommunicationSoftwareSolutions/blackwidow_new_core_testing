@@ -74,6 +74,10 @@ class DatabaseSeeder extends Seeder
             'id' => '2',
             'description' => 'Second institute',
         ]);
+        DB::table('institutions')->insert([
+            'id' => '3',
+            'description' => 'Second institute',
+        ]);
         DB::table('department_user')->insert([
             'id' => '1',
             'department_id' => '1',
@@ -187,6 +191,10 @@ class DatabaseSeeder extends Seeder
             DB::table('incident_people')->insert([
                 'person_id' => $x,
                 'incident_id' => rand(1,30000),
+            ]);
+            DB::table('institution_people')->insert([
+                'person_id' => $x,
+                'institution_id' => rand(1,3),
             ]);
         }
 
