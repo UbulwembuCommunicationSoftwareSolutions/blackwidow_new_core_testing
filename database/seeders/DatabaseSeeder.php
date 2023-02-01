@@ -84,67 +84,32 @@ class DatabaseSeeder extends Seeder
             'department_id' => '2',
             'user_id' => '1',
         ]);
+        $genders = array();
+        $genders[1] = 'Male';
+        $genders[2] = 'Female';
+        for ($x = 1; $x <= 30000; $x++) {
+            DB::table('people')->insert([
+                'id' => $x,
+                'profile_picture' => '',
+                'first_name' => fake()->name,
+                'surname' => fake()->lastName,
+                'maiden_name' => fake()->lastName,
+                'nickname' => fake()->name,
+                'gender' => $genders[rand(1,2)],
+                'race' => 'caucasian',
+                'marital_status' => 'single',
+                'weight' => '200',
+                'length' => '185',
+                'birth_place' => 'Gauteng',
+                'date_of_birth' => fake()->date,
+                'age' => '31',
+                'nationality' => 'ZA',
+                'language_spoken' => 'English',
+                'religion' => 'Atheist',
+                'uid' => fake()->uuid,
+            ]);
+        }
 
-        DB::table('people')->insert([
-            'id' => '1',
-            'profile_picture' => '',
-            'first_name' => 'Jacques',
-            'surname' => 'Tredoux',
-            'maiden_name' => 'Tredoux',
-            'nickname' => 'JQ',
-            'gender' => 'male',
-            'race' => 'caucasian',
-            'marital_status' => 'single',
-            'weight' => '200',
-            'length' => '185',
-            'birth_place' => 'Gauteng',
-            'date_of_birth' => '1991-07-28',
-            'age' => '31',
-            'nationality' => 'ZA',
-            'language_spoken' => 'English',
-            'religion' => 'Atheist',
-            'uid' => '12312312',
-        ]);
-        DB::table('people')->insert([
-            'id' => '2',
-            'profile_picture' => '',
-            'first_name' => 'Gerrie',
-            'surname' => 'Tredoux',
-            'maiden_name' => 'Tredoux',
-            'nickname' => 'G',
-            'gender' => 'male',
-            'race' => 'caucasian',
-            'marital_status' => 'single',
-            'weight' => '200',
-            'length' => '185',
-            'birth_place' => 'Gauteng',
-            'date_of_birth' => '1961-07-28',
-            'age' => '61',
-            'nationality' => 'ZA',
-            'language_spoken' => 'English',
-            'religion' => 'Christian',
-            'uid' => '12312313',
-        ]);
-        DB::table('people')->insert([
-            'id' => '3',
-            'profile_picture' => '',
-            'first_name' => 'Kosie',
-            'surname' => 'Tredoux',
-            'maiden_name' => 'Tredoux',
-            'nickname' => 'G',
-            'gender' => 'male',
-            'race' => 'caucasian',
-            'marital_status' => 'single',
-            'weight' => '200',
-            'length' => '185',
-            'birth_place' => 'Gauteng',
-            'date_of_birth' => '1961-07-28',
-            'age' => '61',
-            'nationality' => 'ZA',
-            'language_spoken' => 'English',
-            'religion' => 'Christian',
-            'uid' => '12312315',
-        ]);
         DB::table('institution_people')->insert([
             'id' => '1',
             'person_id' => '1',
@@ -197,8 +162,8 @@ class DatabaseSeeder extends Seeder
                 'sub_sub_category_id' => '1',
                 'priority_id' => '1',
                 'status_id' => rand(1,3),
-                'gps_lat' => DatabaseSeeder::generateRandomLat('-34','-24'),
-                'gps_lng' => DatabaseSeeder::generateRandomLng('19','30'),
+                'gps_lat' => DatabaseSeeder::generateRandomLat('-28','-24'),
+                'gps_lng' => DatabaseSeeder::generateRandomLng('27','30'),
                 'source_id' => '1',
                 'active' => '1',
                 'accepted_at' => $randomTimestamp,
@@ -219,21 +184,15 @@ class DatabaseSeeder extends Seeder
                 'investigation_officer_id' => '1',
                 'unique_id' => '1',
             ]);
+            DB::table('incident_people')->insert([
+                'person_id' => $x,
+                'incident_id' => rand(1,30000),
+            ]);
         }
 
 
-        DB::table('incident_people')->insert([
-            'person_id' => '1',
-            'incident_id' => '1',
-        ]);
-        DB::table('incident_people')->insert([
-            'person_id' => '2',
-            'incident_id' => '1',
-        ]);
-        DB::table('incident_people')->insert([
-            'person_id' => '3',
-            'incident_id' => '1',
-        ]);
+
+
 
         DB::table('user_permissions')->insert([
             'permission_object' => 'user',
