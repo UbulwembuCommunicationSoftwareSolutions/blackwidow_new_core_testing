@@ -88,7 +88,7 @@ class IncidentController extends Controller
             }
         }
 
-        $incidents = $incidents_query->paginate(50);
+        $incidents = $incidents_query->paginate(25);
         $departments = Department::all();
         return Inertia::render('Incident/Index', [
             'incidents' => $incidents,
