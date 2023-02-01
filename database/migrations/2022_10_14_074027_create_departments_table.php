@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('description')->nullable();
             $table->integer('institution_id')->nullable();
-            $table->index(['description']);
+            $table->index(['description'])->limit(50);
             $table->timestamps();
         });
     }
