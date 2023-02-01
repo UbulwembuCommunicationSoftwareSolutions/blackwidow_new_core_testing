@@ -133,34 +133,24 @@ class DatabaseSeeder extends Seeder
         }
 
         DB::table('departments')->insert([
-            'id' => '1',
             "institution_id" => '1',
             'description' => 'First Department',
         ]);
         DB::table('departments')->insert([
-            'id' => '2',
             "institution_id" => '1',
             'description' => 'Second Department',
         ]);
         DB::table('departments')->insert([
-            'id' => '3',
             "institution_id" => '2',
             'description' => 'Third Department',
         ]);
         DB::table('departments')->insert([
-            'id' => '4',
             "institution_id" => '2',
             'description' => 'Forth Department',
         ]);
         DB::table('departments')->insert([
-            'id' => '5',
             "institution_id" => '2',
             'description' => 'Fifth Department',
-        ]);
-        DB::table('departments')->insert([
-            'id' => '3',
-            "institution_id" => '2',
-            'description' => 'Third Department',
         ]);
         for ($x = 1; $x <= 60000; $x++) {
             $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
