@@ -83,7 +83,7 @@ export default {
     },
     setup(props){
         return {
-            center: { lat: parseInt(props.incident.gps_lat), lng: parseInt(props.incident.gps_lng) },
+            center: { lat: parseFloat(props.incident.gps_lat), lng: parseFloat(props.incident.gps_lng) },
             markers: [
                 {
                     position: {

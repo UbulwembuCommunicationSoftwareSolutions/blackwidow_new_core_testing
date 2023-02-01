@@ -24,7 +24,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', 'App\Http\Controllers\HomeController@showDashBoard');
+Route::get('/dashboard', 'App\Http\Controllers\HomeController@showDashBoard')->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/', 'App\Http\Controllers\AdminPanelController@index')->name('admin.panel');

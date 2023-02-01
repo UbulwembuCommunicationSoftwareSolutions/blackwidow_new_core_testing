@@ -20,7 +20,7 @@ export default {
     },
     setup(props){
         return {
-            center: { lat: parseInt(-25), lng: parseInt(28) },
+            center: { lat: parseFloat( -25.37229 ), lng: parseFloat(28.495397) },
             markers: props.markers
         }
     },

@@ -15,25 +15,24 @@ class HomeController extends Controller
 {
     public function showDashBoard()
     {
-        $my_incident_stats = array();
         $markers = array();
         $user_id = Auth::user()->id;
-
         if(Auth::user()->isAdmin()){
             $marker_incidents = Incident::where('user_id',$user_id)
-                ->take(20)
+                ->take(200)
                 ->orderBy('created_at','DESC')
                 ->get();
-            $departments_with_incidents = Department::with('incidents')
+            $departments = Department::withCount('incidents')
                 ->WhereHas('incidents', function ($query) use ($user_id)  {
                     $query->where('user_id', $user_id);
                 })->get();
+
         }else{
             $marker_incidents = Incident::where('user_id',$user_id)
                 ->take(20)
                 ->orderBy('created_at','DESC')
                 ->get();
-            $departments_with_incidents = array();
+            $departments = array();
         }
 
         foreach($marker_incidents as $incident){
@@ -57,7 +56,7 @@ class HomeController extends Controller
             ->where('status_id','3')
             ->count();
 
-        $my_incident_stats = array(
+        $incident_stats = array(
             "pending" => $incident_pending,
             "referred" => $incident_referred,
             "closed" => $incident_closed,
@@ -66,9 +65,9 @@ class HomeController extends Controller
         return Inertia::render(
             'Dashboard/Index',
             [
-                'my_incident_stats' => $my_incident_stats,
+                'incident_stats' => $incident_stats,
                 'markers' => $markers,
-                'departments_incidents' => $departments_with_incidents
+                'departments' => $departments
             ]
         );
     }
