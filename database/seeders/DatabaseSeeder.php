@@ -132,26 +132,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        DB::table('institution_people')->insert([
-            'id' => '1',
-            'person_id' => '1',
-            'institution_id' => '1',
-        ]);
-        DB::table('institution_people')->insert([
-            'id' => '2',
-            'person_id' => '2',
-            'institution_id' => '1',
-        ]);
-        DB::table('institution_people')->insert([
-            'id' => '3',
-            'person_id' => '3',
-            'institution_id' => '2',
-        ]);
-        DB::table('institution_people')->insert([
-            'id' => '4',
-            'person_id' => '2',
-            'institution_id' => '2',
-        ]);
         DB::table('departments')->insert([
             'id' => '1',
             "institution_id" => '1',
