@@ -160,6 +160,11 @@ class DatabaseSeeder extends Seeder
             'person_id' => '3',
             'institution_id' => '2',
         ]);
+        DB::table('institution_people')->insert([
+            'id' => '4',
+            'person_id' => '2',
+            'institution_id' => '2',
+        ]);
         DB::table('departments')->insert([
             'id' => '1',
             "institution_id" => '1',
@@ -180,19 +185,20 @@ class DatabaseSeeder extends Seeder
             $number = $f->format($x);
             $start = new \DateTime('2017-01-01 00:00:00');
             $end = new \DateTime('2022-12-31 23:59:59');
+            $random_department  = rand(1,3);
             $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
             $randomTimestamp->format('Y-m-d H:i:s');
             DB::table('incidents')->insert([
                 'description' => 'Testing Incident nr: '.$number,
                 'user_id' => '1',
-                'department_id' => '1',
+                'department_id' => $random_department,
                 'category_id' => '1',
                 'sub_category_id' => '1',
                 'sub_sub_category_id' => '1',
                 'priority_id' => '1',
-                'status_id' => '1',
-                'gps_lat' => '-25.747868',
-                'gps_lng' => '28.229271',
+                'status_id' => rand(1,3),
+                'gps_lat' => DatabaseSeeder::generateRandomLat('-26','-25'),
+                'gps_lng' => DatabaseSeeder::generateRandomLng('28','29'),
                 'source_id' => '1',
                 'active' => '1',
                 'accepted_at' => $randomTimestamp,
@@ -216,6 +222,18 @@ class DatabaseSeeder extends Seeder
         }
 
 
+        DB::table('incident_people')->insert([
+            'person_id' => '1',
+            'incident_id' => '1',
+        ]);
+        DB::table('incident_people')->insert([
+            'person_id' => '2',
+            'incident_id' => '1',
+        ]);
+        DB::table('incident_people')->insert([
+            'person_id' => '3',
+            'incident_id' => '1',
+        ]);
 
         DB::table('user_permissions')->insert([
             'permission_object' => 'user',
@@ -277,4 +295,15 @@ class DatabaseSeeder extends Seeder
 
 
     }
+
+     public static function generateRandomLat($latitudeMin, $latitudeMax) {
+        $latitude = mt_rand($latitudeMin * 1000000, $latitudeMax * 1000000) / 1000000;
+        return $latitude;
+    }
+    public static function generateRandomLng($longitudeMin, $longitudeMax)
+    {
+        $longitude = mt_rand($longitudeMin * 1000000, $longitudeMax * 1000000) / 1000000;
+        return $longitude;
+    }
+
 }

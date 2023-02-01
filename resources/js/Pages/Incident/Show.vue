@@ -7,7 +7,7 @@
             </h2>
         </template>
 
-        <div>
+        <div :key="this.displayPage">
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
@@ -46,8 +46,12 @@
                             </div>
                         </div>
                     </div>
-                    <Page1 :incident="this.incident" v-if="this.currentpage===1"/>
-                    <Page2 :incident="this.incident" v-if="this.currentpage===2"/>
+                    <div v-if="this.displayPage===1" id="page_1">
+                        <Page1 :incident="this.incident" />
+                    </div>
+                    <div v-if="this.displayPage===2" id="page_2">
+                        <Page2 :incident="this.incident"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,37 +72,34 @@ export default {
         AuthenticatedLayout,
         Head,
     },
-    props:{
-        incident :  Object,
-        currentpage : null
+    props: [
+        'incident'
+    ],
+    data(){
+        return {
+            displayPage : 1
+        }
     },
     setup(props){
         let incident = props.incident
-        let currentpage = props.currentpage
-
         const tabs = [
-            { name: 'Basic Information', tab: 1, current: false },
+            { name: 'Basic Information', tab: 1, current: true },
             { name: 'Persons of interest', tab: 2, current: false },
             { name: 'Case Notes', tab: 3, current: false },
             { name: 'Case Activity', tab: 4,current: false },
         ]
-        tabs.forEach((tab) => {
-            if(tab.tab == currentpage ){
-                console.log("Current tab is "+currentpage)
-                tab.current = true;
-            }
-        });
         return {
-            tabs,incident,currentpage
+            tabs,incident
         }
     },
     methods: {
         loadTab(id){
-            console.log(id);
-            let currentpage = id+1;
-            this.$inertia.reload({
-                data: {
-                    currentpage: currentpage
+            this.displayPage = (id +1);
+            this.tabs.forEach((tab) => {
+                if(tab.tab === this.displayPage ){
+                    tab.current = true;
+                }else{
+                    tab.current = false;
                 }
             });
         },

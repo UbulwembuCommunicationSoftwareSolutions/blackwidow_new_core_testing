@@ -3,7 +3,7 @@
         <div class="flex mt-4 py-6 w-1/3">
             <div class="overflow-hidden bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <GoogleMap :center="this.center" :markers="this.markers"></GoogleMap>
+                    <GoogleMap :height="'20rem'" :width="'25vw'" :zoom="10" :center="this.center" :markers="this.markers"></GoogleMap>
                 </div>
             </div>
         </div>
@@ -87,9 +87,10 @@ export default {
             markers: [
                 {
                     position: {
-                        lat: parseInt(props.incident.gps_lat),
-                        lng: parseInt(props.incident.gps_lng),
+                        lat: parseFloat(props.incident.gps_lat),
+                        lng: parseFloat(props.incident.gps_lng),
                     },
+                    text : 'Case nr : '+props.incident.id
                 },
             ],
         }

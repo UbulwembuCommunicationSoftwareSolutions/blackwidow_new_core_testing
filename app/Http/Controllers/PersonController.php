@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Incident;
 use App\Models\Institution;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,24 +17,36 @@ class PersonController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->isAdmin()){
-            $people = Person::all();
-            $people->load('institutions');
-        }else{
-            $people = array();
-            $institutions = Auth::user()->institutions;
-            foreach($institutions as $institution){
-                foreach($institution->people as $person){
-                    $people[] = $person->load('institutions');
-                }
+        $request = \Illuminate\Support\Facades\Request::all();
+        $search = false;
+        if(array_key_exists('search',$request)){
+            if(strlen($request['search'])>0){
+                $search = $request['search'];
             }
         }
-        return Inertia::render(
-            'Person/Index',
-            [
-                'people' => $people
-            ]
-        );
+        if(Auth::user()->isAdmin()){
+            $people_query = Person::query();
+        }else{
+            $people_query = Person::query();
+        }
+        $people_query->with('institutions');
+        if($search){
+            $people_query
+                ->where('people.first_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('people.id', 'LIKE', '%' . $search . '%')
+                ->orWhere('people.surname', 'LIKE', '%' . $search . '%')
+                ->orWhere('people.created_at', 'LIKE', '%' . $search . '%')
+                ->orWhereHas('institution', function ($query) use ($search)  {
+                    $query->where('description', 'like', '%'.$search.'%');
+                });
+        }
+
+        $people = $people_query->paginate(10);
+
+        return Inertia::render('Person/Index', [
+            'people' => $people,
+        ]);
+
     }
 
     /**

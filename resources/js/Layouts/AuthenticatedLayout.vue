@@ -30,8 +30,8 @@
                             </div>
                             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                                 <nav class="space-y-1 px-2">
-                                    <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
-                                        <component :is="item.icon" :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
+                                    <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.href === $page.url ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
+                                        <component :is="item.icon" :class="[$page.url === item.href ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
                                         {{ item.name }}
                                     </a>
                                 </nav>
@@ -54,10 +54,11 @@
                 </div>
                 <div class="flex flex-1 flex-col overflow-y-auto">
                     <nav class="flex-1 space-y-1 px-2 py-4">
-                        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
-                            <component :is="item.icon" :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
+                        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.href === $page.url ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
+                            <component :is="item.icon" :class="[item.href === $page.url ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
                             {{ item.name }}
                         </a>
+
                     </nav>
                 </div>
             </div>
@@ -137,7 +138,7 @@ import {
     BellIcon,
     CalendarIcon,
     ChartBarIcon,
-    FolderIcon,
+    UserCircleIcon,
     HomeIcon,
     InboxIcon,
     UsersIcon,
@@ -148,20 +149,19 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 const navigation = [
 
 
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Incidents', href: '/incident', icon: BriefcaseIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+    { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+    { name: 'Incidents', href: '/incident', icon: BriefcaseIcon},
+    { name: 'People of Interest', href: '/person', icon: UserCircleIcon},
+    { name: 'Calendar', href: '#', icon: CalendarIcon},
+    { name: 'Documents', href: '#', icon: InboxIcon},
+    { name: 'Reports', href: '#', icon: ChartBarIcon},
 ]
 const userNavigation = [
-
-
-    { name: 'Your Profile', icon: UsersIcon, href: '#' },
     { name: 'Admin Panel', href: '/admin' },
     { name: 'Sign out', href: '#' },
 ]
 
 const sidebarOpen = ref(false)
+
+
 </script>

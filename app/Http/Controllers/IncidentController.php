@@ -28,15 +28,22 @@ class IncidentController extends Controller
         }else{
             $incidents_query = Incident::query();
         }
-        if($search){
-            $incidents_query
-                ->where('description', 'LIKE', '%' . $search . '%')
-                ->orWhere('id', 'LIKE', '%' . $search . '%')
-                ->orWhere('created_at', 'LIKE', '%' . $search . '%');
-        }
-
         $incidents_query->with('department');
         $incidents_query->with('user');
+        if($search){
+            $incidents_query
+                ->where('incidents.description', 'LIKE', '%' . $search . '%')
+                ->orWhere('incidents.id', 'LIKE', '%' . $search . '%')
+                ->orWhere('incidents.created_at', 'LIKE', '%' . $search . '%')
+                ->orWhereHas('user', function ($query) use ($search)  {
+                    $query->where('first_name', 'like', '%'.$search.'%');
+                })->orWhereHas('user', function ($query) use ($search)  {
+                    $query->where('surname', 'like', '%'.$search.'%');
+                })->orWhereHas('department', function ($query) use ($search)  {
+                    $query->where('description', 'like', '%'.$search.'%');
+                });
+        }
+
         $incidents = $incidents_query->paginate(10);
 
         return Inertia::render('Incident/Index', [
@@ -93,14 +100,15 @@ class IncidentController extends Controller
         $request = Request::all();
         $incident->load('user');
         $incident->load('department');
-        if(array_key_exists('current_tab',$request)){
-            $currentpage = $request['current_tab'];
+        $incident->load('people');
+        if(array_key_exists('current_page',$request)){
+            $current_page = $request['current_page'];
         }else{
-            $currentpage = 1;
+            $current_page = 1;
         }
         return Inertia::render('Incident/Show', [
             'incident' => $incident,
-            'currentpage' => $currentpage
+            'current_page' => $current_page
         ]);
     }
 

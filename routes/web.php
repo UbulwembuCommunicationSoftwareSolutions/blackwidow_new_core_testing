@@ -24,9 +24,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', 'App\Http\Controllers\HomeController@showDashBoard');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/', 'App\Http\Controllers\AdminPanelController@index')->name('admin.panel');

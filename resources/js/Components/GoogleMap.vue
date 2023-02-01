@@ -1,18 +1,20 @@
 <template>
     <GMapMap
         :center="center"
-        :zoom="10"
+        :zoom="zoom"
         map-type-id="terrain"
-        style="width: 25vw; height: 20rem"
+        :style="'width: '+width+'; height: '+height"
     >
-        <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
-                    @click="openMarker(m.id)" >
+        <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false"
+                    @click="openMarker(index)" >
             <GMapInfoWindow
                 :closeclick="true"
                 @closeclick="openMarker(null)"
-                :opened="openedMarkerID === m.id"
+                :opened="openedMarkerID === index"
             >
-                <div>I am in info window {{ m.id }} </div>
+                <div>
+                    <a :href="m.href">{{m.text}}</a>
+                </div>
             </GMapInfoWindow>
         </GMapMarker>
     </GMapMap>
@@ -20,7 +22,7 @@
 
 <script>
 export default {
-    props : ['center','markers'],
+    props : ['center','markers','zoom','width','height'],
     setup(props){
 
     },

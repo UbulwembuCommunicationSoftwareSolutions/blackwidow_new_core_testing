@@ -1,13 +1,39 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
+import Pagination from '@/Components/Pagination.vue'
+import {Inertia} from "@inertiajs/inertia";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Loading from "@/Components/Loading.vue";
+
 export default {
+    props: [ 'people' ],
     components: {
+        PrimaryButton,
         AuthenticatedLayout,
         Head,
+        Pagination,
+        Loading
     },
-    props:{
-        people :  Object
+    data(){
+        return {
+            search: '',
+            selectedFilter: 'all',
+            sortBy: null,
+            sortDesc: false,
+            loading : false
+        }
+    },
+    methods: {
+        searchTable(){
+            this.$inertia.reload({
+                data: {
+                    search: this.search
+                }
+            });
+        }
+    },
+    mounted(){
     }
 }
 </script>
@@ -20,8 +46,8 @@ export default {
                 People
             </h2>
         </template>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
+        <div>
+            <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="sm:flex sm:items-center">
@@ -37,55 +63,84 @@ export default {
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                        <table class="min-w-full mt-4 mb-4 divide-y divide-gray-300">
-                                            <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Institute</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Role</th>
-                                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                                    <span class="sr-only">Edit</span>
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="divide-y divide-gray-200 bg-white">
-                                            <tr v-for="(person,index) in people">
-                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                                                    <div class="flex items-center">
-                                                        <div class="h-10 w-10 flex-shrink-0">
-                                                            <img class="h-10 w-10 rounded-full" :src="'/person_files/'+person.profile_picture" alt="">
+                                        <div>
+                                            <div class="ml-5 mt-5">
+                                                <label for="text" class="block text-sm font-medium text-gray-700">Search</label>
+                                                <div class="mt-1">
+                                                    <input type="text" name="text" id="text" v-model="search" @input="this.searchTable" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
+                                                </div>
+                                            </div>
+                                            <Loading v-if="this.loading"/>
+                                            <div class="px-4 sm:px-6 lg:px-8">
+                                                <div class="mt-8 flex flex-col">
+                                                    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                                            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                                                <table class="min-w-full divide-y divide-gray-300">
+                                                                    <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Surname</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Institution</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date Added</th>
+                                                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                                                            <span class="sr-only">Edit</span>
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody class="bg-white">
+                                                                    <tr v-for="(person,person_id) in people.data" :key="person.id" :class="person_id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                                            <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                               :href="'/person/'+person.id">
+                                                                                {{person.id}}
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                                            <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                               :href="'/person/'+person.id">
+                                                                                {{person.first_name}}
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                                            <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                               :href="'/person/'+person.id">
+                                                                                {{person.surname}}
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                                            <div v-for="(institution,institution_id) in person.institutions" :index="institution_id">
+                                                                                <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                                   :href="'/institution/'+institution_id">
+                                                                                    {{institution.description}}
+                                                                                </a>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                                            <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                               :href="'/person/'+person.id">
+                                                                                {{ person.created_at }}
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                                            <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                                                                            >Edit<span class="sr-only">
+                                                                                 <a class="focus:border-indigo-500 focus:text-blue-500"
+                                                                                    :href="'/person/'+person.id">
+                                                                            </a>
+                                                                            </span></a
+                                                                            >
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
-                                                        <div class="ml-4">
-                                                            <div class="font-medium text-gray-900">{{person.first_name}}</div>
-                                                            <div class="text-gray-500">{{person.surname}}</div>
-                                                        </div>
                                                     </div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div v-for="(institution,index) in person.institutions" class="text-gray-900">
-                                                        {{institution.description.replace(/_/g," ").toUpperCase()}}
-                                                    </div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div class="font-medium text-gray-900">{{person.nationality}}</div>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <div class="text-gray-900">
-                                                        {{person.uid}}
-                                                    </div>
-                                                </td>
-                                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                    <a v-if="$page.props.auth.permissions.includes('person_edit')" :href="'/person/'+person.id+'/edit'" class="text-indigo-600 hover:text-indigo-900">
-                                                        Edit<span class="sr-only">
-                                                    </span></a>
-                                                </td>
-
-                                            </tr>
-
-                                            <!-- More people... -->
-                                            </tbody>
-                                        </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
