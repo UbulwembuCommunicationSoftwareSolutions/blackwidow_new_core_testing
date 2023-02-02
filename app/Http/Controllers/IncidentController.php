@@ -54,6 +54,7 @@ class IncidentController extends Controller
             $incidents_query = Incident::query();
         }else{
             $incidents_query = Incident::query();
+            $incidents_query->where('user_id',\Auth::user()->id)
         }
 
         $incidents_query->with('department');

@@ -32,7 +32,10 @@ class HomeController extends Controller
                 ->take(20)
                 ->orderBy('created_at','DESC')
                 ->get();
-            $departments = array();
+            $departments = Department::withCount('incidents')
+                ->WhereHas('incidents', function ($query) use ($user_id)  {
+                    $query->where('user_id', $user_id);
+                })->get();
         }
 
         foreach($marker_incidents as $incident){
