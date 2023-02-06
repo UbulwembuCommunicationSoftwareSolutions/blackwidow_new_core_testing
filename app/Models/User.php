@@ -16,6 +16,8 @@ class User extends Authenticatable implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $auditInclude = ['departments'];
+
     public function roles()
     {
         return $this->belongsToMany(UserRole::class, 'user_role_user');
