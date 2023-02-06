@@ -16,7 +16,31 @@ class User extends Authenticatable implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $auditInclude = ['departments'];
+    protected $auditInclude = [
+        'departments',
+        'name',
+        'email',
+        'password',
+        'institution_id',
+        'id',
+        'user_id',
+        'profile_picture',
+        'first_name',
+        'surname',
+        'maiden_name',
+        'nickname',
+        'gender',
+        'race',
+        'marital_status',
+        'weight',
+        'length',
+        'birth_place',
+        'date_of_birth',
+        'age',
+        'nationality',
+        'language_spoken',
+        'religion',
+        'uid',];
 
     public function roles()
     {
