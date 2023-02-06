@@ -118,20 +118,23 @@ class PersonController extends Controller
         foreach($person->institutions as $institution) {
             $person_institutions[] = $institution->id;
         }
+        $permissions = Auth::user()->getPermissions();
+
         if((Auth::user()->isAdmin())){
             return Inertia::render('Person/Edit', [
                 'available_institutions' => $available_institutions,
                 'person_institutions' => $person_institutions,
                 'person' => $person,
+                "permissions" => $permissions,
                 'status' => session('status'),
             ]);
         }else{
-            $permissions = Auth::user()->getPermissions();
             if (in_array("person_view", $permissions)) {
                 return Inertia::render('Person/Edit', [
                     'available_institutions' => $available_institutions,
                     'person_institutions' => $person_institutions,
                     'person' => $person,
+                    "permissions" => $permissions,
                     'status' => session('status'),
                 ]);
             }else{
