@@ -64,7 +64,12 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        $user->departments()->sync($data['selected_departments']);
+        //$user->departments()->sync($data['selected_departments']);
+        foreach($user->departments as $department ){
+            $user->detach($department->id);
+        }
+        $user->departments()->attach($data['selected_departments']);
+
         $user->update($data['user']);
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
