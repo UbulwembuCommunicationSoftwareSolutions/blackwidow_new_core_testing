@@ -10,7 +10,11 @@ class Department extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasFactory;
-
+    protected $auditInclude = [
+        'departments',
+        'institution_id',
+        'description'
+    ];
     protected $fillable = [
         'institution_id',
         'description'
