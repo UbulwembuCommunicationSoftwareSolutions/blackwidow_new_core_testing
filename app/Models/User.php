@@ -62,7 +62,6 @@ class User extends Authenticatable implements Auditable
         $originalIds = $this->$relation->pluck('id')->toArray();
 
         // perform the sync operation
-        $this->$relation()->sync($ids);
 
         // get the added and removed IDs
         $addedIds = array_diff($ids, $originalIds);
