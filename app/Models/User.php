@@ -9,12 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements AuditableContract
+class User extends Authenticatable implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $auditInclude = ['departments'];
