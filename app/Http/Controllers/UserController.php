@@ -64,7 +64,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user ){
         $data = $request->all();
-        $user->departments()->auditSync($data['selected_departments']);
+        $user->auditSync('departments',$data['selected_departments']);
         $user->update($data['user']);
         $user->save();
         $request->session()->flash('status', 'User updated successfully!');
