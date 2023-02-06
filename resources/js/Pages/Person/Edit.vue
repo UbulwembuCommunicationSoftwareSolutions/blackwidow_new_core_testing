@@ -17,7 +17,8 @@ export default {
     props:{
         person :  Object,
         available_institutions : Array,
-        person_institutions : Array
+        person_institutions : Array,
+        permissions : Array,
     },
     setup(props){
         const form = useForm({
@@ -25,8 +26,9 @@ export default {
             selected_institutions : props.person_institutions,
             available_institutions : props.available_institutions,
         });
+        let permissions = props.permissions;
         return {
-            form
+            form,permissions
         }
     },
     data(){
@@ -97,12 +99,14 @@ export default {
                             </svg>
                             Update Profile Picture
                         </button>
-                        <ProfilePictureModal
-                            v-if="this.isModalVisible"
-                            :object="this.form.person.id"
-                            url="/profile_picture/person"
-                            @close="this.closeModal()"
-                        />
+                        <div v-if="permissions.includes('person_edit')">
+                            <ProfilePictureModal
+                                v-if="this.isModalVisible"
+                                :object="this.form.person.id"
+                                url="/profile_picture/person"
+                                @close="this.closeModal()"
+                            />
+                        </div>
                         <div v-for="incident in person.incidents">
                             <div>Incident {{incident.id}}</div>
                         </div>
@@ -230,8 +234,7 @@ export default {
                                 </div>
                             </div>
                         </div>
-
-                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                            <div v-if="permissions.includes('person_edit')">class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                                 <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
                             </div>
                     </form>
