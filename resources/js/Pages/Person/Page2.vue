@@ -9,7 +9,7 @@ import {PaperClipIcon} from "@heroicons/vue/20/solid";
 
 export default {
     name: "Page2",
-    props : ['incident'],
+    props : ['person'],
     components: {
         PaperClipIcon
     },
