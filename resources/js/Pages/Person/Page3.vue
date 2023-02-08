@@ -142,7 +142,7 @@ export default {
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
         let begin = 0
-        const xAxisLength = 1000;
+        const xAxisLength = 2000;
         const numObjects = Object.keys(this.incidents).length;
         const interval = xAxisLength / (numObjects - 1);
 
@@ -154,6 +154,8 @@ export default {
 
 
         this.incidents.forEach((incident) => {
+            const xAxisLength = 500;
+
             const numObjects = Object.keys(incident.people).length;
             const interval = xAxisLength / (numObjects - 1);
             incident.people.map((person, index) => {
