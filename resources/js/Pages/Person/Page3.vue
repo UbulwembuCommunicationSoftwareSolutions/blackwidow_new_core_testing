@@ -95,7 +95,6 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
-                                                                    :layouts = "this.layouts"
                                                                 />
 
                                                             </div>
@@ -119,7 +118,7 @@
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 import NetworkDiagram from "@/Components/NetworkDiagram.vue";
-import Layouts from "v-network-graph";
+
 export default {
     name: "Page3",
     props : ['person','incidents'],
@@ -128,26 +127,36 @@ export default {
         PaperClipIcon
     },
     setup(props){
-        const layouts = Layouts = reactive({
-            nodes: {},
-        })
-
         return {
             incidents : props.incidents,
-            person :props.person,
-            layouts
+            person :props.person
         }
     },
     data(){
+
         let nodes = {};
         let edges = {};
         let person = this.person;
-
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
         });
+        const nodeCount = nodes.length;
+        const radius = 50;
+
+        const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
+            const angle = (2 * Math.PI * i) / nodeCount;
+            return {
+                x: radius * Math.cos(angle),
+                y: radius * Math.sin(angle),
+            };
+        });
+
+        nodeArray[0].x = 0;
+        nodeArray[0].y = 0;
+
+        console.log(nodeArray);
 
         return {
             edges,nodes,person
