@@ -88,6 +88,9 @@ export default {
     components: {
         PaperClipIcon
     },
+    mounted(){
+        console.log(this.incidents)
+    }
 
 }
 </script>
