@@ -33,7 +33,7 @@ export default {
         let available_institutions = props.available_institutions;
         let person_institutions = props.person_institutions;
         let permissions = props.permissions;
-        let incidents = props.incident;
+        let incidents = props.incidents;
         return {
             permissions,tabs,person,available_institutions,person_institutions,incidents
         }
