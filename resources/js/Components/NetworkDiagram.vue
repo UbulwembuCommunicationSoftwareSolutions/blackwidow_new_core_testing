@@ -1,8 +1,6 @@
 
 
 <script setup lang="ts">
-import VNetworkGraph from "v-network-graph"
-import "v-network-graph/lib/style.css"
 
 const nodes = {
     node1: { name: "Node 1" },
