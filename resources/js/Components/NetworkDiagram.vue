@@ -35,7 +35,7 @@ export default {
                             .forceSimulation(nodes)
                             .force("edge", forceLink.distance(1000))
                             .force("charge", d3.forceManyBody())
-                            .force("collide", d3.forceCollide(500).strength(0.2))
+                            .force("collide", d3.forceCollide(1500).strength(0.2))
                             .force("center", d3.forceCenter().strength(0.05))
                             .alphaMin(0.001)
                         }
