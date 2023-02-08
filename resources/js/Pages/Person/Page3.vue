@@ -134,26 +134,30 @@ export default {
     },
     data(){
         let loading = false;
-        let nodes = {};
+        let temp_nodes = {};
         let edges = {};
 
-        nodes[`person${this.person.id}`] = {
+        temp_nodes[`person${this.person.id}`] = {
             name: 'Person :'+this.person.id,
             fixed : true
         };
 
         this.incidents.map((incident, index) => {
-            nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
+            temp_nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${this.person.id}` }
         });
 
 
         this.incidents.forEach((incident) => {
             incident.people.forEach((person) => {
-                nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
+                temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
                 edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
             });
         });
+
+        let nodes = {
+            nodes: temp_nodes
+        }
 
         return {
             edges,nodes,loading
