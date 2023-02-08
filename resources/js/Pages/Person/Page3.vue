@@ -176,6 +176,7 @@ export default {
         let layouts = {
             nodes : layoutNodes
         }
+        console.log(layoutNodes);
         return {
             edges,nodes,person,layouts
         }
