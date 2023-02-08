@@ -142,8 +142,22 @@ export default {
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layoutNodes[`incident${incident.id}`] = { x: 0, y: 0 };
         });
+        let nodeCount = Object.keys(nodes).length;
+        const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
+            const angle = (2 * Math.PI * i) / nodeCount;
+            return {
+                x: radius * Math.cos(angle),
+                y: radius * Math.sin(angle),
+            };
+        });
+        nodeArray[0].x = 0;
+        nodeArray[0].y = 0;
+
+        this.incidents.map((incident, index) => {
+            layoutNodes[`incident${incident.id}`] = { x: nodeArray[index].x, y: nodeArray[index].x };
+        });
+
         let layouts = {
             nodes : layoutNodes
         }
