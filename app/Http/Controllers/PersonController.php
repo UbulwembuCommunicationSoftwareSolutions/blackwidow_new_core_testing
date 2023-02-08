@@ -109,6 +109,7 @@ class PersonController extends Controller
         $incidents = $person->incidents;
         $incidents->withCount('people');
         $incidents->load('user');
+        dd($incidents);
         $institutions = Institution::get();
         $person_institutions = array();
         $available_institutions = array();
