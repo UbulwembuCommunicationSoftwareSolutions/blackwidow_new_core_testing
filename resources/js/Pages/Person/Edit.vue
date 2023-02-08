@@ -127,6 +127,9 @@ export default {
                     <div v-if="this.displayPage===2" id="page_2">
                         <Page2
                         :person="this.person"
+                        :available_institutions="this.available_institutions"
+                        :person_institutions="this.person_institutions"
+                        :permissions="this.permissions"
                         />
                     </div>
                 </div>
