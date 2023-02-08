@@ -136,22 +136,23 @@ export default {
     data(){
         let nodes = {};
         let edges = {};
-        let layouts = {};
+        let layoutNodes = {};
         let person = this.person;
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            // layouts['nodes'][`incident${incident.id}`] = { x: 0, y: 0 };
+            layoutNodes[`incident${incident.id}`] = { x: 0, y: 0 };
         });
-        console.log(nodes);
+        let layouts = {
+            nodes : layoutNodes
+        }
         return {
             edges,nodes,person,layouts
         }
 
     },
     mounted(){
-        console.log(this.incidents)
     }
 
 }
