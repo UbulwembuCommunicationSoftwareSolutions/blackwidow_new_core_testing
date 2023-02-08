@@ -17,7 +17,7 @@ export default {
     },
     props:{
         person :  Object,
-        incident : Object,
+        incidents : Object,
         available_institutions : Array,
         person_institutions : Array,
         permissions : Array,
@@ -137,7 +137,7 @@ export default {
                     <div v-if="this.displayPage===3" id="page_3">
                         <Page3
                             :person="this.person"
-                            :incidents="this.incident"
+                            :incidents="this.incidents"
                         />
                     </div>
                 </div>
