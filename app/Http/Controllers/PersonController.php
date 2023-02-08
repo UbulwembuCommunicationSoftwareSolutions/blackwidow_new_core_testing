@@ -109,6 +109,7 @@ class PersonController extends Controller
         $incident_ids = $person->incidents()->pluck('incidents.id')->toArray();
         $incidents = Incident::whereIn('incidents.id',$incident_ids)
             ->with('user')
+            ->with('department')
             ->get();
         $institutions = Institution::get();
         $person_institutions = array();
