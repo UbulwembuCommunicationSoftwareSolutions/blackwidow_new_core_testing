@@ -157,9 +157,7 @@ export default {
             });
         });
 
-        let nodes = {
-            nodes: temp_nodes
-        }
+        let nodes = temp_nodes;
 
         return {
             edges,nodes,loading

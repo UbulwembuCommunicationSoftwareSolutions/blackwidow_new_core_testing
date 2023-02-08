@@ -33,9 +33,16 @@ export default {
                 },
                 node: {
                     label: {
-                        visible: false,
+                        visible: true,
+                        fontFamily: undefined,
+                        fontSize: 11,
+                        lineHeight: 1.1,
+                        color: "#000000",
+                        margin: 4,
+                        direction: "south",
+                        text: "name",
                     },
-                },
+                }
             })
         )
         return {
