@@ -157,7 +157,7 @@ export default {
         nodeArray[0].y = 0;
 
         this.incidents.map((incident, index) => {
-            layoutNodes[`incident${incident.id}`] = { x: nodeArray[index].x, y: nodeArray[index].y };
+            layoutNodes[`incident${incident.id}`] = { x: nodeArray[index+1].x, y: nodeArray[index+1].y };
         });
 
         layoutNodes[`person${person.id}`] = { x: nodeArray[0].x, y: nodeArray[0].y };
