@@ -115,7 +115,7 @@ export default {
                         />
                     </div>
                     <div v-if="this.current_page===2" id="page_2">
-                        <Page2 :person="this.person"/>
+                        <Page2/>
                     </div>
                 </div>
             </div>
