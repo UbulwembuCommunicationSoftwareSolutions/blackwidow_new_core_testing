@@ -95,6 +95,7 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
+                                                                    :layouts = "this.layouts"
                                                                 />
 
                                                             </div>
@@ -127,15 +128,21 @@ export default {
         PaperClipIcon
     },
     setup(props){
+        const layouts: Layouts = reactive({
+            nodes: {},
+        })
+
         return {
             incidents : props.incidents,
-            person :props.person
+            person :props.person,
+            layouts
         }
     },
     data(){
         let nodes = {};
         let edges = {};
         let person = this.person;
+
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };

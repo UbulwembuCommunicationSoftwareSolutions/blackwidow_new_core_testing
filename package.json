@@ -23,6 +23,7 @@
         "@fawmi/vue-google-maps": "^0.9.79",
         "@headlessui/vue": "^1.7.7",
         "@heroicons/vue": "^2.0.13",
+        "dagre": "^0.8.5",
         "datatables.net-dt": "^1.13.1",
         "datatables.net-vue3": "^2.0.0",
         "laravel-vue-pagination": "^4.0.0",
