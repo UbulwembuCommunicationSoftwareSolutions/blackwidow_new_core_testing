@@ -146,7 +146,7 @@ export default {
             begin = begin-50;
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layoutNodes[`incident${incident.id}`] = { x: 0, y: begin };
+            layoutNodes[`incident${incident.id}`] = { x: begin, y: begin };
 
         });
 
