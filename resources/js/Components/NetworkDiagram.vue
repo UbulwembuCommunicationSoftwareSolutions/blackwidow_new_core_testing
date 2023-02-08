@@ -23,7 +23,7 @@ export default {
                           const forceLink = d3.forceLink<ForceNodeDatum, ForceEdgeDatum>(edges).id(d => d.id)
                           return d3
                             .forceSimulation(nodes)
-                            .force("edge", forceLink.distance(50))
+                            .force("edge", forceLink.distance(400))
                             .force("charge", d3.forceManyBody())
                             .force("collide", d3.forceCollide(50).strength(0.2))
                             .force("center", d3.forceCenter().strength(0.05))
