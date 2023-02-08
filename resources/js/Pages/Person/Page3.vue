@@ -156,22 +156,8 @@ export default {
         nodeArray[0].x = 0;
         nodeArray[0].y = 0;
 
-        this.incidents.map((incident, index) => {
-            layoutNodes[`incident${incident.id}`] = { x: nodeArray[index+1].x, y: nodeArray[index+1].y };
-        });
-
         layoutNodes[`person${person.id}`] = { x: nodeArray[0].x, y: nodeArray[0].y };
 
-        this.incidents.forEach((incident) => {
-            incident.people.forEach((person) => {
-                nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
-                edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
-                layoutNodes[`person${person.id}`] = {
-                    x: layoutNodes[`incident${incident.id}`].x * 1.5,
-                    y: layoutNodes[`incident${incident.id}`].y * 1.5
-                };
-            });
-        });
 
         let layouts = {
             nodes : layoutNodes
