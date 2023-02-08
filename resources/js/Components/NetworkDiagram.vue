@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 import * as vNG from "v-network-graph"
-import data from "./data"
 
 // dagre: Directed graph layout for JavaScript
 // https://github.com/dagrejs/dagre
