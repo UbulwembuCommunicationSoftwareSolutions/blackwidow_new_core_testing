@@ -138,11 +138,13 @@ export default {
         let edges = {};
         let layoutNodes = {};
         let person = this.person;
+
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
         });
+        let radius = 50;
         let nodeCount = Object.keys(nodes).length;
         const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
             const angle = (2 * Math.PI * i) / nodeCount;
