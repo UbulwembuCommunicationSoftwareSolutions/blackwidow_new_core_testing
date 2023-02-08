@@ -14,7 +14,7 @@
                         </svg>
                         Update Profile Picture
                     </button>
-                    <div v-if="this.permissions.includes('person_edit')">
+                    <div v-if="permissions.includes('person_edit')">
                         <ProfilePictureModal
                             v-if="this.isModalVisible"
                             :object="this.form.person.id"
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="this.permissions.includes('person_edit')" class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                    <div v-if="permissions.includes('person_edit')" class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                         <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
                     </div>
                 </form>
@@ -174,7 +174,7 @@ import 'vue3-treeselect/dist/vue3-treeselect.css'
 
 export default {
     name: "Page1",
-    props : ['person','permissions'],
+    props : ['person','permissions','person_institutions','available_institutions'],
     components: {
         PaperClipIcon,ProfilePictureModal,Treeselect,
 
@@ -185,9 +185,8 @@ export default {
             selected_institutions : props.person_institutions,
             available_institutions : props.available_institutions,
         });
-        let permissions = props.permissions;
         return {
-            form,permissions
+            form
         }
     },
     data(){
