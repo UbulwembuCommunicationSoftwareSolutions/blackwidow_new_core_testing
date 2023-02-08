@@ -126,25 +126,19 @@ class PersonController extends Controller
         }
         $permissions = Auth::user()->getPermissions();
 
+        $data = [
+            'available_institutions' => $available_institutions,
+            'person_institutions' => $person_institutions,
+            'person' => $person,
+            'incidents' => $incidents,
+            "permissions" => $permissions,
+            'status' => session('status')
+        ];
         if((Auth::user()->isAdmin())){
-            return Inertia::render('Person/Edit', [
-                'available_institutions' => $available_institutions,
-                'person_institutions' => $person_institutions,
-                'person' => $person,
-                'incidents' => $incidents,
-                "permissions" => $permissions,
-                'status' => session('status'),
-            ]);
+            return Inertia::render('Person/Edit', $data);
         }else{
             if (in_array("person_view", $permissions)) {
-                return Inertia::render('Person/Edit', [
-                    'available_institutions' => $available_institutions,
-                    'person_institutions' => $person_institutions,
-                    'person' => $person,
-                    'incidents' => $incidents,
-                    "permissions" => $permissions,
-                    'status' => session('status'),
-                ]);
+                return Inertia::render('Person/Edit', $data);
             }else{
                 return Inertia::render('Unauthorised', [
                     'status' => session('status'),
