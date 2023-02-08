@@ -2,18 +2,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
-import Treeselect from 'vue3-treeselect'
 // import the styles
-import 'vue3-treeselect/dist/vue3-treeselect.css'
-import ProfilePictureModal  from "@/Components/ProfilePictureModal.vue";
 import Page1 from  "@/Pages/Person/Page1.vue";
 import Page2 from  "@/Pages/Person/Page1.vue";
 export default {
     components: {
         AuthenticatedLayout,
         Head,
-        Treeselect,
-        ProfilePictureModal,
         Page1,
         Page2,
     },

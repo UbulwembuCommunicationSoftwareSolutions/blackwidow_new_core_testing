@@ -167,11 +167,17 @@
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 import {useForm} from "@inertiajs/inertia-vue3";
+import ProfilePictureModal from "@/Components/ProfilePictureModal.vue";
+import Treeselect from 'vue3-treeselect'
+
+import 'vue3-treeselect/dist/vue3-treeselect.css'
+
 export default {
     name: "Page1",
     props : ['person'],
     components: {
-        PaperClipIcon
+        PaperClipIcon,ProfilePictureModal,Treeselect,
+
     },
     setup(props){
         const form = useForm({
