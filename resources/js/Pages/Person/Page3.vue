@@ -142,7 +142,7 @@ export default {
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layouts['nodes'][`incident${incident.id}`] = { x: 0, y: 0 };
+            // layouts['nodes'][`incident${incident.id}`] = { x: 0, y: 0 };
         });
         console.log(nodes);
         return {
