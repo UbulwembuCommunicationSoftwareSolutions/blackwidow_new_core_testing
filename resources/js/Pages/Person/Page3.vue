@@ -92,7 +92,11 @@
                                                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                                             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                                                <NetworkDiagram></NetworkDiagram>
+                                                                <NetworkDiagram
+                                                                    :nodes = "this.nodes"
+                                                                    :edges = "this.edges"
+                                                                />
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,8 +128,25 @@ export default {
     },
     setup(props){
         return {
-            incidents : props.incidents
+            incidents : props.incidents,
+            person :props.person
         }
+    },
+    data(){
+        let nodes = {};
+        let edges = {};
+        let person = this.person;
+        nodes[`person${person.id}`] = { name: person.id };
+        this.incidents.forEach((incident) => {
+            nodes[`incident${incident.id}`] = { name: incident.id };
+            let edge = { source: `incident${incident.id}` , target: `person${person.id}` }
+            edges.push(edge);
+        });
+
+        return {
+            edges,nodes,person
+        }
+
     },
     mounted(){
         console.log(this.incidents)
