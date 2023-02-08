@@ -143,13 +143,22 @@ export default {
         layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
         let begin = 0
         this.incidents.forEach((incident) => {
-            begin = begin-50;
+            begin = begin-100;
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layoutNodes[`incident${incident.id}`] = { x: begin, y: begin };
+            layoutNodes[`incident${incident.id}`] = { x: begin, y: -200 };
 
         });
-
+        this.incidents.forEach((incident) => {
+            incident.people.forEach((person) => {
+                nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
+                edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
+                layoutNodes[`person${person.id}`] = {
+                    x: (layoutNodes[`incident${incident.id}`].x-Math.floor(Math.random() * (500 - 50 + 1) + 50)),
+                    y: -400
+                };
+            });
+        });
 
 
         let layouts = {
