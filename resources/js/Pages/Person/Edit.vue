@@ -5,6 +5,8 @@ import { useForm } from "@inertiajs/inertia-vue3";
 // import the styles
 import Page1 from  "@/Pages/Person/Page1.vue";
 import Page2 from  "@/Pages/Person/Page2.vue";
+import Page3 from  "@/Pages/Person/Page3.vue";
+
 export default {
     components: {
         AuthenticatedLayout,
@@ -129,8 +131,13 @@ export default {
                         :person="this.person"
                         />
                     </div>
+                    <div v-if="this.displayPage===3" id="page_3">
+                        <Page3
+                            :person="this.person"
+                        />
+                    </div>
                 </div>
             </div>
-        </div>>
+        </div>
     </AuthenticatedLayout>
 </template>
