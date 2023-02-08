@@ -136,9 +136,9 @@ export default {
         let nodes = {};
         let edges = {};
         let person = this.person;
-        nodes[`person${person.id}`] = { name: person.id };
+        nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
-            nodes[`incident${incident.id}`] = { name: incident.id };
+            nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
         });
 
