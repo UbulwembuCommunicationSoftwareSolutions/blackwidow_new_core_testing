@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex py-4 px-4 mt-4 flex-row flex-grow">
         <div class="flex px-4 mb-4 flex-row flex-grow">
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
