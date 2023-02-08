@@ -174,7 +174,7 @@ import 'vue3-treeselect/dist/vue3-treeselect.css'
 
 export default {
     name: "Page1",
-    props : ['person'],
+    props : ['person','permissions'],
     components: {
         PaperClipIcon,ProfilePictureModal,Treeselect,
 
