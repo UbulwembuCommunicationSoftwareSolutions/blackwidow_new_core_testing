@@ -63,3 +63,11 @@ export default {
         :configs="configs"
     />
 </template>
+<style>
+.v-ng-canvas {
+    width: 800px;
+    height: 400px;
+    border: 1px solid #000;
+}
+</style>
+
