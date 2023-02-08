@@ -110,6 +110,7 @@ class PersonController extends Controller
         $incidents = Incident::whereIn('incidents.id',$incident_ids)
             ->with('user')
             ->with('department')
+            ->with('people')
             ->get();
         $institutions = Institution::get();
         $person_institutions = array();

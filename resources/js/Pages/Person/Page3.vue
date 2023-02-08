@@ -162,6 +162,11 @@ export default {
 
         layoutNodes[`person${person.id}`] = { x: nodeArray[0].x, y: nodeArray[0].y };
 
+        this.incidents.people.forEach((person) => {
+            nodes[`person${person.id}`] = { name: 'Person: '+person.id };
+            edges[`person${person.id}`] = { source: `incident${person.incident.id}` , target: `person${person.id}` }
+            layoutNodes[`person${person.id}`] = { x: layoutNodes[`incident${person.incident.id}`].x*1.5, y: layoutNodes[`incident${person.incident.id}`].y*1.5 };
+        });
 
         let layouts = {
             nodes : layoutNodes
