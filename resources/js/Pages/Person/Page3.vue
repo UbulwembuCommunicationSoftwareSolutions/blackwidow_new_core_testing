@@ -142,7 +142,7 @@ export default {
 
 
         temp_nodes[`person${this.person.id}`] = {
-            name: 'Person :'+ ' '+this.person.first_name+ '' + this.person.surname,
+            name: 'Person: '+ +this.person.id+' \n '+this.person.first_name+ '' + this.person.surname,
         };
         layoutNodes[`person${this.person.id}`] = {
             x: 0,
