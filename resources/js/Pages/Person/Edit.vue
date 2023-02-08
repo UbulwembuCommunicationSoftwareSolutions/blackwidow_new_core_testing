@@ -73,7 +73,7 @@ export default {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div v-if="this.displayPage===1" id="page_1">
+                <div v-if="this.current_page===1" id="page_1">
                     <Page1
                         :person="this.person"
                         :available_institutions="this.available_institutions"
@@ -81,14 +81,10 @@ export default {
                         :permissions="this.permissions"
                     />
                 </div>
-                <div v-if="this.displayPage===2" id="page_2">
+                <div v-if="this.current_page===2" id="page_2">
                     <Page2 :person="this.person"/>
                 </div>
             </div>
-
-
-
-
         </div>
         </div>
 
