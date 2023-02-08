@@ -24,21 +24,20 @@ export default {
         permissions : Array,
     },
     setup(props){
-        const form = useForm({
-            person : props.person,
-            selected_institutions : props.person_institutions,
-            available_institutions : props.available_institutions,
-        });
+        const tabs = [
+            { name: 'Basic Information', tab: 1, current: true },
+            { name: 'Persons of interest', tab: 2, current: false },
+            { name: 'Case Notes', tab: 3, current: false },
+            { name: 'Case Activity', tab: 4,current: false },
+        ]
         let permissions = props.permissions;
         return {
-            form,permissions
+            permissions,tabs
         }
     },
     data(){
         return {
             current_page : 1,
-            isModalVisible: false,
-            selected: null,
         }
     },
     mounted(){
@@ -70,24 +69,59 @@ export default {
                         {{ $page.props.flash.success }}
                     </span>
         </div>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div v-if="this.current_page===1" id="page_1">
-                    <Page1
-                        :person="this.person"
-                        :available_institutions="this.available_institutions"
-                        :person_institutions="this.person_institutions"
-                        :permissions="this.permissions"
-                    />
-                </div>
-                <div v-if="this.current_page===2" id="page_2">
-                    <Page2 :person="this.person"/>
+        <div :key="this.displayPage">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="px-4 mt-4 sm:px-6 lg:px-8">
+                        <div class="sm:flex sm:items-center">
+                            <div class="sm:flex-auto">
+                                <div>
+                                    <div class="max-w-7xl mx-auto">
+                                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                            <div class="px-4 mt-4 sm:px-6 lg:px-8">
+                                                <div class="sm:hidden">
+                                                    <label for="tabs" class="sr-only"></label>
+                                                    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                                                    <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                                                        <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">{{ tab.name }}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="hidden sm:block">
+                                                    <nav class="isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
+                                                        <a v-for="(tab, tabIdx) in tabs" :key="tab.name"
+                                                           v-on:click="loadTab(tabIdx)"
+                                                           :class="[tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
+                                        tabIdx === 0 ? 'rounded-l-lg' : '',
+                                        tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
+                                         'group relative min-w-0 flex-1 overflow-hidden' +
+                                          ' bg-white py-4 px-4 text-sm font-medium' +
+                                           ' text-center hover:bg-gray-50 focus:z-10']" :aria-current="tab.current ? 'page' : undefined">
+                                                            <span>{{ tab.name }}</span>
+                                                            <span aria-hidden="true" :class="[tab.current ? 'bg-indigo-500' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
+                                                        </a>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="this.current_page===1" id="page_1">
+                        <Page1
+                            :person="this.person"
+                            :available_institutions="this.available_institutions"
+                            :person_institutions="this.person_institutions"
+                            :permissions="this.permissions"
+                        />
+                    </div>
+                    <div v-if="this.current_page===2" id="page_2">
+                        <Page2 :person="this.person"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
-
+        </div>>
 
     </AuthenticatedLayout>
 </template>

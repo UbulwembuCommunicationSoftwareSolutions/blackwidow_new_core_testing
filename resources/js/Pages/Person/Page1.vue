@@ -166,13 +166,29 @@
 
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
+import {useForm} from "@inertiajs/inertia-vue3";
 export default {
     name: "Page1",
-    props : ['incident'],
+    props : ['person'],
     components: {
         PaperClipIcon
     },
     setup(props){
+        const form = useForm({
+            person : props.person,
+            selected_institutions : props.person_institutions,
+            available_institutions : props.available_institutions,
+        });
+        let permissions = props.permissions;
+        return {
+            form,permissions
+        }
+    },
+    data(){
+      return {
+          isModalVisible: false,
+          selected: null,
+      }
     },
     methods :{
         submitPersonForm(){
