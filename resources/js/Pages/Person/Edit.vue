@@ -32,7 +32,7 @@ export default {
     },
     data(){
         return {
-            current_page : 1,
+            displayPage : 1,
         }
     },
     mounted(){
@@ -42,7 +42,14 @@ export default {
             window.location.href = '/admin';
         },
         loadTab(id){
-            this.current_page = id+1;
+            this.displayPage = (id +1);
+            this.tabs.forEach((tab) => {
+                if(tab.tab === this.displayPage ){
+                    tab.current = true;
+                }else{
+                    tab.current = false;
+                }
+            });
         }
     }
 }
@@ -106,7 +113,7 @@ export default {
                             </div>
                         </div>
                     </div>
-                    <div v-if="this.current_page===1" id="page_1">
+                    <div v-if="this.displayPage===1" id="page_1">
                         <Page1
                             :person="this.person"
                             :available_institutions="this.available_institutions"
@@ -114,7 +121,7 @@ export default {
                             :permissions="this.permissions"
                         />
                     </div>
-                    <div v-if="this.current_page===2" id="page_2">
+                    <div v-if="this.displayPage===2" id="page_2">
                         <Page2/>
                     </div>
                 </div>
