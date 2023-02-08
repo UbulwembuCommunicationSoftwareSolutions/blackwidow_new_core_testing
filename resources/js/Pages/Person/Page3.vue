@@ -144,6 +144,7 @@ export default {
 
         this.incidents.map((incident, index) => {
             temp_nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
+            edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${this.person.id}` }
         });
 
 
