@@ -34,6 +34,9 @@ export default {
                     }),
                 },
                 node: {
+                    normal: {
+                        color: n => (n.id === "node0" ? "#ff0000" : "#4466cc"),
+                    },
                     label: {
                         visible: true,
                         fontFamily: undefined,
