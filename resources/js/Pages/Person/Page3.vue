@@ -1,5 +1,5 @@
 <template>
-    <div class="flex mt-4 flex-row flex-grow">
+    <div class="flex py-4 px-4 mt-4 mb-4 flex-row flex-grow">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-4 mt-4 sm:px-6 lg:px-8">
@@ -77,15 +77,20 @@
         </div>
 
     </div>
+    <div>
+        <NetworkDiagram></NetworkDiagram>
+    </div>
 </template>
 
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
+import NetworkDiagram from "@/Components/NetworkDiagram.vue";
 
 export default {
     name: "Page3",
     props : ['person','incidents'],
     components: {
+        NetworkDiagram,
         PaperClipIcon
     },
     setup(props){
