@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 // import the styles
 import Page1 from  "@/Pages/Person/Page1.vue";
-import Page2 from  "@/Pages/Person/Page1.vue";
+import Page2 from  "@/Pages/Person/Page2.vue";
 export default {
     components: {
         AuthenticatedLayout,
@@ -127,9 +127,6 @@ export default {
                     <div v-if="this.displayPage===2" id="page_2">
                         <Page2
                         :person="this.person"
-                        :available_institutions="this.available_institutions"
-                        :person_institutions="this.person_institutions"
-                        :permissions="this.permissions"
                         />
                     </div>
                 </div>
