@@ -143,6 +143,7 @@ export default {
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
         });
         const nodeCount = nodes.length;
+        console.log(nodeCount);
         const radius = 50;
 
         const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
