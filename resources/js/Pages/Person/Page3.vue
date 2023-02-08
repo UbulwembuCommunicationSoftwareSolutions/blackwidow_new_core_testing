@@ -95,7 +95,6 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
-                                                                    :layouts = "this.layouts"
                                                                 />
 
                                                             </div>
@@ -134,53 +133,32 @@ export default {
         }
     },
     data(){
+        let loading = false;
         let nodes = {};
         let edges = {};
-        let layoutNodes = {};
-        let person = this.person;
 
-        nodes[`person${person.id}`] = { name: 'Person :'+person.id };
-        layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
-        let begin = 0
-        const xAxisLength = 2000;
-        const numObjects = Object.keys(this.incidents).length;
-        const interval = xAxisLength / (numObjects - 1);
+        nodes[`person${this.person.id}`] = { name: 'Person :'+this.person.id };
 
         this.incidents.map((incident, index) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
-            edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layoutNodes[`incident${incident.id}`] = { x: index * interval, y: +200 };
         });
 
 
         this.incidents.forEach((incident) => {
-            const xAxisLength = 500;
-
-            const numObjects = Object.keys(incident.people).length;
-            const interval = xAxisLength / (numObjects - 1);
-            incident.people.map((person, index) => {
+            incident.people.forEach((person) => {
                 nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
                 edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
-                layoutNodes[`person${person.id}`] = {
-                    x: index * interval,
-                    y: +400
-                };
             });
         });
 
-        layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
-
-
-        let layouts = {
-            nodes : layoutNodes
-        }
-        console.log(layoutNodes);
         return {
-            edges,nodes,person,layouts
+            edges,nodes,loading
         }
 
     },
     mounted(){
+        console.log(this.edges);
+        console.log(this.nodes);
     }
 
 }
