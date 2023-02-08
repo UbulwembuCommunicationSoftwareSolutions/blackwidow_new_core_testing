@@ -95,6 +95,7 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
+                                                                    :layputs = "this.layouts"
                                                                 />
 
                                                             </div>
@@ -118,6 +119,7 @@
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 import NetworkDiagram from "@/Components/NetworkDiagram.vue";
+import {ref} from "vue";
 
 export default {
     name: "Page3",
@@ -139,7 +141,6 @@ export default {
 
         temp_nodes[`person${this.person.id}`] = {
             name: 'Person :'+this.person.id,
-            fixed : true
         };
 
         this.incidents.map((incident, index) => {
@@ -152,15 +153,27 @@ export default {
             temp_nodes[`incident${incident.id}`] = {name: 'Incident: ' + incident.id};
 
             incident.people.forEach((person) => {
-                temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
-                edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
+                if(person.id!==this.person.id){
+                    temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
+                    edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
+                }
             });
         });
 
         let nodes = temp_nodes;
+        let layoutNodes = {};
+        layoutNodes[`person${this.person.id}`] = {
+            x: 0,
+            y: 0,
+            fixed: true, // Unaffected by force
+        };
+
+        let layouts = {
+            node: layoutNodes
+        }
 
         return {
-            edges,nodes,loading
+            edges,nodes,loading,layouts
         }
 
     },

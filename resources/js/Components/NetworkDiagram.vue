@@ -11,16 +11,8 @@ export default {
         const nodeCount = ref(20)
         const nodes = reactive({})
         const edges = reactive({})
-        const firstKey = Object.keys(nodes)[0];
-        const layouts = ref({
-            nodes: {
-                firstKey: {
-                    x: 0,
-                    y: 0,
-                    fixed: true, // Unaffected by force
-                },
-            },
-        })
+
+
         const configs = reactive(
             vNG.defineConfigs({
                 view: {
