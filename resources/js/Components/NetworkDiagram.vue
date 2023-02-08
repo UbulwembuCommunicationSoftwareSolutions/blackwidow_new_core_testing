@@ -3,7 +3,7 @@
 <script>
 export default {
     name: "NetworkDiagram",
-    props: ['nodes']
+    props: ['nodes','edges','layouts']
 }
 
 </script>
@@ -13,6 +13,7 @@ export default {
         class="graph"
         :nodes="nodes"
         :edges="edges"
+        :layouts="layouts"
     />
 </template>
 

@@ -95,6 +95,7 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
+                                                                    :layouts = "this.layouts"
                                                                 />
 
                                                             </div>
@@ -133,34 +134,18 @@ export default {
         }
     },
     data(){
-
         let nodes = {};
         let edges = {};
+        let layouts = {};
         let person = this.person;
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         this.incidents.forEach((incident) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
+            layouts['nodes'][`incident${incident.id}`] = { x: 0, y: 0 };
         });
-        const nodeCount = Object.keys(nodes).length;
-        console.log(nodeCount);
-        const radius = 50;
-
-        const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
-            const angle = (2 * Math.PI * i) / nodeCount;
-            return {
-                x: radius * Math.cos(angle),
-                y: radius * Math.sin(angle),
-            };
-        });
-
-        nodeArray[0].x = 0;
-        nodeArray[0].y = 0;
-
-        console.log(nodeArray);
-
         return {
-            edges,nodes,person
+            edges,nodes,person,layouts
         }
 
     },
