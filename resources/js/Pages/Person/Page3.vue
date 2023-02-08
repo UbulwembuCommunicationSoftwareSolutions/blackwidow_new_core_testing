@@ -138,9 +138,16 @@ export default {
         let loading = false;
         let temp_nodes = {};
         let edges = {};
+        let layoutNodes = {};
+
 
         temp_nodes[`person${this.person.id}`] = {
-            name: 'Person :'+this.person.id,
+            name: 'Person :'+ ' '+this.person.first_name+ '' + this.person.surname,
+        };
+        layoutNodes[`person${this.person.id}`] = {
+            x: 0,
+            y: 0,
+            fixed: true, // Unaffected by force
         };
 
         this.incidents.map((incident, index) => {
@@ -154,22 +161,17 @@ export default {
 
             incident.people.forEach((person) => {
                 if(person.id!==this.person.id){
-                    temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
+                    temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id + ' '+person.first_name+ '' + person.surname};
                     edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
                 }
             });
         });
 
         let nodes = temp_nodes;
-        let layoutNodes = {};
-        layoutNodes[`person${this.person.id}`] = {
-            x: 0,
-            y: 0,
-            fixed: true, // Unaffected by force
-        };
+
 
         let layouts = {
-            node: layoutNodes
+            nodes: layoutNodes
         }
 
         return {

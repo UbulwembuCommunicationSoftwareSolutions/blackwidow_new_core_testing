@@ -59,7 +59,7 @@ export default {
 <template>
 
     <v-network-graph
-        :zoom-level="0.1"
+        :zoom-level="0.05"
         :nodes="nodes"
         :edges="edges"
         :configs="configs"
@@ -67,8 +67,8 @@ export default {
 </template>
 <style>
 .v-ng-canvas {
-    width: 800px;
-    height: 400px;
+    width: 900px;
+    height: 600px;
     border: 1px solid #000;
 }
 </style>
