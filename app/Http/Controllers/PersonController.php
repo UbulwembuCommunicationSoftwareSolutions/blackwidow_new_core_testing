@@ -112,7 +112,6 @@ class PersonController extends Controller
             ->with('department')
             ->with('people')
             ->get();
-        dd($incidents);
         $institutions = Institution::get();
         $person_institutions = array();
         $available_institutions = array();

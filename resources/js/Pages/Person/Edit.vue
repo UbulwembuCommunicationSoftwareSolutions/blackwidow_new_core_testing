@@ -44,6 +44,7 @@ export default {
         }
     },
     mounted(){
+        console.log(this.incidents)
     },
     methods:{
         adminPanel(){
