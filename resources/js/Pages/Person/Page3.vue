@@ -144,7 +144,7 @@ export default {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
         });
-        let radius = 50;
+        let radius = 250;
         let nodeCount = Object.keys(nodes).length;
         const nodeArray = Array.from({ length: nodeCount }, (_, i) => {
             const angle = (2 * Math.PI * i) / nodeCount;
