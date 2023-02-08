@@ -25,9 +25,12 @@ export default {
             { name: 'Case Notes', tab: 3, current: false },
             { name: 'Case Activity', tab: 4,current: false },
         ]
+        let person = props.person;
+        let available_institutions = props.available_institutions;
+        let person_institutions = props.person_institutions;
         let permissions = props.permissions;
         return {
-            permissions,tabs
+            permissions,tabs,person,available_institutions,person_institutions
         }
     },
     data(){
@@ -127,6 +130,5 @@ export default {
                 </div>
             </div>
         </div>>
-
     </AuthenticatedLayout>
 </template>
