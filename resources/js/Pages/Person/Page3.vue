@@ -137,10 +137,14 @@ export default {
         let nodes = {};
         let edges = {};
 
-        nodes[`person${this.person.id}`] = { name: 'Person :'+this.person.id };
+        nodes[`person${this.person.id}`] = {
+            name: 'Person :'+this.person.id,
+            fixed : true
+        };
 
         this.incidents.map((incident, index) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
+            edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${this.person.id}` }
         });
 
 
