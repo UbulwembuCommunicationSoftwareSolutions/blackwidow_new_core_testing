@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row flex-grow">
+    <div class="flex mt-4 flex-row flex-grow">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-4 mt-4 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody class="bg-white">
-                                                                <tr v-for="(incident,incident_id) in incidents" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                                                <tr v-for="(incident,incident_id) in this.incidents" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                            :href="'/incident/'+incident.id">
@@ -87,6 +87,11 @@ export default {
     props : ['person','incidents'],
     components: {
         PaperClipIcon
+    },
+    setup(props){
+        return {
+            incidents : props.incidents
+        }
     },
     mounted(){
         console.log(this.incidents)
