@@ -107,6 +107,7 @@ class PersonController extends Controller
     public function edit($id){
         $person = Person::find($id);
         $incidents = $person->incidents;
+        $incidents->withCount('people');
         $incidents->load('user');
         $institutions = Institution::get();
         $person_institutions = array();
