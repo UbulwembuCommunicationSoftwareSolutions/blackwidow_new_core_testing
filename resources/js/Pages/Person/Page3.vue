@@ -154,11 +154,13 @@ export default {
                 nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
                 edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
                 layoutNodes[`person${person.id}`] = {
-                    x: (layoutNodes[`incident${incident.id}`].x-Math.floor(Math.random() * (500 - 50 + 1) + 50)),
+                    x: (layoutNodes[`incident${incident.id}`].x-Math.floor(Math.random() * (100 - 50 + 1) + 50)),
                     y: -400
                 };
             });
         });
+
+        layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
 
 
         let layouts = {
