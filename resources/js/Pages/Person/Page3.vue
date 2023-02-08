@@ -119,7 +119,7 @@
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 import NetworkDiagram from "@/Components/NetworkDiagram.vue";
-
+import Layouts from "v-network-graph";
 export default {
     name: "Page3",
     props : ['person','incidents'],
@@ -128,7 +128,7 @@ export default {
         PaperClipIcon
     },
     setup(props){
-        const layouts: Layouts = reactive({
+        const layouts = Layouts = reactive({
             nodes: {},
         })
 
