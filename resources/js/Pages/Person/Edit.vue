@@ -41,6 +41,9 @@ export default {
         adminPanel(){
             window.location.href = '/admin';
         },
+        loadTab(id){
+            this.current_page = id+1;
+        }
     }
 }
 </script>
