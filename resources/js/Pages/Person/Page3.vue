@@ -48,7 +48,7 @@
                                                                             {{incident.description}}
                                                                         </a>
                                                                     </td>
-                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{person.incident.user.first_name}} {{person.incident.user.surname}}</td>
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
