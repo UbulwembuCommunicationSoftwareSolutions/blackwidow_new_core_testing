@@ -141,15 +141,6 @@ export default {
         let layoutNodes = {};
 
 
-        temp_nodes[`person${this.person.id}`] = {
-            name: 'Person: '+ +this.person.id+' \n '+this.person.first_name+ '' + this.person.surname,
-        };
-        layoutNodes[`person${this.person.id}`] = {
-            x: 0,
-            y: 0,
-            fixed: true, // Unaffected by force
-        };
-
         this.incidents.map((incident, index) => {
             temp_nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${this.person.id}` }
@@ -166,10 +157,27 @@ export default {
                 }
             });
         });
+        temp_nodes[`person${this.person.id}`] = {
+            name: 'Person: '+ +this.person.id+' \n '+this.person.first_name+ '' + this.person.surname,
+            type: "circle",
+            radius: 16,
+            // for type is "rect" -->
+            width: 32,
+            height: 32,
+            borderRadius: 4,
+            // <-- for type is "rect"
+            strokeWidth: 0,
+            strokeColor: "#000000",
+            strokeDasharray: "0",
+            color: "#4466cc",
+        };
+        layoutNodes[`person${this.person.id}`] = {
+            x: 0,
+            y: 0,
+            fixed: true, // Unaffected by force
+        };
 
         let nodes = temp_nodes;
-
-
         let layouts = {
             nodes: layoutNodes
         }
@@ -180,8 +188,7 @@ export default {
 
     },
     mounted(){
-        console.log(this.edges);
-        console.log(this.nodes);
+        console.log(this.layouts);
     }
 
 }

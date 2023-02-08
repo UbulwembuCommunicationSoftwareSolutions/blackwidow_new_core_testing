@@ -35,7 +35,17 @@ export default {
                 },
                 node: {
                     normal: {
-                        color: n => (n.id === "node0" ? "#ff0000" : "#4466cc"),
+                        type: "circle",
+                        radius: 16,
+                        // for type is "rect" -->
+                        width: 32,
+                        height: 32,
+                        borderRadius: 4,
+                        // <-- for type is "rect"
+                        strokeWidth: 0,
+                        strokeColor: "#000000",
+                        strokeDasharray: "0",
+                        color: "#4466cc",
                     },
                     label: {
                         visible: true,
