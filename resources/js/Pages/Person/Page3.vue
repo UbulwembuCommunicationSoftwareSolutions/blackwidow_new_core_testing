@@ -1,5 +1,5 @@
 <template>
-    <div class="flex py-4 px-4 mt-4 mb-4 flex-row flex-grow">
+    <div class="flex py-4 px-4 mt-4 flex-row flex-grow">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-4 mt-4 sm:px-6 lg:px-8">
@@ -75,17 +75,16 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div>
-        <div class="flex py-4 px-4 mt-4 mb-4 flex-row flex-grow">
+        <div class="flex px-4 mb-4 flex-row flex-grow">
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="mt-8 mb-8 flex flex-col">
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                    <div class="overflow-hidden mb-6 shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <div>
                                             <Loading v-if="this.loading"/>
                                             <div class="px-4 sm:px-6 lg:px-8">
