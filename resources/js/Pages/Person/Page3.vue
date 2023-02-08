@@ -142,19 +142,25 @@ export default {
         nodes[`person${person.id}`] = { name: 'Person :'+person.id };
         layoutNodes[`person${person.id}`] = { x: 0, y: 0 };
         let begin = 0
-        this.incidents.forEach((incident) => {
-            begin = begin+250;
+        const xAxisLength = 1000;
+        const numObjects = Object.keys(this.incidents).length;
+        const interval = xAxisLength / (numObjects - 1);
+
+        this.incidents.map((incident, index) => {
             nodes[`incident${incident.id}`] = { name: 'Case: '+incident.id };
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
-            layoutNodes[`incident${incident.id}`] = { x: begin, y: +200 };
-
+            layoutNodes[`incident${incident.id}`] = { x: index * interval, y: +200 };
         });
+
+
         this.incidents.forEach((incident) => {
-            incident.people.forEach((person) => {
+            const numObjects = Object.keys(incident.people).length;
+            const interval = xAxisLength / (numObjects - 1);
+            incident.people.map((person, index) => {
                 nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
                 edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
                 layoutNodes[`person${person.id}`] = {
-                    x: (layoutNodes[`incident${incident.id}`].x + Math.floor(Math.random() * (250 - 50 + 1) + 50)),
+                    x: index * interval,
                     y: +400
                 };
             });
