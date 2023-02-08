@@ -149,6 +149,8 @@ export default {
 
 
         this.incidents.forEach((incident) => {
+            temp_nodes[`incident${incident.id}`] = {name: 'Incident: ' + incident.id};
+
             incident.people.forEach((person) => {
                 temp_nodes[`person${person.id}`] = {name: 'Person: ' + person.id};
                 edges[`person${person.id}`] = {source: `incident${incident.id}`, target: `person${person.id}`}
