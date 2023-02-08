@@ -106,7 +106,8 @@ class PersonController extends Controller
 
     public function edit($id){
         $person = Person::find($id);
-        $person->load('incidents');
+        $incidents = $person->incidents;
+        $incidents->load('user');
         $institutions = Institution::get();
         $person_institutions = array();
         $available_institutions = array();
@@ -126,6 +127,7 @@ class PersonController extends Controller
                 'available_institutions' => $available_institutions,
                 'person_institutions' => $person_institutions,
                 'person' => $person,
+                'incidents' => $incidents,
                 "permissions" => $permissions,
                 'status' => session('status'),
             ]);
@@ -135,6 +137,7 @@ class PersonController extends Controller
                     'available_institutions' => $available_institutions,
                     'person_institutions' => $person_institutions,
                     'person' => $person,
+                    'incidents' => $incidents,
                     "permissions" => $permissions,
                     'status' => session('status'),
                 ]);

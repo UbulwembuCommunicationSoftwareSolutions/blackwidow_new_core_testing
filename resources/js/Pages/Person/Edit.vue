@@ -17,6 +17,7 @@ export default {
     },
     props:{
         person :  Object,
+        incident : Object,
         available_institutions : Array,
         person_institutions : Array,
         permissions : Array,
@@ -32,8 +33,9 @@ export default {
         let available_institutions = props.available_institutions;
         let person_institutions = props.person_institutions;
         let permissions = props.permissions;
+        let incidents = props.incident;
         return {
-            permissions,tabs,person,available_institutions,person_institutions
+            permissions,tabs,person,available_institutions,person_institutions,incidents
         }
     },
     data(){
@@ -135,6 +137,7 @@ export default {
                     <div v-if="this.displayPage===3" id="page_3">
                         <Page3
                             :person="this.person"
+                            :incidents="this.incident"
                         />
                     </div>
                 </div>

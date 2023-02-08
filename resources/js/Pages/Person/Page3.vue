@@ -35,7 +35,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody class="bg-white">
-                                                                <tr v-for="(incident,incident_id) in person.incidents" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                                                <tr v-for="(incident,incident_id) in incidents" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                            :href="'/incident/'+incident.id">
@@ -84,7 +84,7 @@ import {PaperClipIcon} from "@heroicons/vue/20/solid";
 
 export default {
     name: "Page3",
-    props : ['person'],
+    props : ['person','incidents'],
     components: {
         PaperClipIcon
     },
