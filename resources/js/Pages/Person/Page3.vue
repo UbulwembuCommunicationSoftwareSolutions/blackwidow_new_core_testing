@@ -144,6 +144,7 @@ export default {
             edges[`incident${incident.id}`] = { source: `incident${incident.id}` , target: `person${person.id}` }
             layouts['nodes'][`incident${incident.id}`] = { x: 0, y: 0 };
         });
+        console.log(nodes);
         return {
             edges,nodes,person,layouts
         }
