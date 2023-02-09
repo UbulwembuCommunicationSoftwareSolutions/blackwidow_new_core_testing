@@ -42,7 +42,7 @@
                                                                             {{incident.id}}
                                                                         </a>
                                                                     </td>
-                                                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
+                                                                    <td class="break-words py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                            :href="'/incident/'+incident.id">
                                                                             {{incident.description}}
