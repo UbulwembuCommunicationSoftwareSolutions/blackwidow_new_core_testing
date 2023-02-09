@@ -27,6 +27,7 @@ export default {
         return{
             latitude : null,
             longitude : null,
+            center : null,
         }
     },
     methods :{
@@ -35,7 +36,7 @@ export default {
                 (position) => {
                     this.latitude = position.coords.latitude;
                     this.longitude = position.coords.longitude;
-                    center: { lat: parseFloat( this.latitude ), lng: parseFloat(this.longitude) },
+                    this.center = { lat: parseFloat( this.latitude ), lng: parseFloat(this.longitude) },
 
                 },
                 (error) => {
