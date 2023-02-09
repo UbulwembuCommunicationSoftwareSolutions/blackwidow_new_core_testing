@@ -10,7 +10,9 @@ class Importer extends Model
 
     public static function Import($url){
         $token = Importer::Login($url);
-        dd($token);
+        $departments = Importer::getDepartments($url,$token);
+        $users = Importer::getUsers($url,$token);
+        dd($users);
     }
 
     public static function Login($url){
@@ -31,10 +33,12 @@ class Importer extends Model
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response;
+
+        $new_response = json_decode($response);
+        return $new_response->token;
     }
 
-    public static function getDepartments($url){
+    public static function getDepartments($url,$token){
 
         $curl = curl_init();
         $url .= '/api/cases/departments';
@@ -47,12 +51,17 @@ class Importer extends Model
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$token
+            ),
         ));
 
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response;
+        $new_response = json_decode($response);
+        return $new_response;
+
     }
 
     public static function getUsers($url){
