@@ -29,7 +29,7 @@ export default {
         return{
             latitude : null,
             longitude : null,
-            center: { lat: parseInt(-25), lng: parseInt(28) },
+            center: { lat: parseInt(-30), lng: parseInt(25) },
         }
     },
     methods :{
