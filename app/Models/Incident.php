@@ -23,6 +23,14 @@ class Incident extends Model
         return $this->belongsTo(IncidentCategory::class);
     }
 
+    public function incident_sub_category(){
+        return $this->belongsTo(IncidentSubCategory::class);
+    }
+
+    public function incident_sub_sub_category(){
+        return $this->belongsTo(IncidentSubSubCategory::class);
+    }
+
     public function department(){
         return $this->belongsTo(Department::class);
     }

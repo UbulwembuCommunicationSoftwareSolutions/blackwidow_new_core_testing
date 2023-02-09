@@ -54,11 +54,13 @@ class IncidentController extends Controller
             $incidents_query = Incident::query();
         }else{
             $incidents_query = Incident::query();
-            $incidents_query->where('user_id',\Auth::user()->id);
         }
 
         $incidents_query->with('department');
         $incidents_query->with('user');
+        $incidents_query->with('incident_category');
+        $incidents_query->with('incident_sub_category');
+        $incidents_query->with('incident_sub_sub_category');
 
         if($filter_by=='department'){
             $incidents_query->WhereHas('department', function ($query) use ($filter_value)  {
@@ -90,8 +92,8 @@ class IncidentController extends Controller
                 $incidents_query->orderBy($sort_by,'ASC');
             }
         }
-
         $incidents = $incidents_query->paginate(25);
+
         $departments = Department::all();
         return Inertia::render('Incident/Index', [
             'incidents' => $incidents,

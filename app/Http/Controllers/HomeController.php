@@ -18,14 +18,9 @@ class HomeController extends Controller
         $markers = array();
         $user_id = Auth::user()->id;
         if(Auth::user()->isAdmin()){
-            $marker_incidents = Incident::where('user_id',$user_id)
-                ->take(200)
-                ->orderBy('created_at','DESC')
-                ->get();
+            $marker_incidents = Incident::get();
             $departments = Department::withCount('incidents')
-                ->WhereHas('incidents', function ($query) use ($user_id)  {
-                    $query->where('user_id', $user_id);
-                })->get();
+                ->get();
 
         }else{
             $marker_incidents = Incident::where('user_id',$user_id)
@@ -49,15 +44,25 @@ class HomeController extends Controller
              );
         }
 
-        $incident_pending = Incident::where('user_id',$user_id)
-            ->where('status_id','1')
-            ->count();
-        $incident_referred = Incident::where('user_id',$user_id)
-            ->where('status_id','2')
-            ->count();
-        $incident_closed= Incident::where('user_id',$user_id)
-            ->where('status_id','3')
-            ->count();
+        if(Auth::user()->isAdmin()){
+            $incident_pending = Incident::where('incident_status_id','1')
+                ->count();
+            $incident_referred = Incident::where('incident_status_id','2')
+                ->count();
+            $incident_closed= Incident::where('incident_status_id','3')
+                ->count();
+
+        }else{
+            $incident_pending = Incident::where('user_id',$user_id)
+                ->where('incident_status_id','1')
+                ->count();
+            $incident_referred = Incident::where('user_id',$user_id)
+                ->where('incident_status_id','2')
+                ->count();
+            $incident_closed= Incident::where('user_id',$user_id)
+                ->where('incident_status_id','3')
+                ->count();
+        }
 
         $incident_stats = array(
             "pending" => $incident_pending,

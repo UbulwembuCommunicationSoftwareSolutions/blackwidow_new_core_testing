@@ -97,10 +97,10 @@ export default {
                         <div class="sm:flex sm:items-center">
                             <div class="sm:flex-auto">
                                 <h1 class="text-xl font-semibold text-gray-900">Incidents</h1>
-                                <p class="mt-2 text-sm text-gray-700">A list of all the incidents in your system including their name, title, email and role.</p>
+                                <p class="mt-2 text-gray-700">A list of all the incidents in your system including their name, title, email and role.</p>
                             </div>
                             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                                <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add incident</button>
+                                <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-small text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add incident</button>
                             </div>
                         </div>
                         <div class="mt-8 mb-8 flex flex-col">
@@ -110,13 +110,13 @@ export default {
                                         <div>
                                             <div class="flex flex-row">
                                                 <div class="ml-5 mt-5">
-                                                    <label for="text" class="block text-sm font-medium text-gray-700">Search</label>
+                                                    <label for="text" class="block font-small text-gray-700">Search</label>
                                                     <div class="mt-1">
                                                         <input type="text" name="search_by" id="search_by" v-model="searchTerm" @input="debouncedSearch" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm" placeholder="Search" />
                                                     </div>
                                                 </div>
                                                 <div class="ml-5 mt-5">
-                                                    <label for="text" class="block text-sm font-medium text-gray-700">Department</label>
+                                                    <label for="text" class="block font-small text-gray-700">Department</label>
                                                     <div class="mt-1">
                                                         <select  v-model="filter_by" v-on:change="filterTable('department')" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                                             <option v-for="department in departments">{{department.description}}</option>
@@ -131,40 +131,52 @@ export default {
                                                     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                                             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-300">
+                                                                <table class="min-w-full table-auto divide-y divide-gray-300">
                                                                     <thead class="bg-gray-50">
                                                                     <tr>
-                                                                        <th scope="col"  @click="this.sortTable('id')" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
-                                                                        <th scope="col" @click="this.sortTable('description')" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
-                                                                        <th scope="col"  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
-                                                                        <th scope="col"  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Department</th>
-                                                                        <th scope="col" @click="this.sortTable('created_at')" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
-                                                                        <th scope="col" @click="this.sortTable('people_count')" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">People</th>
+                                                                        <th scope="col"  @click="this.sortTable('id')" class="py-3.5 pl-4 pr-3 text-left font-semibold text-gray-900 ">Id</th>
+                                                                        <th scope="col" @click="this.sortTable('description')" class="px-3 py-3.5 w-64 text-left font-semibold text-gray-900">Description</th>
+                                                                        <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">User</th>
+                                                                        <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Department</th>
+                                                                        <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Category</th>
+                                                                        <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Sub Category</th>
+                                                                        <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Sub Sub Category</th>
+                                                                        <th scope="col" @click="this.sortTable('created_at')" class="px-3 py-3.5 text-left font-semibold text-gray-900">Date</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="bg-white">
                                                                     <tr v-for="(incident,incident_id) in incidents.data" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                            <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                        <td class="whitespace-nowrap py-4  text-xs pr-3 font-small text-blue-600 ">
+                                                                            <a class="mr-1 mb-1 px-4 py-3 leading-4  rounded  focus:border-indigo-500 focus:text-blue-500"
                                                                                           :href="'/incident/'+incident.id">
                                                                                 {{incident.id}}
                                                                             </a>
                                                                         </td>
-                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                            <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                        <td class="text-xs text-left w-64 py-4  pr-3 font-small text-blue-600 ">
+                                                                            <a class="mr-1 mb-1  px-4 py-3 leading-4  rounded  focus:border-indigo-500 focus:text-blue-500"
                                                                                :href="'/incident/'+incident.id">
                                                                                 {{incident.description}}
                                                                             </a>
                                                                         </td>
-                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
-                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
-                                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>
-                                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                            <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                                               :href="'/incident/'+incident.id">
-                                                                                {{incident.people_count}}
-                                                                            </a>
+                                                                        <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
+                                                                        <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{ incident.department.description }}</td>
+                                                                        <td class="break-words text-xs px-3 py-4 text-gray-500">
+                                                                            <b v-if="incident.incident_category!==null">
+                                                                                {{ incident.incident_category.description }}
+                                                                            </b>
                                                                         </td>
+                                                                        <td class="break-words text-xs px-3 py-4 text-gray-500">
+                                                                            <b v-if="incident.incident_sub_category!==null">
+                                                                                {{ incident.incident_sub_category.description }}
+                                                                            </b>
+                                                                        </td>
+                                                                        <td class="break-words text-xs px-3 py-4 text-gray-500">
+                                                                            <b v-if="incident.incident_sub_sub_category!==null">
+                                                                                {{ incident.incident_sub_sub_category.description }}
+                                                                            </b>
+                                                                        </td>
+
+                                                                        <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{ incident.created_at }}</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
