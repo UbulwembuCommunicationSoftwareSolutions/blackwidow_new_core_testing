@@ -20,6 +20,7 @@ class HomeController extends Controller
         if(Auth::user()->isAdmin()){
             $marker_incidents = Incident::get();
             $departments = Department::withCount('incidents')
+                ->orderBy('incidents_count','DESC')
                 ->get();
 
         }else{
@@ -30,7 +31,9 @@ class HomeController extends Controller
             $departments = Department::withCount('incidents')
                 ->WhereHas('incidents', function ($query) use ($user_id)  {
                     $query->where('user_id', $user_id);
-                })->get();
+                })
+                ->orderBy('incidents_count','DESC')
+                ->get();
         }
 
         foreach($marker_incidents as $incident){
