@@ -2,7 +2,7 @@
     <div class="flex flex-row flex-grow">
         <div class="flex mt-4 py-6 w-full h-96 whitespace-nowrap px-6">
             <div class="w-full bg-white shadow sm:rounded-lg">
-                <GoogleMap :height="'400px'" :width="'100%'" :zoom="8" :center="this.center" :markers="this.markers"></GoogleMap>
+                <GoogleMap  ref="myMapRef" :height="'400px'" :width="'100%'" :zoom="8" :center="this.center" :markers="this.markers"></GoogleMap>
             </div>
         </div>
     </div>
@@ -11,6 +11,8 @@
 <script>
 import GoogleMap from "@/Components/GoogleMap.vue";
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
+import { ref, watch } from "vue";
+
 export default {
     name: "UserIncidents",
     props : ['markers'],
@@ -27,7 +29,7 @@ export default {
         return{
             latitude : null,
             longitude : null,
-            center : null,
+            center: { lat: parseInt(-25), lng: parseInt(28) },
         }
     },
     methods :{
