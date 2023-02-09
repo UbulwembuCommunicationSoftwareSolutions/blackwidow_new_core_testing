@@ -20,10 +20,33 @@ export default {
     },
     setup(props){
         return {
-            center: { lat: parseFloat( -25.37229 ), lng: parseFloat(28.495397) },
             markers: props.markers
         }
     },
+    data(){
+        return{
+            latitude : null,
+            longitude : null,
+        }
+    },
+    methods :{
+        getLocation() {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    this.latitude = position.coords.latitude;
+                    this.longitude = position.coords.longitude;
+                    center: { lat: parseFloat( this.latitude ), lng: parseFloat(this.longitude) },
+
+                },
+                (error) => {
+                    console.error(error);
+                }
+            );
+        }
+    },
+    mounted(){
+        this.getLocation();
+    }
 }
 </script>
 

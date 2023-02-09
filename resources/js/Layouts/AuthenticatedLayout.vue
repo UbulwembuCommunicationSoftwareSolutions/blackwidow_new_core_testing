@@ -163,25 +163,11 @@ const userNavigation = [
 
 const sidebarOpen = ref(false)
 
-const latitude = null;
-const longitude = null;
-
-function getLocation() {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-        },
-        (error) => {
-            console.error(error);
-        }
-    );
-}
 
 import { onMounted } from 'vue';
 
 onMounted(() => {
-    getLocation();
+
 });
 
 </script>
