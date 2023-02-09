@@ -17,7 +17,7 @@
                     <div v-if="permissions.includes('person_edit')">
                         <ProfilePictureModal
                             v-if="this.isModalVisible"
-                            :object="this.for.id"
+                            :object="this.person.id"
                             url="/profile_picture/person"
                             @close="this.closeModal()"
                         />

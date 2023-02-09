@@ -19,11 +19,11 @@ return new class extends Migration
                 $table->longText('description');
                 $table->integer('user_id');
                 $table->integer('department_id');
-                $table->integer('category_id');
-                $table->integer('sub_category_id');
-                $table->integer('sub_sub_category_id');
+                $table->integer('incident_category_id');
+                $table->integer('incident_sub_category_id');
+                $table->integer('incident_sub_sub_category_id');
                 $table->integer('priority_id');
-                $table->integer('status_id');
+                $table->integer('incident_status_id');
                 $table->string('gps_lat');
                 $table->string('gps_lng');
                 $table->integer('source_id');
