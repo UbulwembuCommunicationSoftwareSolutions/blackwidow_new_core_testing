@@ -36,8 +36,7 @@ export default {
                 (position) => {
                     this.latitude = position.coords.latitude;
                     this.longitude = position.coords.longitude;
-                    this.center = { lat: parseFloat( this.latitude ), lng: parseFloat(this.longitude) },
-
+                    this.center = { lat: parseFloat( this.latitude ), lng: parseFloat(this.longitude) };
                 },
                 (error) => {
                     console.error(error);
