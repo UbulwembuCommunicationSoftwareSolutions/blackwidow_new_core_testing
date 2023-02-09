@@ -82,6 +82,7 @@ class Importer extends Model
             $user = new User();
             $user->id = $import_user->id;
             $user->email = $import_user->email;
+            $user->cellphone = $import_user->cellphone;
             $user->password = $import_user->password;
             $user->profile_picture = null;
             $user->first_name = $import_user->name;
