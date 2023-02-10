@@ -144,7 +144,7 @@ export default {
                         />
                     </div>
                     <div v-if="this.displayPage===4" id="page_4">
-                        <Page3
+                        <Page4
                             :person="this.person"
                         />
                     </div>
