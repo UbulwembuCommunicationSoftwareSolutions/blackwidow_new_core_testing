@@ -1150,12 +1150,13 @@ class groupPeopleBySurvey extends Command
                 echo $person->first_name.'\n';
                 $interest_group = InterestGroup::where('description',$list_person['household_profile_number'])->first();
                 if ($interest_group->isNotEmpty()) {
-                    $person->interest_groups()->save($interest_group);
+                    $person->interest_groups()->attach($interest_group);
                 } else {
                     $interest_group = new InterestGroup([
                        'description' => $list_person['household_profile_number']
                     ]);
-                    $person->interest_groups()->save($interest_group);
+                    $interest_group->save();
+                    $person->interest_groups()->attach($interest_group);
                 }
 
             }catch (\Throwable $e){
