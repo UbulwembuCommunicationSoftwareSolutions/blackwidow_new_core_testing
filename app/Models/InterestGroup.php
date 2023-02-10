@@ -25,7 +25,7 @@ class InterestGroup extends Model implements Auditable
     ];
     public function people()
     {
-        return $this->belongsToMany(Institution::class, 'interest_group_people');
+        return $this->belongsToMany(Person::class, 'interest_group_people');
     }
 
 
