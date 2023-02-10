@@ -2,12 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Importer;
 use App\Models\InterestGroup;
 use App\Models\Person;
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Inspiring;
-use App\DashHistory;
 
 class groupPeopleBySurvey extends Command
 {
@@ -1145,22 +1142,13 @@ class groupPeopleBySurvey extends Command
             array('id_on_otp' => '2128','oss_survey_id' => '615','household_profile_number' => 'KWA00000554')
         );
         foreach($people as $list_person){
-            $person = Person::find($list_person['id_on_otp']);
-            try{
-                echo $person->first_name.'\n';
-                $interest_group = InterestGroup::where('description',$list_person['household_profile_number'])->first();
-                if ($interest_group->isNotEmpty()) {
-                    $person->interest_groups()->attach($interest_group);
-                } else {
-                    $interest_group = new InterestGroup([
-                       'description' => $list_person['household_profile_number']
-                    ]);
-                    $interest_group->save();
-                    $person->interest_groups()->attach($interest_group);
-                }
-
-            }catch (\Throwable $e){
-
+            $interest_group = InterestGroup::where('description',$list_person['household_profile_number'])->first();
+            if ($interest_group->isNotEmpty()) {
+            } else {
+                $interest_group = new InterestGroup([
+                    'description' => $list_person['household_profile_number']
+                ]);
+                $interest_group->save();
             }
         }
     }
