@@ -1150,6 +1150,12 @@ class groupPeopleBySurvey extends Command
                 $interest_group->save();
             }
         }
-
+        foreach($people as $list_person) {
+            $interest_group = InterestGroup::where('description', $list_person['household_profile_number'])->first();
+            $person = Person::find($list_person['id_on_otp']);
+            if($person !== null){
+                $person->interest_groups()->attach($interest_group);
+            }
+        }
     }
 }
