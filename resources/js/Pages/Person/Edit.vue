@@ -6,6 +6,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import Page1 from  "@/Pages/Person/Page1.vue";
 import Page2 from  "@/Pages/Person/Page2.vue";
 import Page3 from  "@/Pages/Person/Page3.vue";
+import Page4 from  "@/Pages/Person/Page3.vue";
 
 export default {
     components: {
@@ -139,6 +140,11 @@ export default {
                         <Page3
                             :person="this.person"
                             :incidents="this.incidents"
+                        />
+                    </div>
+                    <div v-if="this.displayPage===4" id="page_4">
+                        <Page3
+                            :person="this.person"
                         />
                     </div>
                 </div>

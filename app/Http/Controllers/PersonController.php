@@ -30,6 +30,7 @@ class PersonController extends Controller
             $people_query = Person::query();
         }
         $people_query->with('institutions');
+        $people_query->with('interest_groups');
         if($search){
             $people_query
                 ->where('people.first_name', 'LIKE', '%' . $search . '%')
