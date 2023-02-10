@@ -229,10 +229,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         for ($x = 1; $x <= 12; $x++) {
-            DB::table('user_permission_user')->insert([
-                'user_permission_id' => $x,
-                'user_id' => '38',
-            ]);
+            for ($y = 1; $y <= 100; $y++) {
+                DB::table('user_permission_user')->insert([
+                    'user_permission_id' => $x,
+                    'user_id' => $y,
+                ]);
+            }
         }
 
     }

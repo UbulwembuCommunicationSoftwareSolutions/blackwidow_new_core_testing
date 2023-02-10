@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AutoReferral;
 use App\Models\IncidentCategory;
+use App\Models\IncidentSubCategory;
 use App\Models\Institution;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -124,8 +125,8 @@ class IncidentSubCategoryController extends Controller
 
     }
 
-    public function addReferral(Request $request = null,IncidentCategory $incidentCategory = null){
-        $incidentCategory = IncidentCategory::find(1);
+    public function addReferral(Request $request = null,IncidentSubCategory $incidentCategory = null){
+        $incidentCategory = IncidentSubCategory::find(1);
         $referral = new AutoReferral([
             'user_id' => '3'
         ]);
