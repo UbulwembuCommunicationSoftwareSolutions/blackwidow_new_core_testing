@@ -6,7 +6,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import Page1 from  "@/Pages/Person/Page1.vue";
 import Page2 from  "@/Pages/Person/Page2.vue";
 import Page3 from  "@/Pages/Person/Page3.vue";
-import Page4 from  "@/Pages/Person/Page3.vue";
+import Page4 from  "@/Pages/Person/Page4.vue";
 
 export default {
     components: {
