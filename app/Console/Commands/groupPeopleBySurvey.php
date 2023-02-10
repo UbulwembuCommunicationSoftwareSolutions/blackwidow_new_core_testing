@@ -1143,13 +1143,13 @@ class groupPeopleBySurvey extends Command
         );
         foreach($people as $list_person){
             $interest_group = InterestGroup::where('description',$list_person['household_profile_number'])->first();
-            if ($interest_group->isNotEmpty()) {
-            } else {
+            if ($interest_group === null) {
                 $interest_group = new InterestGroup([
                     'description' => $list_person['household_profile_number']
                 ]);
                 $interest_group->save();
             }
         }
+
     }
 }
