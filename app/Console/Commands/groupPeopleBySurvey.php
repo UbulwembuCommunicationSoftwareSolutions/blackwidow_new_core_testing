@@ -16,14 +16,14 @@ class groupPeopleBySurvey extends Command
      *
      * @var string
      */
-    protected $signature = 'importOldConsole {url}';
+    protected $signature = 'groupPeopleBySurvey';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import old console data';
+    protected $description = 'Group People By Survey';
 
     /**
      * Execute the console command.
