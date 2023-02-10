@@ -32,7 +32,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
 Route::post('/profile_picture/person', 'App\Http\Controllers\PersonController@updateProfilePicture');
 Route::post('/profile_picture/user', 'App\Http\Controllers\UserController@updateProfilePicture');
-Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth', 'verified']);
+Route::resource('interest_groups', App\Http\Controllers\InterestGroupController::class)->middleware(['auth', 'verified']);
 Route::resource('person', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
 Route::resource('department', App\Http\Controllers\DepartmentController::class)->middleware(['auth', 'verified']);
 Route::resource('incident', App\Http\Controllers\IncidentController::class)->middleware(['auth', 'verified']);
