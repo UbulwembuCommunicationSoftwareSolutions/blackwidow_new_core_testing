@@ -7,21 +7,21 @@ use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 use App\DashHistory;
 
-class importKZN extends Command
+class importOldConsole extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'importKZN {url}';
+    protected $signature = 'importOldConsole {url}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import KZN stats';
+    protected $description = 'Import old console data';
 
     /**
      * Execute the console command.

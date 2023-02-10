@@ -20,4 +20,10 @@ class IncidentCategory extends Model
     public function incidents(){
         return $this->hasMany(Incident::class);
     }
+
+    public function referrals()
+    {
+        return $this->morphMany(AutoReferral::class, 'referrable');
+    }
+
 }

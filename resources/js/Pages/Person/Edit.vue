@@ -25,9 +25,10 @@ export default {
     setup(props){
         const tabs = [
             { name: 'Basic Information', tab: 1, current: true },
-            { name: 'Persons of interest', tab: 2, current: false },
-            { name: 'Case Notes', tab: 3, current: false },
-            { name: 'Case Activity', tab: 4,current: false },
+            { name: 'Personal Information', tab: 2, current: false },
+            { name: 'Relationships', tab: 3, current: false },
+            { name: 'Person Groups Info', tab: 4, current: false },
+            { name: 'Cases Activity', tab: 5,current: false },
         ]
         let person = props.person;
         let available_institutions = props.available_institutions;

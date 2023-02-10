@@ -48,5 +48,9 @@ class Person extends Model implements Auditable
         return $this->belongsToMany(Incident::class, 'incident_people');
     }
 
+    public function interest_groups(){
+        return $this->belongsToMany(InterestGroup::class, 'interest_group_people');
+    }
+
 
 }

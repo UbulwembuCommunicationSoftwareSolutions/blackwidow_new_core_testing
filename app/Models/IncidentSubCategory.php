@@ -15,4 +15,9 @@ class IncidentSubCategory extends Model
     public function incident_category(){
         return $this->belongsTo(IncidentCategory::class);
     }
+
+    public function referrals()
+    {
+        return $this->morphMany(AutoReferral::class, 'referrable');
+    }
 }
