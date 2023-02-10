@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InterestGroup;
 use App\Models\people;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ class InterestGroupController extends Controller
      * @param  \App\Models\Department  $interest_group
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $interest_group)
+    public function show(InterestGroup $interest_group)
     {
         $interest_group->load('people');
         $interest_group->load('people.incidents');
