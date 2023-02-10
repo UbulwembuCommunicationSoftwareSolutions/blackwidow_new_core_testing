@@ -107,6 +107,9 @@ class PersonController extends Controller
 
     public function edit($id){
         $person = Person::find($id);
+        $person->load('institutions');
+        $person->load('incidents');
+        $person->load('interest_groups');
         $incident_ids = $person->incidents()->pluck('incidents.id')->toArray();
         $incidents = Incident::whereIn('incidents.id',$incident_ids)
             ->with('user')
