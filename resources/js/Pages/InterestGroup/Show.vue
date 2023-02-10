@@ -48,7 +48,7 @@ export default {
                                                             </tr>
                                                             </thead>
                                                             <tbody class="bg-white">
-                                                            <tr v-for="(person,person_id) in incident_group.people" :key="person.id" :class="person.id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                                            <tr v-for="(person,person_id) in interest_group.people" :key="person.id" :class="person.id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                 <td class="whitespace-nowrap text-sm font-medium text-blue-600 sm:pl-3">
                                                                     <a class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                        :href="'/person/'+person.id+'/edit'">
