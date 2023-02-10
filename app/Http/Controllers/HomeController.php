@@ -18,12 +18,14 @@ class HomeController extends Controller
         $markers = array();
         $user_id = Auth::user()->id;
         if(Auth::user()->isAdmin()){
+            $is_admin = true;
             $marker_incidents = Incident::get();
             $departments = Department::withCount('incidents')
                 ->orderBy('incidents_count','DESC')
                 ->get();
 
         }else{
+            $is_admin = false;
             $marker_incidents = Incident::where('user_id',$user_id)
                 ->take(20)
                 ->orderBy('created_at','DESC')
@@ -76,6 +78,7 @@ class HomeController extends Controller
         return Inertia::render(
             'Dashboard/Index',
             [
+                'is_admin' => $is_admin,
                 'incident_stats' => $incident_stats,
                 'markers' => $markers,
                 'departments' => $departments

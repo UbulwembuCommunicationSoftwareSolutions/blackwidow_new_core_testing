@@ -7,7 +7,7 @@ import UserIncidents from "@/Pages/Dashboard/UserIncidents.vue";
 import UserStats from "@/Pages/Dashboard/UserStats.vue";
 
 export default {
-    props: ['incident_stats','markers','departments'],
+    props: ['incident_stats','markers','departments','is_admin'],
     components: {
         UserStats,
         AuthenticatedLayout,
@@ -17,13 +17,15 @@ export default {
         Loading
     },
     setup(props){
-       let  incident_stats = props.incident_stats;
-       let  markers = props.markers;
-       let departments = props.departments;
-       return {
+        let is_admin = props.is_admin;
+        let  incident_stats = props.incident_stats;
+        let  markers = props.markers;
+        let departments = props.departments;
+        return {
+            is_admin,
             incident_stats,
             markers,
-           departments
+            departments
         }
     },
 }
@@ -43,8 +45,8 @@ export default {
             <div class="max-w-7xl mx-auto sm:px-6 shadow-sm rounded-lg lg:px-8 border-b border-gray-200">
                 <div class="bg-white rounded-lg overflow-hidden">
                     <div class="bg-white">
-                        <UserIncidents :markers="this.markers"></UserIncidents>
-                        <UserStats :departments="this.departments" :incident_stats="this.incident_stats"></UserStats>
+                        <UserIncidents :is_admin="is_admin" :markers="this.markers"></UserIncidents>
+                        <UserStats :is_admin="is_admin" :departments="this.departments" :incident_stats="this.incident_stats"></UserStats>
                     </div>
                 </div>
             </div>
