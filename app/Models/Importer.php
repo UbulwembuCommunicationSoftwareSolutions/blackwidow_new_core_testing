@@ -48,7 +48,6 @@ class Importer extends Model
                 'incident_category' => $case_activy->category,
                 'incident_sub_category' => $case_activy->sub_category,
             ]);
-            $incident_activity->save();
         }
     }
     public static function processCaseNotes($case_notes){
@@ -59,7 +58,6 @@ class Importer extends Model
                 'user_id' => $import_note->user,
                 'note' => $import_note->note,
             ]);
-            $import_note->save();
         }
     }
 
