@@ -12,7 +12,6 @@ class Importer extends Model
 
         $token = Importer::Login($url);
         $case_activities = Importer::getCaseActivities($url,$token);
-        dd($case_activities);
         $departments = Importer::getDepartments($url,$token);
         $users = Importer::getUsers($url,$token);
         $cases = Importer::getCases($url,$token);
