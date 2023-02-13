@@ -11,6 +11,8 @@ class Importer extends Model
     public static function Import($url){
 
         $token = Importer::Login($url);
+        $case_activities = Importer::getCaseActivities($url,$token);
+        dd($case_activities);
         $departments = Importer::getDepartments($url,$token);
         $users = Importer::getUsers($url,$token);
         $cases = Importer::getCases($url,$token);
@@ -20,6 +22,9 @@ class Importer extends Model
         $people = Importer::getPeople($url,$token);
         $people_contacts = Importer::getPeopleContacts($url,$token);
         $people_cases = Importer::getPeopleCases($url,$token);
+        $case_notes = Importer::getCaseNotes($url,$token);
+        Self::processCaseActivites($case_activities);
+        Self::processCaseNotes($people_cases);
         Self::processPeopleCases($people_cases);
         Self::processPeople($people);
         Self::processCases($cases);
@@ -30,7 +35,35 @@ class Importer extends Model
         Self::processUsers($users);
     }
 
-
+    public static function processCaseActivites($case_activies){
+        foreach ($case_activies as $case_activy){
+            $incident_activity = new IncidentActivity([
+                'id' => $case_activy->id,
+                'note' => $case_activy->note,
+                'user_id' => $case_activy->user,
+                'incident_id' => $case_activy->case_id,
+                'to_user_id' => $case_activy->to,
+                'from_user_id' => $case_activy->from,
+                'message' => $case_activy->message,
+                'description' => $case_activy->description,
+                'incident_category' => $case_activy->incident_category,
+                'incident_sub_category' => $case_activy->incident_sub_category,
+                'incident_sub_sub_category' => $case_activy->incident_sub_sub_category,
+            ]);
+            $incident_activity->save();
+        }
+    }
+    public static function processCaseNotes($case_notes){
+        foreach($case_notes as $import_note){
+            $incident_note = new IncidentNote([
+                'id' => $import_note->id,
+                'incident_id' => $import_note->case_id,
+                'user_id' => $import_note->user,
+                'note' => $import_note->note,
+            ]);
+            $import_note->save();
+        }
+    }
 
     public static function processPeopleCases($people_cases){
         foreach($people_cases as $person_case){
@@ -260,6 +293,57 @@ class Importer extends Model
 
         $curl = curl_init();
         $url .= '/api/cases/new-cases';
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $new_response = json_decode($response);
+        return $new_response->data;
+    }
+    public static function getCaseNotes($url,$token){
+
+        $curl = curl_init();
+        $url .= '/api/cases/notes';
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $new_response = json_decode($response);
+        return $new_response->data;
+    }
+
+    public static function getCaseActivities($url,$token){
+
+        $curl = curl_init();
+        $url .= '/api/cases/activities';
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,

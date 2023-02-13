@@ -27,6 +27,10 @@ class Incident extends Model
         return $this->belongsTo(IncidentSubCategory::class);
     }
 
+    public function incident_notes(){
+        return $this->hasMany(IncidentNote::class);
+    }
+
     public function incident_sub_sub_category(){
         return $this->belongsTo(IncidentSubSubCategory::class);
     }
