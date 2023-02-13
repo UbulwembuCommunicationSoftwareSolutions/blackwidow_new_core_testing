@@ -45,9 +45,8 @@ class Importer extends Model
                 'from_user_id' => $case_activy->from,
                 'message' => $case_activy->message,
                 'description' => $case_activy->description,
-                'incident_category' => $case_activy->incident_category,
-                'incident_sub_category' => $case_activy->incident_sub_category,
-                'incident_sub_sub_category' => $case_activy->incident_sub_sub_category,
+                'incident_category' => $case_activy->category,
+                'incident_sub_category' => $case_activy->sub_category,
             ]);
             $incident_activity->save();
         }
