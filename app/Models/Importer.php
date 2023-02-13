@@ -23,7 +23,7 @@ class Importer extends Model
         $people_cases = Importer::getPeopleCases($url,$token);
         $case_notes = Importer::getCaseNotes($url,$token);
         Self::processCaseActivites($case_activities);
-        Self::processCaseNotes($people_cases);
+        Self::processCaseNotes($case_notes);
         Self::processPeopleCases($people_cases);
         Self::processPeople($people);
         Self::processCases($cases);
