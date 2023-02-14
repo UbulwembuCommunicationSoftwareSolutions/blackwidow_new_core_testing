@@ -78,7 +78,7 @@
 
 <script>
 export default {
-    name: "Page1"
+    name: "Page3"
 }
 </script>
 
