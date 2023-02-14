@@ -3,19 +3,19 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 // import the styles
-import Page1 from  "@/Pages/Person/Page1.vue";
-import Page2 from  "@/Pages/Person/Page2.vue";
-import Page3 from  "@/Pages/Person/Page3.vue";
-import Page4 from  "@/Pages/Person/Page4.vue";
+import PersonBasicInfo from "@/Pages/Person/PersonBasicInfo.vue";
+import PersonPersonalInfo from "@/Pages/Person/PersonPersonalInfo.vue";
+import PersonIncidentRelationships from  "@/Pages/Person/PersonIncidentRelationships.vue";
+import PersonGroupInfo from "@/Pages/Person/PersonGroupInfo.vue";
 
 export default {
     components: {
         AuthenticatedLayout,
         Head,
-        Page1,
-        Page2,
-        Page3,
-        Page4
+        PersonBasicInfo,
+        PersonPersonalInfo,
+        PersonIncidentRelationships,
+        PersonGroupInfo
     },
     props:{
         person :  Object,
@@ -125,7 +125,7 @@ export default {
                         </div>
                     </div>
                     <div v-if="this.displayPage===1" id="page_1">
-                        <Page1
+                        <PersonBasicInfo
                             :person="this.person"
                             :available_institutions="this.available_institutions"
                             :person_institutions="this.person_institutions"
@@ -133,18 +133,18 @@ export default {
                         />
                     </div>
                     <div v-if="this.displayPage===2" id="page_2">
-                        <Page2
+                        <PersonPersonalInfo
                         :person="this.person"
                         />
                     </div>
                     <div v-if="this.displayPage===3" id="page_3">
-                        <Page3
+                        <PersonIncidentRelationships
                             :person="this.person"
                             :incidents="this.incidents"
                         />
                     </div>
                     <div v-if="this.displayPage===4" id="page_4">
-                        <Page4
+                        <PersonGroupInfo
                             :person="this.person"
                         />
                     </div>

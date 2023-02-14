@@ -1,16 +1,14 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import Page1 from '@/Pages/InterestGroup/Page1.vue';
-import Page2 from '@/Pages/InterestGroup/Page2.vue';
-import Page3 from '@/Pages/InterestGroup/Page3.vue';
+import InterestGroupMemberInfo from '@/Pages/InterestGroup/InterestGroupMemberInfo.vue';
+import InterestGroupRelationships from '@/Pages/InterestGroup/InterestGroupRelationships.vue';
 export default {
     components: {
         AuthenticatedLayout,
         Head,
-        Page1,
-        Page2,
-        Page3
+        InterestGroupMemberInfo,
+        InterestGroupRelationships
     },
     props : ['interest_group'],
     data(){
@@ -22,7 +20,6 @@ export default {
         const tabs = [
             { name: 'Group Members', tab: 1, current: true },
             { name: 'Group Relationships', tab: 2, current: false },
-            { name: 'Group Info', tab: 3, current: false },
         ];
         let interest_group = props.interest_group;
         return{
@@ -107,17 +104,12 @@ export default {
                         </div>
                     </div>
                     <div v-if="this.displayPage===1" id="page_1">
-                        <Page1
+                        <InterestGroupMemberInfo
                             :interest_group="this.interest_group"
                         />
                     </div>
                     <div v-if="this.displayPage===2" id="page_2">
-                        <Page2
-                            :interest_group="this.interest_group"
-                        />
-                    </div>
-                    <div v-if="this.displayPage===3" id="page_3">
-                        <Page3
+                        <InterestGroupRelationships
                             :interest_group="this.interest_group"
                         />
                     </div>
