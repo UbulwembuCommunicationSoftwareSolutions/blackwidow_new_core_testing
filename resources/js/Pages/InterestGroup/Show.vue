@@ -1,13 +1,45 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
+import Page1 from '@/Pages/InterestGroup/Page1.vue';
+import Page2 from '@/Pages/InterestGroup/Page2.vue';
+import Page3 from '@/Pages/InterestGroup/Page3.vue';
 export default {
     components: {
         AuthenticatedLayout,
         Head,
+        Page1,
+        Page2,
+        Page3
     },
-    props:{
-        interest_group :  Object
+    props : ['interest_group'],
+    data(){
+        return {
+            displayPage : 1,
+        }
+    },
+    setup(props){
+        const tabs = [
+            { name: 'Group Members', tab: 1, current: true },
+            { name: 'Group Relationships', tab: 2, current: false },
+            { name: 'Group Info', tab: 3, current: false },
+        ];
+        let interest_group = props.interest_group;
+        return{
+            tabs,interest_group
+        }
+    },
+    methods: {
+        loadTab(id){
+            this.displayPage = (id +1);
+            this.tabs.forEach((tab) => {
+                if(tab.tab === this.displayPage ){
+                    tab.current = true;
+                }else{
+                    tab.current = false;
+                }
+            });
+        }
     }
 }
 </script>
@@ -21,77 +53,73 @@ export default {
                 Interest Group
             </h2>
         </template>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:py-6 lg:py-8">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Person of Interest
+            </h2>
+        </template>
+        <div
+            v-if="$page.props.flash.success"
+            class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert"
+        >
+                    <span class="font-medium">
+                        {{ $page.props.flash.success }}
+                    </span>
+        </div>
+        <div :key="this.displayPage">
+            <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="flex flex-row flex-grow">
-                        <div class="flex mt-4 py-6 w-full whitespace-nowrap px-6">
-                            <div class="overflow-hidden w-full bg-white shadow sm:rounded-lg">
-                                <div class="px-4 py-5 sm:px-6">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">People in this Group</h3>
-                                    <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
-                                </div>
-                                <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-                                    <div class="px-4 sm:px-6 lg:px-8">
-                                        <div class="mt-8 flex flex-col">
-                                            <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                                        <table class="min-w-full divide-y divide-gray-300">
-                                                            <thead class="bg-gray-50">
-                                                            <tr>
-                                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
-                                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">First Name</th>
-                                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Surname</th>
-                                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Institutions</th>
-                                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody class="bg-white">
-                                                            <tr v-for="(person,person_id) in interest_group.people" :key="person.id" :class="person.id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                                <td class="whitespace-nowrap text-sm font-medium text-blue-600 sm:pl-3">
-                                                                    <a class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                                       :href="'/person/'+person.id+'/edit'">
-                                                                        {{person.id}}
-                                                                    </a>
-                                                                </td>
-                                                                <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
-                                                                    <a class="mr-1 mb-1 text-sm  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                                       :href="'/person/'+person.id+'/edit'">
-                                                                        {{person.first_name}}
-                                                                    </a>
-                                                                </td>
-                                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-3">
-                                                                    <a class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
-                                                                       :href="'/person/'+person.id+'/edit'">
-                                                                        {{person.surname}}
-                                                                    </a>
-                                                                </td>
-                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                                    <p v-for="institute in person.institutions">
-                                                                        {{institute.description}}
-                                                                    </p>
-                                                                </td>
-                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                                    {{ person.created_at }}
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-
-                                                    </div>
-                                                    <div class="flex mb-6 items-center text-center justify-center">
-                                                        <div>
-                                                        </div>
-                                                    </div>
+                    <div class="px-4 mt-4 sm:px-6 lg:px-8">
+                        <div class="sm:flex sm:items-center">
+                            <div class="sm:flex-auto">
+                                <div>
+                                    <div class="max-w-7xl mx-auto">
+                                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                            <div class="px-4 mt-4 sm:px-6 lg:px-8">
+                                                <div class="sm:hidden">
+                                                    <label for="tabs" class="sr-only"></label>
+                                                    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                                                    <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                                                        <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">{{ tab.name }}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="hidden sm:block">
+                                                    <nav class="isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
+                                                        <a v-for="(tab, tabIdx) in tabs" :key="tab.name"
+                                                           v-on:click="loadTab(tabIdx)"
+                                                           :class="[tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
+                                        tabIdx === 0 ? 'rounded-l-lg' : '',
+                                        tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
+                                         'group relative min-w-0 flex-1 overflow-hidden' +
+                                          ' bg-white py-4 px-4 text-sm font-medium' +
+                                           ' text-center hover:bg-gray-50 focus:z-10']" :aria-current="tab.current ? 'page' : undefined">
+                                                            <span>{{ tab.name }}</span>
+                                                            <span aria-hidden="true" :class="[tab.current ? 'bg-indigo-500' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
+                                                        </a>
+                                                    </nav>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div v-if="this.displayPage===1" id="page_1">
+                        <Page1
+                            :interest_group="this.interest_group"
+                        />
+                    </div>
+                    <div v-if="this.displayPage===2" id="page_2">
+                        <Page2
+                            :interest_group="this.interest_group"
+                        />
+                    </div>
+                    <div v-if="this.displayPage===3" id="page_3">
+                        <Page3
+                            :interest_group="this.interest_group"
+                        />
                     </div>
                 </div>
             </div>
