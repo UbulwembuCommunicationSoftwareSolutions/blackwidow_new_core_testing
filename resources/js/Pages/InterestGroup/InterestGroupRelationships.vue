@@ -62,7 +62,7 @@ export default {
 
         this.interest_group.people.map((person, index) => {
             temp_nodes[`person${person.id}`] = { name: 'Person: ' + person.id + ' '+person.first_name+ '' + person.surname };
-            edges[`group${this.interest_group.id}`] = { source: `person${person.id}` , target: `group${this.interest_group.id}` }
+            edges[`group${this.person.id}`] = { source: `person${person.id}` , target: `group${this.interest_group.id}` }
         });
 
         let nodes = temp_nodes;
