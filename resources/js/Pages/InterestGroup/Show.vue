@@ -50,11 +50,6 @@ export default {
                 Interest Group
             </h2>
         </template>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Person of Interest
-            </h2>
-        </template>
         <div
             v-if="$page.props.flash.success"
             class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"

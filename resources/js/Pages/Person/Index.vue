@@ -96,19 +96,19 @@ export default {
                                                                     <tr v-for="(person,person_id) in people.data" :key="person.id" :class="person_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                                             <a class="focus:border-indigo-500 focus:text-blue-500"
-                                                                               :href="'/person/'+person.id">
+                                                                               :href="'/person/'+person.id+'/edit">
                                                                                 {{person.id}}
                                                                             </a>
                                                                         </td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                                             <a class="focus:border-indigo-500 focus:text-blue-500"
-                                                                               :href="'/person/'+person.id">
+                                                                               :href="'/person/'+person.id+'/edit">
                                                                                 {{person.first_name}}
                                                                             </a>
                                                                         </td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                                             <a class="focus:border-indigo-500 focus:text-blue-500"
-                                                                               :href="'/person/'+person.id">
+                                                                               :href="'/person/'+person.id+'/edit">
                                                                                 {{person.surname}}
                                                                             </a>
                                                                         </td>
@@ -122,7 +122,7 @@ export default {
                                                                         </td>
                                                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                                             <a class="focus:border-indigo-500 focus:text-blue-500"
-                                                                               :href="'/person/'+person.id">
+                                                                               :href="'/person/'+person.id+'/edit">
                                                                                 {{ person.created_at }}
                                                                             </a>
                                                                         </td>
@@ -130,7 +130,7 @@ export default {
                                                                             <a href="#" class="text-indigo-600 hover:text-indigo-900"
                                                                             >Edit<span class="sr-only">
                                                                                  <a class="focus:border-indigo-500 focus:text-blue-500"
-                                                                                    :href="'/person/'+person.id">
+                                                                                    :href="'/person/'+person.id+'/edit">
                                                                             </a>
                                                                             </span></a
                                                                             >

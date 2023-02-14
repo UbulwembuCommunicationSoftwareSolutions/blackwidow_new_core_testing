@@ -44,6 +44,9 @@ import Loading from "@/Components/Loading.vue";
 
 export default {
     name: "Page2",
+    components:{
+      NetworkDiagram,Loading
+    },
     props : ['interest_group'],
     setup(props){
       let interest_group = props.interest_group;
