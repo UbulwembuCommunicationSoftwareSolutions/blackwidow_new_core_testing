@@ -5,11 +5,6 @@
                 <div class="flex flex-row flex-grow">
                     <div class="flex mt-4 py-6 w-full whitespace-nowrap px-6">
                         <div class="overflow-hidden w-full bg-white shadow sm:rounded-lg">
-                            <div class="px-4 py-5 sm:px-6">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.description}}</h3>
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">People in this Group</h3>
-                                <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
-                            </div>
                             <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
                                 <div class="px-4 sm:px-6 lg:px-8">
                                     <div class="mt-8 flex flex-col">

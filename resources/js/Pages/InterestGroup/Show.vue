@@ -62,6 +62,11 @@ export default {
         <div :key="this.displayPage">
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="px-4 py-5 sm:px-6">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.description}}</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">People in this Group</h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+                    </div>
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">
                         <div class="sm:flex sm:items-center">
                             <div class="sm:flex-auto">
