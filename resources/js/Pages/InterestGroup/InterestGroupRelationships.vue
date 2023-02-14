@@ -7,6 +7,11 @@
                         <div class="mt-8 mb-8 flex flex-col">
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                    <div class="px-4 py-5 sm:px-6">
+                                        <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.description}}</h3>
+                                        <h3 class="text-lg font-medium leading-6 text-gray-900">People in this Group</h3>
+                                        <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+                                    </div>
                                     <div class="overflow-hidden mb-6 shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <div>
                                             <Loading v-if="this.loading"/>

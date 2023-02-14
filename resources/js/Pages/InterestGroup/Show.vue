@@ -47,7 +47,7 @@ export default {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Interest Group
+                Interest Group {{this.interest_group.description}}
             </h2>
         </template>
         <div
