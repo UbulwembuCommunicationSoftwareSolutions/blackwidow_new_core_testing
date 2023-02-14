@@ -63,7 +63,7 @@ export default {
             <div class="max-w-7xl mx-auto">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="overflow-hidden rounded-lg bg-white shadow">
-                        <div class="border-b border-gray-200 pb-5">
+                        <div class="text-gray-900 rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.description}}</h3>
                         </div>
                     </div>
