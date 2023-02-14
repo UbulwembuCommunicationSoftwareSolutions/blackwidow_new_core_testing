@@ -62,7 +62,11 @@ export default {
 
         this.interest_group.people.map((person, index) => {
             temp_nodes[`person${person.id}`] = { name: 'Person: ' + person.id + ' '+person.first_name+ '' + person.surname };
-            edges[`group${this.person.id}`] = { source: `person${person.id}` , target: `group${this.interest_group.id}` }
+            edges[`group${person.id}`] = { source: `person${person.id}` , target: `group${this.interest_group.id}` }
+            person.incidents.map((incident, index) => {
+                temp_nodes[`incident${incident.id}`] = { name: 'Case: ' + incident.id };
+                edges[`incident${incident.id}`] = { source: `person${person.id}` , target: `incident${incident.id}` }
+            });
         });
 
         let nodes = temp_nodes;
