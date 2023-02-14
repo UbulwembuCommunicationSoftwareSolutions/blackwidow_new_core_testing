@@ -50,7 +50,7 @@ export default {
                     label: {
                         visible: true,
                         fontFamily: undefined,
-                        fontSize: 11,
+                        fontSize: 7,
                         lineHeight: 1.1,
                         color: "#000000",
                         margin: 4,
