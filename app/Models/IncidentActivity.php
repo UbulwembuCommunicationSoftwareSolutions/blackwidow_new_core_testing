@@ -9,14 +9,21 @@ class IncidentActivity extends Model
 {
     use HasFactory;
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d H:i:s',
-        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'created_at' ,
+        'updated_at' ,
     ];
 
     protected $fillable = [
-        'incident_id',
-        'user_id',
-        'note'
+        'id' ,
+        'note' ,
+        'user_id' ,
+        'incident_id' ,
+        'to_user_id' ,
+        'from_user_id' ,
+        'message' ,
+        'description' ,
+        'incident_category' ,
+        'incident_sub_category' ,
     ];
     public function incident(){
         return $this->belongsTo(Incident::class);
