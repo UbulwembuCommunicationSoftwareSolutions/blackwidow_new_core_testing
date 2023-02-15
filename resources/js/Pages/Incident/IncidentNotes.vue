@@ -21,12 +21,12 @@
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
+                                                <td @click="changeNote(incident_note_id)" class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
                                                     </p>
                                                 </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <td  @click="changeNote(incident_note_id)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {{ incident_note.created_at }}
                                                 </td>
                                             </tr>
@@ -82,10 +82,15 @@ export default {
         PaperClipIcon
     },
     setup(props){
-        const i = 0;
         const incident = props.incident;
         return{
-            incident,i
+            incident
+        }
+    },
+    data(){
+        let i = 0;
+        return {
+            i
         }
     },
     mounted(){
@@ -95,6 +100,9 @@ export default {
         sanitize(text) {
             return DOMPurify.sanitize(text);
         },
+        changeNote(incident_note_id){
+            this.i = incident_note_id;
+        }
     }
 
 }
