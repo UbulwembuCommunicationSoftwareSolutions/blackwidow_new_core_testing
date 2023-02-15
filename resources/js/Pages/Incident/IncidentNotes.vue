@@ -41,16 +41,6 @@
                     <div class="flex my-6 mx-6 items-center text-center justify-center">
                         <div>
                             <blockquote class="relative rounded-lg bg-white shadow-lg">
-                                <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
-                                    <div class="relative mt-8 text-lg font-medium text-gray-700">
-                                        <div class="w-96">
-                                            <div v-html="sanitize(this.incident.incident_notes[i].note)" class="relative">
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
                                 <cite class="relative flex items-center rounded-b-lg bg-indigo-600 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
                                     <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
                                             <span class="font-semibold text-white sm:inline">
@@ -61,6 +51,15 @@
                                             <span class="sm:inline">{{ this.incident.incident_notes[i].created_at }}</span>
                                     </span>
                                 </cite>
+                                <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
+                                    <div class="relative mt-8 text-lg font-medium text-gray-700">
+                                        <div class="w-96">
+                                            <div v-html="sanitize(this.incident.incident_notes[i].note)" class="relative">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </blockquote>
                         </div>
                     </div>
