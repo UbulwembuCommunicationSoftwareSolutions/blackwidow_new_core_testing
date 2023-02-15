@@ -97,11 +97,7 @@ export default {
     },
     methods: {
         sanitize(text) {
-            let new_text = '<div class="w-96">'+text
-            new_text = new_text + '</div>';
-            console.log(text);
-            console.log(new_text);
-            return DOMPurify.sanitize(new_text);
+            return text.replace(/<[^>]*>?/gm, '');
         },
         changeNote(incident_note_id){
             this.i = incident_note_id;
