@@ -98,7 +98,9 @@ export default {
     },
     methods: {
         sanitize(text) {
-            return DOMPurify.sanitize(text);
+            let new_text = '<div class="w-96">'+text
+            new_text = new_text + '</div>';
+            return DOMPurify.sanitize(new_text);
         },
         changeNote(incident_note_id){
             this.i = incident_note_id;
