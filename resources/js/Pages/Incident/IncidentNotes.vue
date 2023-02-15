@@ -15,14 +15,14 @@
                                         <table class="min-w-full divide-y divide-gray-300">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col" class="text-left text-sm font-semibold text-gray-900">Note</th>
+                                                <th scope="col" class="w-64 text-left text-sm font-semibold text-gray-900">Note</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Message</th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td class="break-words py-4 pl-4 pr-3 text-sm w-64 font-medium text-blue-600 sm:pl-6">
+                                                <td class="break-words text-sm w-64 font-medium text-blue-600">
                                                     {{ this.sanitize(incident_note.note)}}
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
