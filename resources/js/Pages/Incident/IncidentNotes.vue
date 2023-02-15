@@ -43,8 +43,11 @@
                             <blockquote class="relative rounded-lg bg-white shadow-lg">
                                 <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
                                     <div class="relative mt-8 text-lg font-medium text-gray-700">
-                                        <div v-html="sanitize(this.incident.incident_notes[i].note)" class="relative">
+                                        <div class="w-96">
+                                            <div v-html="sanitize(this.incident.incident_notes[i].note)" class="relative">
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
 
