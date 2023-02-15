@@ -20,7 +20,7 @@
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
-                                            <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id === i ? undefined : 'bg-gray-500'">
+                                            <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id !== i ? undefined : 'bg-gray-200'">
                                                 <td @click="changeNote(incident_note_id)" class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
