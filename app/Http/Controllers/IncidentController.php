@@ -148,6 +148,7 @@ class IncidentController extends Controller
     public function show(Incident $incident)
     {
         $request = Request::all();
+        $incident = Incident::find($incident->id);
         $incident->with('user');
         $incident->with('department');
         $incident->with('people.institutions');
