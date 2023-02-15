@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col flex-grow">
-        <div v-for="(incident_note,incident_note_id) in incident.incident_notes" class="flex mx-2 items-center text-center">
+        <div v-for="(incident_note,incident_note_id) in incident.incident_notes" class="flex mx-4 my-4 items-center text-center">
             <div class="rounded-lg bg-white shadow-lg">
                     <div class="rounded-lg bg-indigo-500 text-white">
                         <h4>
@@ -12,7 +12,7 @@
                     </div>
                     <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
                         <div class="relative mt-8 text-lg font-medium text-gray-700">
-                            <div class="w-96">
+                            <div class="w-1/2">
                                 <div v-html="sanitize(incident_note.note)" class="relative">
                                 </div>
                             </div>
