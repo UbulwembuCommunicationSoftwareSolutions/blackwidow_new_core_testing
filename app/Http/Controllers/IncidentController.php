@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Request;
 use App\Models\Incident;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules\In;
 use Inertia\Inertia;
 use function PHPUnit\Framework\directoryExists;
 
@@ -145,15 +146,16 @@ class IncidentController extends Controller
      * @param  \App\Models\Incident  $incident
      * @return \Illuminate\Http\Response
      */
-    public function show(Incident $incident)
+    public function show($id)
     {
         $request = Request::all();
-        $incident = Incident::find($incident->id);
+        $incident = Incident::query();
         $incident->with('user');
         $incident->with('department');
         $incident->with('people.institutions');
         $incident->with('incident_activities.user');
         $incident->with('incident_notes.user');
+        $incident->find($id);
         if(array_key_exists('current_page',$request)){
             $current_page = $request['current_page'];
         }else{
