@@ -18,30 +18,18 @@
                                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Note</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Message</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td class="whitespace-nowrap text-sm font-medium text-blue-600 sm:pl-3">
-                                                    <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.note}}
-                                                    </p>
+                                                <td class="break-words text-sm font-medium text-blue-600 sm:pl-3">
+                                                    <div  v-html="sanitize(incident_note.note)" class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
+
+                                                    </div>
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
-                                                    </p>
-                                                </td>
-                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-3">
-                                                    <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.message}}
-                                                    </p>
-                                                </td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.description}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -70,7 +58,7 @@
 
 <script>
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
-
+import DOMPurify from 'dompurify'
 export default {
     name: "IncidentActivity",
     props : ['incident'],
@@ -85,6 +73,11 @@ export default {
     },
     mounted(){
         console.log(this.incident.incident_notes)
+    },
+    methods: {
+        sanitize(text) {
+            return DOMPurify.sanitize(text)
+        }
     }
 
 }
