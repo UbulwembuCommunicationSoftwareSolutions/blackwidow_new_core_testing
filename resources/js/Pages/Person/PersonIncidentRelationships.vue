@@ -37,13 +37,13 @@
                                                                 <tbody class="bg-white">
                                                                 <tr v-for="(incident,incident_id) in this.incidents" :key="incident.id" :class="incident_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded "
                                                                            :href="'/incident/'+incident.id">
                                                                             {{incident.id}}
                                                                         </a>
                                                                     </td>
                                                                     <td class="break-words py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded "
                                                                            :href="'/incident/'+incident.id">
                                                                             {{incident.description}}
                                                                         </a>
@@ -52,7 +52,7 @@
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
-                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
+                                                                        <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded "
                                                                            :href="'/incident/'+incident.id">
                                                                             {{incident.people_count}}
                                                                         </a>
