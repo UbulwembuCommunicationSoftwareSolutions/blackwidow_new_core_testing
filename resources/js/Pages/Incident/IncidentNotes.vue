@@ -22,8 +22,8 @@
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td v-html="sanitize(incident_note.note)" class="broken-column break-words text-sm w-64 font-medium text-blue-600">
-
+                                                <td class="broken-column break-words text-sm w-64 font-medium text-blue-600">
+                                                    {{sanitize(incident_note.note)}}
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
@@ -81,9 +81,7 @@ export default {
             var result = '';
             for (var i = 0; i < str.length; i++) {
                 if (i % 60 === 0 && i > 0) {
-                    if (str[i] === ' ') {
-                        result += '<br>';
-                    }
+                    result += '<br>';
                 }
                 result += str[i];
             }
