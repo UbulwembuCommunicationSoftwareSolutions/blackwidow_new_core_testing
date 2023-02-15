@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-row flex-grow">
-        <div class="flex mt-4 py-6 whitespace-nowrap px-6">
+        <div class="flex basis-1/2 mx-4 my-4 px-6 py-6 whitespace-nowrap ">
             <div class="overflow-hidden w-full bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Incident Activity</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Incident Notes</h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
                 </div>
                 <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
@@ -16,13 +16,13 @@
                                             <thead class="bg-gray-50">
                                             <tr>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Message</th>
+                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id !== i ? undefined : 'bg-gray-200'">
                                                 <td @click="changeNote(incident_note_id)" class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
-                                                    <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
+                                                    <p class="mr-1 mb-1 text-sm leading-4  rounded">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
                                                     </p>
                                                 </td>
@@ -42,9 +42,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex my-6 mx-6 items-center text-center justify-center">
+        <div class="flex basis-1/2 mx-4 my-4 px-6 py-6 items-center text-center justify-center">
             <blockquote class="relative rounded-lg bg-white shadow-lg">
-                    <cite class="relative flex items-center rounded-b-lg bg-indigo-600 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
+                    <cite class="relative flex items-center rounded-lg bg-gray-100 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
                                     <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
                                             <span class="font-semibold text-white sm:inline">
                                                 {{ this.incident.incident_notes[i].user.first_name + ' '
