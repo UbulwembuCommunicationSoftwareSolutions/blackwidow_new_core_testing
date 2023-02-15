@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="flex basis-1/2 h-96 mx-2 items-center text-center">
-            <blockquote class="relative rounded-lg bg-white shadow-lg">
+            <div class="rounded-lg h-96 bg-white shadow-lg">
                     <div class="rounded-lg bg-indigo-500 text-white">
                         <h4>
                             {{ this.incident.incident_notes[i].user.first_name + ' '
@@ -62,7 +62,7 @@
 
                         </div>
                     </div>
-                </blockquote>
+                </div>
         </div>
     </div>
 
