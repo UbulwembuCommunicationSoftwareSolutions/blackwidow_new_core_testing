@@ -10,8 +10,8 @@
                             {{ incident_note.created_at }}
                         </h6>
                     </div>
-                    <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
-                        <div class="relative mt-8 text-lg font-medium text-gray-700">
+                    <div class="rounded-t-lg px-4 py-4 sm:px-10 sm:pt-10 sm:pb-8">
+                        <div class="relative text-lg font-medium text-gray-700">
                             <div class="w-1/2">
                                 <div v-html="sanitize(incident_note.note)" class="relative">
                                 </div>
