@@ -100,6 +100,8 @@ export default {
         sanitize(text) {
             let new_text = '<div class="w-96">'+text
             new_text = new_text + '</div>';
+            console.log(text);
+            console.log(new_text);
             return DOMPurify.sanitize(new_text);
         },
         changeNote(incident_note_id){
