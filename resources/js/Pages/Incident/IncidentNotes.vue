@@ -37,14 +37,16 @@
                                     <div class="flex mb-6 items-center text-center justify-center">
                                         <div>
                                             <cite class="relative flex items-center rounded-b-lg bg-indigo-600 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
-              <span class="relative flex-none rounded-full border-2 border-white sm:absolute sm:top-0 sm:-translate-y-1/2 sm:transform">
-                <img class="h-12 w-12 rounded-full bg-indigo-300 sm:h-20 sm:w-20" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80" alt="" />
-              </span>
-                                                <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
-                <span class="font-semibold text-white sm:inline">Judith Black</span>
-                {{ ' ' }}
-                <span class="sm:inline">CEO at Workcation</span>
-              </span>
+                                                    <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
+                                                    <span class="font-semibold text-white sm:inline">
+                                                        {{ this.incident.incident_notes[i].created_at }}
+                                                    </span>
+                                                    {{ ' This is some text ' }}
+                                                    <span class="sm:inline">
+                                                        {{ this.incident.incident_notes[i].user.first_name + ' '
+                                                                + this.incident.incident_notes[i].user.surname }}
+                                                    </span>
+                                                  </span>
                                             </cite>
                                         </div>
                                     </div>
@@ -70,9 +72,10 @@ export default {
         PaperClipIcon
     },
     setup(props){
+        const i = 0;
         const incident = props.incident;
         return{
-            incident
+            incident,i
         }
     },
     mounted(){
