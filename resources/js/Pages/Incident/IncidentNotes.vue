@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row flex-grow">
+    <div class="flex mt-10 flex-row flex-grow">
         <div class="flex basis-1/2 mx-2 whitespace-nowrap ">
             <div class="overflow-hidden w-full bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
