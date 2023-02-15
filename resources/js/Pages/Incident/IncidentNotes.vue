@@ -11,7 +11,7 @@
                         <div class="mt-8 flex flex-col">
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                    <div class="overflow-hidden mt-4 mb-4 shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                         <table class="min-w-full divide-y divide-gray-300">
                                             <thead class="bg-gray-50">
                                             <tr>
@@ -21,12 +21,12 @@
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id !== i ? undefined : 'bg-gray-200'">
-                                                <td @click="changeNote(incident_note_id)" class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
+                                                <td @click="changeNote(incident_note_id)" class="whitespace-nowrap  text-sm font-medium text-gray-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
                                                     </p>
                                                 </td>
-                                                <td  @click="changeNote(incident_note_id)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <td  @click="changeNote(incident_note_id)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-600">
                                                     {{ incident_note.created_at }}
                                                 </td>
                                             </tr>
