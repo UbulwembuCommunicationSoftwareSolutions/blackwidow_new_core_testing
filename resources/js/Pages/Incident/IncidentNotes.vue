@@ -22,7 +22,7 @@
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td  v-html="sanitize(incident_note.note)" class="break-words text-sm font-medium text-blue-600 sm:pl-3">
+                                                <td  v-html="sanitize(incident_note.note)" class="w-64 break-words text-sm font-medium text-blue-600 sm:pl-3">
 
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
