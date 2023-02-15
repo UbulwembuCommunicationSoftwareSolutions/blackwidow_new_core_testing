@@ -148,11 +148,11 @@ class IncidentController extends Controller
     public function show(Incident $incident)
     {
         $request = Request::all();
-        $incident->load('user');
-        $incident->load('department');
-        $incident->load('people.institutions');
-        $incident->load('incident_activities.user');
-        $incident->load('incident_notes.user');
+        $incident->with('user');
+        $incident->with('department');
+        $incident->with('people.institutions');
+        $incident->with('incident_activities.user');
+        $incident->with('incident_notes.user');
         if(array_key_exists('current_page',$request)){
             $current_page = $request['current_page'];
         }else{
