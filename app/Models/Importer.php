@@ -49,7 +49,6 @@ class Importer extends Model
                 'incident_sub_category_id' => $case_activy->sub_category,
             ]);
             $incident_activity->save();
-            dd($incident_activity);
         }
     }
     public static function processCaseNotes($case_notes){
