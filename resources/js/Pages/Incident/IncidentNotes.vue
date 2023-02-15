@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-row flex-grow">
-        <div class="flex basis-1/2 mx-4 my-4 px-6 py-6 whitespace-nowrap ">
+        <div class="flex basis-1/2 mx-2 whitespace-nowrap ">
             <div class="overflow-hidden w-full bg-white shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Incident Notes</h3>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex basis-1/2 mx-4 my-4 px-6 py-6 items-center text-center justify-center">
+        <div class="flex basis-1/2 mx-2 items-center text-center justify-center">
             <blockquote class="relative rounded-lg bg-white shadow-lg">
                     <cite class="relative flex items-center rounded-lg bg-indigo-500 py-5 px-6 not-italic sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
                                     <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
