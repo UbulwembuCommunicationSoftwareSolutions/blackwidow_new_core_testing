@@ -84,7 +84,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.incident)
+        console.log(this.incident.incident_activities)
     }
 
 }
