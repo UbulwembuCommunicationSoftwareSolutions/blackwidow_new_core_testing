@@ -45,6 +45,8 @@ class Importer extends Model
                 'from_user_id' => $case_activy->from,
                 'message' => $case_activy->message,
                 'description' => $case_activy->description,
+                'created_at' => $case_activy->created_at,
+                'updated_at' => $case_activy->updated_at,
                 'incident_category_id' => $case_activy->category,
                 'incident_sub_category_id' => $case_activy->sub_category,
             ]);
@@ -56,6 +58,8 @@ class Importer extends Model
             $incident_note = new IncidentNote([
                 'id' => $import_note->id,
                 'incident_id' => $import_note->case_id,
+                'created_at' => $import_note->created_at,
+                'updated_at' => $import_note->updated_at,
                 'user_id' => $import_note->user,
                 'note' => $import_note->note,
             ]);
