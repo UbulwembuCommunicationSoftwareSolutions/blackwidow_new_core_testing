@@ -44,16 +44,15 @@
         </div>
         <div class="flex basis-1/2 mx-2 items-center text-center">
             <blockquote class="relative rounded-lg bg-white shadow-lg">
-                    <cite class="relative flex items-center rounded-lg bg-indigo-500 py-5 px-6 not-italic sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
-                                    <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
-                                            <span class="font-semibold text-white sm:inline">
-                                                {{ this.incident.incident_notes[i].user.first_name + ' '
-                                            + this.incident.incident_notes[i].user.surname }}
-                                            </span>
-                                                    {{ ' ' }}
-                                            <span>{{ this.incident.incident_notes[i].created_at }}</span>
-                                    </span>
-                    </cite>
+                    <div class="rounded-lg bg-indigo-500 text-white">
+                        <h4>
+                            {{ this.incident.incident_notes[i].user.first_name + ' '
+                    + this.incident.incident_notes[i].user.surname }}
+                        </h4>
+                        <h6>
+                            {{ this.incident.incident_notes[i].created_at }}
+                        </h6>
+                    </div>
                     <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
                         <div class="relative mt-8 text-lg font-medium text-gray-700">
                             <div class="w-96">
