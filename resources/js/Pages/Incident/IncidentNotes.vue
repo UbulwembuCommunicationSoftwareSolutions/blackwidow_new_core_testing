@@ -22,8 +22,8 @@
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td class="break-words text-sm w-64 font-medium text-blue-600">
-                                                    {{ this.sanitize(incident_note.note)}}
+                                                <td v-html="sanitize(incident_note.note)" class="break-words text-sm w-64 font-medium text-blue-600">
+
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
