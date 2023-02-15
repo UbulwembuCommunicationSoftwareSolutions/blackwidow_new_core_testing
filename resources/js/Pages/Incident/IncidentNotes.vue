@@ -74,7 +74,18 @@ export default {
     },
     methods: {
         sanitize(text) {
-            return DOMPurify.sanitize(text)
+            const new_text = this.insertLineBreaks(text);
+            return DOMPurify.sanitize(new_text);
+        },
+        insertLineBreaks(str) {
+            var result = '';
+            for (var i = 0; i < str.length; i++) {
+                if (i % 60 === 0 && i > 0) {
+                    result += '<br>';
+                }
+                result += str[i];
+            }
+            return result;
         }
     }
 
