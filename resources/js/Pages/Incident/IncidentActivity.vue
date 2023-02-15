@@ -77,6 +77,15 @@ export default {
     components: {
         PaperClipIcon
     },
+    setup(props){
+        const incident = props.incident;
+        return{
+            incident
+        }
+    },
+    mounted(){
+        console.log(this.incident)
+    }
 
 }
 </script>
