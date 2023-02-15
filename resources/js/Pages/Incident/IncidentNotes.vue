@@ -44,7 +44,7 @@
         </div>
         <div class="flex basis-1/2 mx-4 my-4 px-6 py-6 items-center text-center justify-center">
             <blockquote class="relative rounded-lg bg-white shadow-lg">
-                    <cite class="relative flex items-center rounded-lg bg-gray-100 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
+                    <cite class="relative flex items-center rounded-lg bg-indigo-500 py-5 px-6 not-italic sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
                                     <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
                                             <span class="font-semibold text-white sm:inline">
                                                 {{ this.incident.incident_notes[i].user.first_name + ' '
