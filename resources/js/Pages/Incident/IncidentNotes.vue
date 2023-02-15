@@ -15,16 +15,12 @@
                                         <table class="min-w-full divide-y divide-gray-300">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col" class="w-64 text-left text-sm font-semibold text-gray-900">Note</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Message</th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
                                             <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
-                                                <td class="broken-column break-words text-sm w-64 font-medium text-blue-600">
-                                                    {{sanitize(incident_note.note)}}
-                                                </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
                                                         {{incident_note.user.first_name + ' '+ incident_note.user.surname}}
@@ -40,6 +36,16 @@
                                     </div>
                                     <div class="flex mb-6 items-center text-center justify-center">
                                         <div>
+                                            <cite class="relative flex items-center rounded-b-lg bg-indigo-600 py-5 px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
+              <span class="relative flex-none rounded-full border-2 border-white sm:absolute sm:top-0 sm:-translate-y-1/2 sm:transform">
+                <img class="h-12 w-12 rounded-full bg-indigo-300 sm:h-20 sm:w-20" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80" alt="" />
+              </span>
+                                                <span class="relative ml-4 font-semibold leading-6 text-indigo-300 sm:ml-24 sm:pl-1">
+                <span class="font-semibold text-white sm:inline">Judith Black</span>
+                {{ ' ' }}
+                <span class="sm:inline">CEO at Workcation</span>
+              </span>
+                                            </cite>
                                         </div>
                                     </div>
                                 </div>
@@ -74,19 +80,8 @@ export default {
     },
     methods: {
         sanitize(text) {
-            const new_text = this.insertLineBreaks(text);
-            return DOMPurify.sanitize(new_text);
+            return DOMPurify.sanitize(text);
         },
-        insertLineBreaks(str) {
-            var result = '';
-            for (var i = 0; i < str.length; i++) {
-                if (i % 60 === 0 && i > 0) {
-                    result += '<br>';
-                }
-                result += str[i];
-            }
-            return result;
-        }
     }
 
 }
