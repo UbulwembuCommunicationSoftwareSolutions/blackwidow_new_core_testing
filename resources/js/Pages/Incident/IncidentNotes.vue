@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col flex-grow">
-        <div v-for="(incident_note,incident_note_id) in incident.incident_notes" class="flex mx-4 my-4 items-center text-center">
-            <div class="rounded-lg bg-white shadow-lg">
+        <div v-for="(incident_note,incident_note_id) in incident.incident_notes" class="flex mx-4 my-4 items-center justify-center text-center">
+            <div class="rounded-lg w-128 bg-white shadow-lg">
                     <div class="rounded-lg bg-indigo-500 text-white">
                         <h4>
                             {{ incident_note.user.first_name + ' ' + incident_note.user.surname }}
