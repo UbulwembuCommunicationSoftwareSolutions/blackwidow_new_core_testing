@@ -3,7 +3,7 @@
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Persons of Interest
+                Incident
             </h2>
         </template>
 
@@ -47,10 +47,16 @@
                         </div>
                     </div>
                     <div v-if="this.displayPage===1" id="page_1">
-                        <Page1 :incident="this.incident" />
+                        <incident-information :incident="this.incident" />
                     </div>
                     <div v-if="this.displayPage===2" id="page_2">
-                        <Page2 :incident="this.incident"/>
+                        <people-of-interest :incident="this.incident"/>
+                    </div>
+                    <div v-if="this.displayPage===3" id="page_3">
+                        <incident-notes :incident="this.incident"/>
+                    </div>
+                    <div v-if="this.displayPage===4" id="page_4">
+                        <incident-activity :incident="this.incident"/>
                     </div>
                 </div>
             </div>
@@ -62,13 +68,17 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import Page1 from '@/Pages/Incident/Page1.vue';
-import Page2 from '@/Pages/Incident/Page2.vue';
+import IncidentInformation from '@/Pages/Incident/IncidentInformation.vue';
+import PeopleOfInterest from '@/Pages/Incident/PeopleOfInterest.vue';
+import IncidentNotes from '@/Pages/Incident/IncidentNotes.vue';
+import IncidentActivity from '@/Pages/Incident/IncidentActivity.vue';
 
 export default {
     components: {
-        Page1,
-        Page2,
+        IncidentInformation,
+        PeopleOfInterest,
+        IncidentNotes,
+        IncidentActivity,
         AuthenticatedLayout,
         Head,
     },

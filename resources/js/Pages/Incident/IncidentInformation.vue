@@ -75,7 +75,7 @@
 import GoogleMap from "@/Components/GoogleMap.vue";
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 export default {
-    name: "Page1",
+    name: "IncidentInformation",
     props : ['incident'],
     components: {
         GoogleMap,

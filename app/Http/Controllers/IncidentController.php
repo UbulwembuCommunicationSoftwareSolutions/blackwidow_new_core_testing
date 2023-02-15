@@ -151,6 +151,9 @@ class IncidentController extends Controller
         $incident->load('user');
         $incident->load('department');
         $incident->load('people.institutions');
+        $incident->load('incident_activities');
+        $incident->load('incident_activities.user');
+        $incident->load('incident_notes');
         if(array_key_exists('current_page',$request)){
             $current_page = $request['current_page'];
         }else{

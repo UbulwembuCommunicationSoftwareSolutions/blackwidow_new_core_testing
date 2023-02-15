@@ -75,7 +75,7 @@
 import {PaperClipIcon} from "@heroicons/vue/20/solid";
 
 export default {
-    name: "Page2",
+    name: "PeopleOfInterest",
     props : ['incident'],
     components: {
         PaperClipIcon
