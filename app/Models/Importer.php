@@ -12,6 +12,7 @@ class Importer extends Model
 
         $token = Importer::Login($url);
         $case_activities = Importer::getCaseActivities($url,$token);
+        Self::processCaseActivites($case_activities);
         $departments = Importer::getDepartments($url,$token);
         $users = Importer::getUsers($url,$token);
         $cases = Importer::getCases($url,$token);
@@ -22,7 +23,6 @@ class Importer extends Model
         $people_contacts = Importer::getPeopleContacts($url,$token);
         $people_cases = Importer::getPeopleCases($url,$token);
         $case_notes = Importer::getCaseNotes($url,$token);
-        Self::processCaseActivites($case_activities);
         Self::processCaseNotes($case_notes);
         Self::processPeopleCases($people_cases);
         Self::processPeople($people);
