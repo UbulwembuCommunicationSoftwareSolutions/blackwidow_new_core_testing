@@ -81,7 +81,9 @@ export default {
             var result = '';
             for (var i = 0; i < str.length; i++) {
                 if (i % 60 === 0 && i > 0) {
-                    result += '<br>';
+                    if (str[i] === ' ') {
+                        result += '<br>';
+                    }
                 }
                 result += str[i];
             }
