@@ -23,25 +23,25 @@
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white">
-                                            <tr v-for="(incident_note,incident_note_id) in incident.incident_notes" :key="incident_note_id" :class="incident_note_id % 2 === 0 ? undefined : 'bg-gray-50'">
+                                            <tr v-for="(incident_activity,incident_activity_id) in incident.incident_activities" :key="incident_activity_id" :class="incident_activity_id % 2 === 0 ? undefined : 'bg-gray-50'">
                                                 <td class="whitespace-nowrap text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.note}}
+                                                        {{incident_activity.note}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap  text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.user.first_name + ' '+ incident_note_id.user.surname}}
+                                                        {{incident_activity.user.first_name + ' '+ incident_activity_id.user.surname}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-3">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.message}}
+                                                        {{incident_activity.message}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500">
-                                                        {{incident_note.description}}
+                                                        {{incident_activity.description}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
