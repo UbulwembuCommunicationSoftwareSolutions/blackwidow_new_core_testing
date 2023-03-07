@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('user_roles')->insert([
             'id' => '1',
-            'description' => "verified_user",
+            'name' => "verified_user",
         ]);
 
         DB::table('user_roles')->insert([
             'id' => '2',
-            'description' => "system_administrator",
+            'name' => "system_administrator",
         ]);
 
         DB::table('user_roles')->insert([
             'id' => '3',
-            'description' => "interviewer",
+            'name' => "interviewer",
         ]);
 
         DB::table('user_role_user')->insert([
@@ -42,15 +42,15 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('institutions')->insert([
             'id' => '1',
-            'description' => 'First institute',
+            'name' => 'First institute',
         ]);
         DB::table('institutions')->insert([
             'id' => '2',
-            'description' => 'Second institute',
+            'name' => 'Second institute',
         ]);
         DB::table('institutions')->insert([
             'id' => '3',
-            'description' => 'Third institute',
+            'name' => 'Third institute',
         ]);
 //        DB::table('department_user')->insert([
 //            'department_id' => '1',
@@ -114,23 +114,23 @@ class DatabaseSeeder extends Seeder
 
 //        DB::table('departments')->insert([
 //            "institution_id" => '1',
-//            'description' => 'First Department',
+//            'name' => 'First Department',
 //        ]);
 //        DB::table('departments')->insert([
 //            "institution_id" => '1',
-//            'description' => 'Second Department',
+//            'name' => 'Second Department',
 //        ]);
 //        DB::table('departments')->insert([
 //            "institution_id" => '2',
-//            'description' => 'Third Department',
+//            'name' => 'Third Department',
 //        ]);
 //        DB::table('departments')->insert([
 //            "institution_id" => '2',
-//            'description' => 'Forth Department',
+//            'name' => 'Forth Department',
 //        ]);
 //        DB::table('departments')->insert([
 //            "institution_id" => '2',
-//            'description' => 'Fifth Department',
+//            'name' => 'Fifth Department',
 //        ]);
 //        for ($x = 1; $x <= 60000; $x++) {
 //            $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
@@ -141,7 +141,7 @@ class DatabaseSeeder extends Seeder
 //            $randomTimestamp = new \DateTime(date('Y-m-d H:i:s', rand($start->getTimestamp(), $end->getTimestamp())));
 //            $randomTimestamp->format('Y-m-d H:i:s');
 //            DB::table('incidents')->insert([
-//                'description' => 'Testing Incident nr: '.$number,
+//                'name' => 'Testing Incident nr: '.$number,
 //                'user_id' => '1',
 //                'department_id' => $random_department,
 //                'category_id' => '1',
