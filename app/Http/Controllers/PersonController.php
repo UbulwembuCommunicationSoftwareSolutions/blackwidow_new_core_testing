@@ -178,7 +178,7 @@ class PersonController extends Controller
             $person->profile_picture = $fileName;
         }
         $person->save();
-        $request->session()->flash('status', 'Person updated successfully!');
+        $request->session()->flash('success', 'Person updated successfully!');
         return Redirect::route('person.edit',$person);
 
     }

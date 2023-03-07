@@ -239,7 +239,7 @@ class IncidentController extends Controller
         }
         $incident->profile_picture = $fileName;
         $incident->save();
-        $request->session()->flash('status', 'Incident updated successfully!');
+        $request->session()->flash('message', 'Incident updated successfully!');
         return Redirect::route('incident.edit',$incident);
 
     }
