@@ -23,7 +23,7 @@ class IncidentActivity extends Model implements Auditable
         'to_user_id' ,
         'from_user_id' ,
         'message' ,
-        'name' ,
+        'description' ,
         'incident_category' ,
         'incident_sub_category' ,
     ];

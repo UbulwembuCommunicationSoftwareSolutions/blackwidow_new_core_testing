@@ -44,7 +44,7 @@ class Importer extends Model
                 'to_user_id' => $case_activy->to,
                 'from_user_id' => $case_activy->from,
                 'message' => $case_activy->message,
-                'name' => $case_activy->name,
+                'description' => $case_activy->description,
                 'created_at' => $case_activy->created_at,
                 'updated_at' => $case_activy->updated_at,
                 'incident_category_id' => $case_activy->category,
