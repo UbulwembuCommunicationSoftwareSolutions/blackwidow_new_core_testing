@@ -151,7 +151,7 @@ class Importer extends Model
         foreach($cases as $import_case){
             $incident = new Incident();
             $incident->id = $import_case->id ;
-            $incident->name = $import_case->name;
+            $incident->description = $import_case->description;
             $incident->user_id = $import_case->user;
             $incident->department_id = $import_case->department;
             $incident->incident_category_id = $import_case->case_type;

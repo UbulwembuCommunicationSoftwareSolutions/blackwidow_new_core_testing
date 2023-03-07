@@ -16,7 +16,7 @@ return new class extends Migration
         if(!Schema::hasTable('incidents')){
             Schema::create('incidents', function (Blueprint $table) {
                 $table->increments('id');
-                $table->longText('name');
+                $table->longText('description');
                 $table->integer('user_id');
                 $table->integer('department_id');
                 $table->integer('incident_category_id');
