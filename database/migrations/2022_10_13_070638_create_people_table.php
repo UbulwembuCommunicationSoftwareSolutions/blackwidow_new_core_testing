@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('first_name')->nullable();
             $table->string('surname')->nullable();
+            $table->string('maiden_name')->nullable();
             $table->string('id_number')->nullable();
             $table->string('nickname')->nullable();
             $table->integer('gender_id')->nullable();
