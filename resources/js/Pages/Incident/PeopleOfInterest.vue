@@ -44,7 +44,7 @@
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <p v-for="institute in person.institutions">
-                                                        {{institute.description}}
+                                                        {{institute.name}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">

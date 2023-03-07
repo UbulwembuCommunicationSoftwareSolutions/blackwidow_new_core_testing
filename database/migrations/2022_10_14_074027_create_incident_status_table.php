@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('incident_status', function (Blueprint $table) {
             $table->id();
-            $table->string('description')->nullable();
-            $table->index(['description'])->limit(50);
+            $table->string('name')->nullable();
+            $table->index(['name'])->limit(50);
             $table->timestamps();
         });
     }

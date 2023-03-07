@@ -13,11 +13,11 @@ class Department extends Model implements Auditable
     protected $auditInclude = [
         'departments',
         'institution_id',
-        'description'
+        'name'
     ];
     protected $fillable = [
         'institution_id',
-        'description'
+        'name'
     ];
     public function institution()
     {

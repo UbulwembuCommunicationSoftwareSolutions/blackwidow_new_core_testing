@@ -119,7 +119,7 @@ export default {
                                                     <label for="text" class="block font-small text-gray-700">Department</label>
                                                     <div class="mt-1">
                                                         <select  v-model="filter_by" v-on:change="filterTable('department')" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                                            <option v-for="department in departments">{{department.description}}</option>
+                                                            <option v-for="department in departments">{{department.name}}</option>
                                                             <option value="">None</option>
                                                         </select>
                                                     </div>
@@ -135,7 +135,7 @@ export default {
                                                                     <thead class="bg-gray-50">
                                                                     <tr>
                                                                         <th scope="col"  @click="this.sortTable('id')" class="py-3.5 pl-4 pr-3 text-left font-semibold text-gray-900 ">Id</th>
-                                                                        <th scope="col" @click="this.sortTable('description')" class="px-3 py-3.5 w-64 text-left font-semibold text-gray-900">Description</th>
+                                                                        <th scope="col" @click="this.sortTable('name')" class="px-3 py-3.5 w-64 text-left font-semibold text-gray-900">name</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">User</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Department</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Category</th>
@@ -155,24 +155,24 @@ export default {
                                                                         <td class="text-xs text-left w-64 py-4  pr-3 font-small text-blue-600 ">
                                                                             <a class="mr-1 mb-1  px-4 py-3 leading-4  rounded  focus:border-indigo-500 focus:text-blue-500"
                                                                                :href="'/incident/'+incident.id">
-                                                                                {{incident.description}}
+                                                                                {{incident.name}}
                                                                             </a>
                                                                         </td>
                                                                         <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
-                                                                        <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{ incident.department.description }}</td>
+                                                                        <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{ incident.department.name }}</td>
                                                                         <td class="break-words text-xs px-3 py-4 text-gray-500">
                                                                             <b v-if="incident.incident_category!==null">
-                                                                                {{ incident.incident_category.description }}
+                                                                                {{ incident.incident_category.name }}
                                                                             </b>
                                                                         </td>
                                                                         <td class="break-words text-xs px-3 py-4 text-gray-500">
                                                                             <b v-if="incident.incident_sub_category!==null">
-                                                                                {{ incident.incident_sub_category.description }}
+                                                                                {{ incident.incident_sub_category.name }}
                                                                             </b>
                                                                         </td>
                                                                         <td class="break-words text-xs px-3 py-4 text-gray-500">
                                                                             <b v-if="incident.incident_sub_sub_category!==null">
-                                                                                {{ incident.incident_sub_sub_category.description }}
+                                                                                {{ incident.incident_sub_sub_category.name }}
                                                                             </b>
                                                                         </td>
 

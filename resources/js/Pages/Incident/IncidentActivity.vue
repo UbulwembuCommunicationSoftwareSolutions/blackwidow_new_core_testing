@@ -18,7 +18,7 @@
                                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Note</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Message</th>
-                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">name</th>
                                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                             </tr>
                                             </thead>
@@ -41,7 +41,7 @@
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <p class="mr-1 mb-1 text-sm leading-4  rounded ">
-                                                        {{incident_activity.description}}
+                                                        {{incident_activity.name}}
                                                     </p>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">

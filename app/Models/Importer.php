@@ -44,7 +44,7 @@ class Importer extends Model
                 'to_user_id' => $case_activy->to,
                 'from_user_id' => $case_activy->from,
                 'message' => $case_activy->message,
-                'description' => $case_activy->description,
+                'name' => $case_activy->name,
                 'created_at' => $case_activy->created_at,
                 'updated_at' => $case_activy->updated_at,
                 'incident_category_id' => $case_activy->category,
@@ -107,7 +107,7 @@ class Importer extends Model
         foreach($departments as $import_department){
             $department = new Department();
             $department->id = $import_department->id;
-            $department->description = $import_department->name;
+            $department->name = $import_department->name;
             $department->institution_id = $import_department->company;
             $department->save();
         }
@@ -151,7 +151,7 @@ class Importer extends Model
         foreach($cases as $import_case){
             $incident = new Incident();
             $incident->id = $import_case->id ;
-            $incident->description = $import_case->description;
+            $incident->name = $import_case->name;
             $incident->user_id = $import_case->user;
             $incident->department_id = $import_case->department;
             $incident->incident_category_id = $import_case->case_type;
@@ -189,7 +189,7 @@ class Importer extends Model
         foreach($categories as $category){
             $incident_category = new IncidentCategory();
             $incident_category->id = $category->id;
-            $incident_category->description = $category->name ;
+            $incident_category->name = $category->name ;
             $incident_category->department_id = $category->department;
             $incident_category->save();
         }
@@ -199,7 +199,7 @@ class Importer extends Model
         foreach($sub_categories as $category){
             $incident_category = new IncidentSubCategory();
             $incident_category->id = $category->id;
-            $incident_category->description = $category->name ;
+            $incident_category->name = $category->name ;
             $incident_category->incident_category_id = $category->case_type;
             $incident_category->save();
         }
@@ -209,7 +209,7 @@ class Importer extends Model
         foreach($sub_sub_categories as $category){
             $incident_category = new IncidentSubSubCategory();
             $incident_category->id = $category->id;
-            $incident_category->description = $category->name ;
+            $incident_category->name = $category->name ;
             $incident_category->incident_sub_category_id = $category->sub_category;
             $incident_category->save();
         }

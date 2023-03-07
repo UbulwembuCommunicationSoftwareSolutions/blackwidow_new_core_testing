@@ -65,7 +65,7 @@ export default {
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <div v-for="(institution,index) in department.institutions" class="text-gray-900">
-                                                        {{institution.description.replace(/_/g," ").toUpperCase()}}
+                                                        {{institution.name.replace(/_/g," ").toUpperCase()}}
                                                     </div>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -78,7 +78,7 @@ export default {
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <div v-for="(role,index) in department.roles" class="text-gray-900">
-                                                        {{role.description.replace(/_/g," ").toUpperCase()}}
+                                                        {{role.name.replace(/_/g," ").toUpperCase()}}
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

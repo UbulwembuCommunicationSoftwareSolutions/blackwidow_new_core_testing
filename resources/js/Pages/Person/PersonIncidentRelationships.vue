@@ -27,7 +27,7 @@
                                                                 <thead class="bg-gray-50">
                                                                 <tr>
                                                                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
-                                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">name</th>
                                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Department</th>
                                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
@@ -45,11 +45,11 @@
                                                                     <td class="break-words py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded "
                                                                            :href="'/incident/'+incident.id">
-                                                                            {{incident.description}}
+                                                                            {{incident.name}}
                                                                         </a>
                                                                     </td>
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
-                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.description }}</td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.department.name }}</td>
                                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ incident.created_at }}</td>
                                                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded "

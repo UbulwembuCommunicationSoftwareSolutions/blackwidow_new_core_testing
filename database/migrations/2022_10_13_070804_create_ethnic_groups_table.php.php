@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('incident_categories', function (Blueprint $table) {
+        Schema::create('ethnic_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->integer('department_id')->nullable();
-            $table->index(['name'])->limit(50);
-            $table->index(['department_id']);
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incident_categories');
+        Schema::dropIfExists('institutions');
     }
 };

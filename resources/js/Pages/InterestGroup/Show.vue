@@ -47,7 +47,7 @@ export default {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Interest Group {{this.interest_group.description}}
+                Interest Group {{this.interest_group.name}}
             </h2>
         </template>
         <div
@@ -64,7 +64,7 @@ export default {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="overflow-hidden rounded-lg bg-white shadow">
                         <div class="text-gray-900 rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.description}}</h3>
+                            <h3 class="text-lg font-medium leading-6 text-gray-900">Group : {{this.interest_group.name}}</h3>
                         </div>
                     </div>
                     <div class="px-4 mt-4 sm:px-6 lg:px-8">

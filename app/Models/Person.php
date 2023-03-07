@@ -52,6 +52,10 @@ class Person extends Model implements Auditable
         return $this->belongsToMany(InterestGroup::class, 'interest_group_people');
     }
 
+    public function ethnic_group(){
+        return $this->belongsTo(EthnicGroup::class);
+    }
+
     public function auditSync(string $relation, array $ids, $detaching = true)
     {
         // store the original IDs

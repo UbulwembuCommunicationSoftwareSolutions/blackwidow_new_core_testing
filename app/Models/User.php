@@ -138,7 +138,7 @@ class User extends Authenticatable implements Auditable
     public function isAdmin(){
         $admin = 0;
         foreach((Auth::user()->roles) as $role){
-            if($role->description == "system_administrator"){
+            if($role->name == "system_administrator"){
                return true;
             }
         }

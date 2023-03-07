@@ -11,7 +11,7 @@ class Institution extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasFactory;
 
-    protected $fillable = ['institution_id','id','user_id','description'];
+    protected $fillable = ['institution_id','id','user_id','name'];
 
     public function people()
     {

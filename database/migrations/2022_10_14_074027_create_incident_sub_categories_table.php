@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('incident_sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('description')->nullable();
+            $table->string('name')->nullable();
             $table->integer('incident_category_id')->nullable();
-            $table->index(['description'])->limit(50);
+            $table->index(['name'])->limit(50);
             $table->index(['incident_category_id']);
             $table->timestamps();
         });

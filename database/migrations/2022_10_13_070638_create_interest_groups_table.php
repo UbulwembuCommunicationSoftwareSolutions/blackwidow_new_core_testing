@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('interest_groups', function (Blueprint $table) {
             $table->id();
-            $table->string('description')->nullable();
+            $table->string('name')->nullable();
             $table->string('gps_lat')->nullable();
             $table->string('gps_lng')->nullable();
             $table->string('address')->nullable();

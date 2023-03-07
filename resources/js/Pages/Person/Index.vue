@@ -116,7 +116,7 @@ export default {
                                                                             <div v-for="(institution,institution_id) in person.institutions" :index="institution_id">
                                                                                 <a class="focus:border-indigo-500 focus:text-blue-500"
                                                                                    :href="'/institution/'+institution_id">
-                                                                                    {{institution.description}}
+                                                                                    {{institution.name}}
                                                                                 </a>
                                                                             </div>
                                                                         </td>

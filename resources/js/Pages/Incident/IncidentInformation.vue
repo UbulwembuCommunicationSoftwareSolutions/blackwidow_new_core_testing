@@ -20,24 +20,24 @@
                             <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.id}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">Case Description</dt>
-                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.description}}</dd>
+                            <dt class="text-sm font-medium text-gray-500">Case name</dt>
+                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.name}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Department</dt>
-                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.description}}</dd>
+                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.name}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Category</dt>
-                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.description}}</dd>
+                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.name}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Sub Category</dt>
-                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.description}}</dd>
+                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.name}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Sub Sub Category</dt>
-                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.description}}</dd>
+                            <dd class="mt-1 text-right text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{incident.department.name}}</dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Attachments</dt>

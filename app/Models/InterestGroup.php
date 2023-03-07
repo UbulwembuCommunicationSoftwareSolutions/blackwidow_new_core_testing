@@ -18,7 +18,7 @@ class InterestGroup extends Model implements Auditable
     ];
 
     protected $fillable = [
-        'description',
+        'name',
         'gps_lat',
         'gps_lng',
         'address'

@@ -40,7 +40,7 @@ export default {
                                         <table class="min-w-full mt-4 mb-4 divide-y divide-gray-300">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Description</th>
+                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">name</th>
                                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Institutions</th>
                                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                     <span class="sr-only">Edit</span>
@@ -52,13 +52,13 @@ export default {
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                                     <div class="flex items-center">
                                                         <div class="ml-4">
-                                                            <div class="font-medium text-gray-900">{{department.description}}</div>
+                                                            <div class="font-medium text-gray-900">{{department.name}}</div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     <div class="text-gray-900">
-                                                        {{department.institution.description.replace(/_/g," ").toUpperCase()}}
+                                                        {{department.institution.name.replace(/_/g," ").toUpperCase()}}
                                                     </div>
                                                 </td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

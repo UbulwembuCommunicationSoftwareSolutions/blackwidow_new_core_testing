@@ -27,7 +27,7 @@
                                                                 <thead class="bg-gray-50">
                                                                 <tr>
                                                                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
-                                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">name</th>
                                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Address</th>
                                                                 </tr>
                                                                 </thead>
@@ -42,7 +42,7 @@
                                                                     <td class="break-words py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">
                                                                         <a class="mr-1 mb-1 px-4 py-3 text-sm leading-4  rounded hover:bg-white focus:border-indigo-500 focus:text-blue-500"
                                                                            :href="'/interest-group/'+group.id">
-                                                                            {{group.description}}
+                                                                            {{group.name}}
                                                                         </a>
                                                                     </td>
                                                                     <td class="break-words py-4 pl-4 pr-3 text-sm font-medium text-blue-600 sm:pl-6">

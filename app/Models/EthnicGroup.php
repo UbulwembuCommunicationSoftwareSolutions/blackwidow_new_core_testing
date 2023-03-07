@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class IncidentActivity extends Model implements Auditable
+class EthnicGroup extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasFactory;
@@ -16,23 +16,10 @@ class IncidentActivity extends Model implements Auditable
     ];
 
     protected $fillable = [
-        'id' ,
-        'note' ,
-        'user_id' ,
-        'incident_id' ,
-        'to_user_id' ,
-        'from_user_id' ,
-        'message' ,
-        'name' ,
-        'incident_category' ,
-        'incident_sub_category' ,
+        'name',
     ];
-    public function incident(){
-        return $this->belongsTo(Incident::class);
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function person(){
+        return $this->hasMany(Person::class);
     }
 
     public function auditSync(string $relation, array $ids, $detaching = true)

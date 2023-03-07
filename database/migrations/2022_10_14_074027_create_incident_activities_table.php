@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('from_user_id')->nullable();
             $table->integer('to_user_id')->nullable();
             $table->string('message')->nullable();
-            $table->string('description')->nullable();
+            $table->string('name')->nullable();
             $table->integer('department_id')->nullable();
             $table->integer('incident_category_id')->nullable();
             $table->integer('incident_sub_category_id')->nullable();
