@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class AutoReferral extends Model implements Auditable
+class Form extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasFactory;
@@ -14,13 +14,18 @@ class AutoReferral extends Model implements Auditable
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
-    protected $fillable = [
-        'user_id'
-    ];
 
-    public function referrable()
-    {
-        return $this->morphTo();
+    protected $fillable = [
+        'incident_id',
+        'user_id',
+        'note'
+    ];
+    public function incident(){
+        return $this->belongsTo(Incident::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function auditSync(string $relation, array $ids, $detaching = true)
@@ -46,7 +51,6 @@ class AutoReferral extends Model implements Auditable
             }
         }
     }
-
 
 
 }

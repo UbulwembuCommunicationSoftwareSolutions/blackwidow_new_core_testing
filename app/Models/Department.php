@@ -31,4 +31,28 @@ class Department extends Model implements Auditable
     public function users(){
         return $this->hasMany(User::class);
     }
+    public function auditSync(string $relation, array $ids, $detaching = true)
+    {
+        // store the original IDs
+        $originalIds = $this->$relation->pluck('id')->toArray();
+
+        // perform the sync operation
+
+        // get the added and removed IDs
+        $addedIds = array_diff($ids, $originalIds);
+        $removedIds = array_diff($originalIds, $ids);
+
+        // audit the added IDs
+        foreach ($addedIds as $id) {
+            $this->auditAttach($relation, $this->$relation()->getRelated()->find($id));
+        }
+
+        // audit the removed IDs
+        if ($detaching) {
+            foreach ($removedIds as $id) {
+                $this->auditDetach($relation, $this->$relation()->getRelated()->find($id));
+            }
+        }
+    }
+
 }
