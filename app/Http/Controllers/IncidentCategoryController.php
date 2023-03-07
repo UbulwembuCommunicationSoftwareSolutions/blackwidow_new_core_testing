@@ -90,7 +90,7 @@ class IncidentCategoryController extends Controller
         $institutions = Institution::get();
         $selected_institute = array(
             "id" => $department->institution_id,
-            "description" => $department->institution->description
+            "name" => $department->institution->name
         );
         if((Auth::user()->isAdmin())){
             return Inertia::render('Department/Edit', [

@@ -42,7 +42,7 @@ class UserController extends Controller
         foreach($departments as $department){
             $available_departments[] = array(
                 'id' => $department->id,
-                'label' => $department->description
+                'label' => $department->name
             );
         }
         foreach($user->departments as $department) {

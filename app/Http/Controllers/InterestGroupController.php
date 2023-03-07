@@ -93,7 +93,7 @@ class InterestGroupController extends Controller
         $peoples = people::get();
         $selected_institute = array(
             "id" => $interest_group->people_id,
-            "description" => $interest_group->people->description
+            "name" => $interest_group->people->name
         );
         if((Auth::user()->isAdmin())){
             return Inertia::render('Department/Edit', [

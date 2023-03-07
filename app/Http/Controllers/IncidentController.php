@@ -65,13 +65,13 @@ class IncidentController extends Controller
 
         if($filter_by=='department'){
             $incidents_query->WhereHas('department', function ($query) use ($filter_value)  {
-                $query->where('description', 'like', '%'.$filter_value.'%');
+                $query->where('name', 'like', '%'.$filter_value.'%');
             });
         }
 
         if($search){
             $incidents_query
-                ->where('incidents.description', 'LIKE', '%' . $search . '%')
+                ->where('incidents.name', 'LIKE', '%' . $search . '%')
                 ->orWhere('incidents.id', 'LIKE', '%' . $search . '%')
                 ->orWhere('incidents.created_at', 'LIKE', '%' . $search . '%')
                 ->orWhereHas('user', function ($query) use ($search)  {
@@ -79,7 +79,7 @@ class IncidentController extends Controller
                 })->orWhereHas('user', function ($query) use ($search)  {
                     $query->where('surname', 'like', '%'.$search.'%');
                 })->orWhereHas('department', function ($query) use ($search)  {
-                    $query->where('description', 'like', '%'.$search.'%');
+                    $query->where('name', 'like', '%'.$search.'%');
                 });
         }
 
@@ -190,7 +190,7 @@ class IncidentController extends Controller
         foreach($departments as $department){
             $available_departments[] = array(
                 'id' => $department->id,
-                'label' => $department->description
+                'label' => $department->name
             );
         }
         foreach($incident->departments as $department) {

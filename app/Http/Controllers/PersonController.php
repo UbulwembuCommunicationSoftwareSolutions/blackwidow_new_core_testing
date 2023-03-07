@@ -38,7 +38,7 @@ class PersonController extends Controller
                 ->orWhere('people.surname', 'LIKE', '%' . $search . '%')
                 ->orWhere('people.created_at', 'LIKE', '%' . $search . '%')
                 ->orWhereHas('institutions', function ($query) use ($search)  {
-                    $query->where('description', 'like', '%'.$search.'%');
+                    $query->where('name', 'like', '%'.$search.'%');
                 });
         }
 
@@ -122,7 +122,7 @@ class PersonController extends Controller
         foreach($institutions as $institution){
             $available_institutions[] = array(
                 'id' => $institution->id,
-                'label' => $institution->description
+                'label' => $institution->name
             );
         }
         foreach($person->institutions as $institution) {
