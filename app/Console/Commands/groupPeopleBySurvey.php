@@ -1142,16 +1142,16 @@ class groupPeopleBySurvey extends Command
             array('id_on_otp' => '0','household_profile_number' => 'KWA00000554')
         );
         foreach($oss_surveys as $list_person){
-            $interest_group = InterestGroup::where('description',$list_person['household_profile_number'])->first();
+            $interest_group = InterestGroup::where('name',$list_person['household_profile_number'])->first();
             if ($interest_group === null) {
                 $interest_group = new InterestGroup([
-                    'description' => $list_person['household_profile_number']
+                    'name' => $list_person['household_profile_number']
                 ]);
                 $interest_group->save();
             }
         }
         foreach($oss_surveys as $list_person) {
-            $interest_group = InterestGroup::where('description', $list_person['household_profile_number'])->first();
+            $interest_group = InterestGroup::where('name', $list_person['household_profile_number'])->first();
             $person = Person::find($list_person['id_on_otp']);
             if($person !== null){
                 $person->interest_groups()->attach($interest_group);
