@@ -164,7 +164,7 @@ class PersonController extends Controller
         $selected_institutions = $data['selected_institutions'] ?? [];
         $person->update($data['person']);
         $person->save();
-        $person->institutions()->sync($selected_institutions);
+        $person->auditSync('institutions',$selected_institutions);
         return redirect()->route('person.edit',$person)->with('success', 'Person Updated Successfully');
     }
 
