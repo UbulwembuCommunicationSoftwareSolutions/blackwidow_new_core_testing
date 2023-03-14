@@ -135,7 +135,7 @@ export default {
                                                                     <thead class="bg-gray-50">
                                                                     <tr>
                                                                         <th scope="col"  @click="this.sortTable('id')" class="py-3.5 pl-4 pr-3 text-left font-semibold text-gray-900 ">Id</th>
-                                                                        <th scope="col" @click="this.sortTable('name')" class="px-3 py-3.5 w-64 text-left font-semibold text-gray-900">name</th>
+                                                                        <th scope="col" @click="this.sortTable('name')" class="px-3 py-3.5 w-64 text-left font-semibold text-gray-900">Description</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">User</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Department</th>
                                                                         <th scope="col"  class="px-3 py-3.5 text-left font-semibold text-gray-900">Category</th>
@@ -155,7 +155,7 @@ export default {
                                                                         <td class="text-xs text-left w-64 py-4  pr-3 font-small text-blue-600 ">
                                                                             <a class="mr-1 mb-1  px-4 py-3 leading-4  rounded  focus:border-indigo-500 focus:text-blue-500"
                                                                                :href="'/incident/'+incident.id">
-                                                                                {{incident.name}}
+                                                                                {{incident.description}}
                                                                             </a>
                                                                         </td>
                                                                         <td class="whitespace-nowrap text-xs px-3 py-4 text-gray-500">{{incident.user.first_name}} {{incident.user.surname}}</td>
