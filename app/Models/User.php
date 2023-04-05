@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
-
+use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, HasFactory, Notifiable;
-
+    use HasRoles;
     protected $auditInclude = [
         'departments',
         'name',
