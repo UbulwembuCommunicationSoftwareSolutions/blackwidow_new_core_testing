@@ -138,18 +138,7 @@ class PersonController extends Controller
             "permissions" => $permissions,
             'status' => session('status')
         ];
-        if((Auth::user()->isAdmin())){
-            return Inertia::render('Person/Edit', $data);
-        }else{
-            if (in_array("person_view", $permissions)) {
-                return Inertia::render('Person/Edit', $data);
-            }else{
-                return Inertia::render('Unauthorised', [
-                    'status' => session('status'),
-                ]);
-            }
-
-        }
+        return Inertia::render('Person/Edit', $data);
     }
 
     /**
