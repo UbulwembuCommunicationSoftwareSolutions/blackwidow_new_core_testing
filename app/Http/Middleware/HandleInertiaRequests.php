@@ -47,12 +47,6 @@ class HandleInertiaRequests extends Middleware
                 'admin' => $admin,
                 'permissions' => $permissions
             ],
-            'debugbar' => function () {
-                if (app()->bound('debugbar') && app('debugbar')->isEnabled()) {
-                    return app('debugbar')->getData();
-                }
-                return null;
-            },
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),

@@ -171,7 +171,6 @@ return [
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
@@ -210,9 +209,8 @@ return [
     |
     */
 
-    'aliases' => [
-        // ...
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-    ],
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'ExampleClass' => App\Example\ExampleClass::class,
+    ])->toArray(),
 
 ];
