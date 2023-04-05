@@ -42,15 +42,6 @@ class User extends Authenticatable implements Auditable
         'religion',
         'uid',];
 
-    public function roles()
-    {
-        return $this->belongsToMany(UserRole::class, 'user_role_user');
-    }
-    public function permissions()
-    {
-        return $this->belongsToMany(UserPermission::class, 'user_permission_user');
-    }
-
     public function departments()
     {
         return $this->belongsToMany(Department::class, 'department_user');
