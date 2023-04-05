@@ -17,12 +17,10 @@ export default {
         Loading
     },
     setup(props){
-        let is_admin = props.is_admin;
         let  incident_stats = props.incident_stats;
         let  markers = props.markers;
         let departments = props.departments;
         return {
-            is_admin,
             incident_stats,
             markers,
             departments
@@ -45,8 +43,8 @@ export default {
             <div class="max-w-7xl mx-auto sm:px-6 shadow-sm rounded-lg lg:px-8 border-b border-gray-200">
                 <div class="bg-white rounded-lg overflow-hidden">
                     <div class="bg-white">
-                        <UserIncidents :is_admin="is_admin" :markers="this.markers"></UserIncidents>
-                        <UserStats :is_admin="is_admin" :departments="this.departments" :incident_stats="this.incident_stats"></UserStats>
+                        <UserIncidents :markers="this.markers"></UserIncidents>
+                        <UserStats :departments="this.departments" :incident_stats="this.incident_stats"></UserStats>
                     </div>
                 </div>
             </div>

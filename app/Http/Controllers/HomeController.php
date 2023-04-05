@@ -17,26 +17,11 @@ class HomeController extends Controller
     {
         $markers = array();
         $user_id = Auth::user()->id;
-        if(Auth::user()->isAdmin()){
             $is_admin = true;
             $marker_incidents = Incident::get();
             $departments = Department::withCount('incidents')
                 ->orderBy('incidents_count','DESC')
                 ->get();
-
-        }else{
-            $is_admin = false;
-            $marker_incidents = Incident::where('user_id',$user_id)
-                ->take(20)
-                ->orderBy('created_at','DESC')
-                ->get();
-            $departments = Department::withCount('incidents')
-                ->WhereHas('incidents', function ($query) use ($user_id)  {
-                    $query->where('user_id', $user_id);
-                })
-                ->orderBy('incidents_count','DESC')
-                ->get();
-        }
 
         foreach($marker_incidents as $incident){
              $markers[] = array(
