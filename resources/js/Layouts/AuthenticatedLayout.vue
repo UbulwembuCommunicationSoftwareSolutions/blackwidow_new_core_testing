@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </main>
-            {{this.$page.debugbar}}
+            <Debug v-if="this.$page.debugbar" :data="this.$page.debugbar"></Debug>
         </div>
     </div>
 </template>
