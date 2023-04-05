@@ -34,25 +34,12 @@ class HomeController extends Controller
              );
         }
 
-        if(Auth::user()->isAdmin()){
-            $incident_pending = Incident::where('incident_status_id','1')
-                ->count();
-            $incident_referred = Incident::where('incident_status_id','2')
-                ->count();
-            $incident_closed= Incident::where('incident_status_id','3')
-                ->count();
-
-        }else{
-            $incident_pending = Incident::where('user_id',$user_id)
-                ->where('incident_status_id','1')
-                ->count();
-            $incident_referred = Incident::where('user_id',$user_id)
-                ->where('incident_status_id','2')
-                ->count();
-            $incident_closed= Incident::where('user_id',$user_id)
-                ->where('incident_status_id','3')
-                ->count();
-        }
+        $incident_pending = Incident::where('incident_status_id','1')
+            ->count();
+        $incident_referred = Incident::where('incident_status_id','2')
+            ->count();
+        $incident_closed= Incident::where('incident_status_id','3')
+            ->count();
 
         $incident_stats = array(
             "pending" => $incident_pending,
