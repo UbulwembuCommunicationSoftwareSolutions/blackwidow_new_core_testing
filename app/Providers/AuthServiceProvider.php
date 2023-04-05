@@ -4,7 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-
+use Spatie\Permission\Models\Permission;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Permission::registerPermissions(config('permissions.permissions'));
         $this->registerPolicies();
 
         //
