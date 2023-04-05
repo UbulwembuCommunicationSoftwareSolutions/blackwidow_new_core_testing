@@ -116,6 +116,7 @@
                     </div>
                 </div>
             </main>
+            {{this.$page.debugbar}}
         </div>
     </div>
 </template>
