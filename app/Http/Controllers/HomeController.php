@@ -17,11 +17,10 @@ class HomeController extends Controller
     {
         $markers = array();
         $user_id = Auth::user()->id;
-            $is_admin = true;
-            $marker_incidents = Incident::get();
-            $departments = Department::withCount('incidents')
-                ->orderBy('incidents_count','DESC')
-                ->get();
+        $marker_incidents = Incident::get();
+        $departments = Department::withCount('incidents')
+            ->orderBy('incidents_count','DESC')
+            ->get();
 
         foreach($marker_incidents as $incident){
              $markers[] = array(
@@ -50,7 +49,6 @@ class HomeController extends Controller
         return Inertia::render(
             'Dashboard/Index',
             [
-                'is_admin' => $is_admin,
                 'incident_stats' => $incident_stats,
                 'markers' => $markers,
                 'departments' => $departments
