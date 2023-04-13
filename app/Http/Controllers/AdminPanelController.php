@@ -13,18 +13,12 @@ use Inertia\Inertia;
 class AdminPanelController extends Controller
 {
     public function index(){
-        if((Auth::user()->isAdmin())){
-            $users = User::get();
-            $departments = Department::get();
-            return Inertia::render('Admin/Panel', [
-                'users' => $users,
-                'departments' => $departments,
-                'status' => session('status'),
-            ]);
-        }else{
-            return Inertia::render('Unauthorised', [
-                'status' => session('status'),
-            ]);
-        }
+        $users = User::get();
+        $departments = Department::get();
+        return Inertia::render('Admin/Panel', [
+            'users' => $users,
+            'departments' => $departments,
+            'status' => session('status'),
+        ]);
     }
 }
