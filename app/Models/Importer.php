@@ -232,7 +232,7 @@ class Importer extends Model
         ));
 
         $response = curl_exec($curl);
-
+        var_dump($response);
         curl_close($curl);
 
         $new_response = json_decode($response);
