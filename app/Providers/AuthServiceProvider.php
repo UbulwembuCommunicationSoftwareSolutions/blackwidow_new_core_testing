@@ -23,9 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Permission::registerPermissions(config('permissions.permissions'));
         $this->registerPolicies();
-
         //
     }
 }
