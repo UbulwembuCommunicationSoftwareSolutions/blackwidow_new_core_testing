@@ -14,13 +14,10 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->isAdmin()){
-            $departments = Department::all();
-            $departments->load('institution');
-        }else{
-            $departments = Auth::user()->departments;
-            $departments->load('institution');
-        }
+
+        $departments = Department::all();
+        $departments->load('institution');
+
 
         return Inertia::render(
             'Department/Index',
