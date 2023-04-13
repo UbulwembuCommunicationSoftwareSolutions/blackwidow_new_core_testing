@@ -71,7 +71,7 @@ class IncidentController extends Controller
 
         if($search){
             $incidents_query
-                ->where('incidents.name', 'LIKE', '%' . $search . '%')
+                ->where('incidents.description', 'LIKE', '%' . $search . '%')
                 ->orWhere('incidents.id', 'LIKE', '%' . $search . '%')
                 ->orWhere('incidents.created_at', 'LIKE', '%' . $search . '%')
                 ->orWhereHas('user', function ($query) use ($search)  {
