@@ -228,7 +228,7 @@ class Importer extends Model
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('email' => 'richard@mshtarii.com','password' => 'Luke1962#@!'),
+            CURLOPT_POSTFIELDS => array('email' => 'richard@mshtarii.com','password' => 'ittxle4K00m'),
         ));
 
         $response = curl_exec($curl);
