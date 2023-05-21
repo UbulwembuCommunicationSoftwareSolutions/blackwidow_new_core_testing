@@ -217,6 +217,7 @@ class Importer extends Model
 
 
     public static function Login($url){
+        echo "Loggin into $url \n";
         $curl = curl_init();
         $url .= '/api/authorize';
         curl_setopt_array($curl, array(
