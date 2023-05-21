@@ -91,8 +91,6 @@ class Importer extends Model
             $person->height= $import_person->height ;
             $person->birth_place= $import_person->birth_place ;
             $person->date_of_birth= $import_person->date_of_birth ;
-            $person->home_address = $import_person->address_home;
-            $person->work_address = $import_person->address_work;
             $person->active = $import_person->active;
             $person->nationality_id= $import_person->nationality ;
             $person->language_spoken= $import_person->language ;
