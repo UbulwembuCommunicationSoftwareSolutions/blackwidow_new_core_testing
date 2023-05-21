@@ -232,6 +232,7 @@ class Importer extends Model
             CURLOPT_POSTFIELDS => array('email' => 'richard@mshtarii.com','password' => 'ittxle4K00m'),
         ));
 
+
         $response = curl_exec($curl);
         var_dump($response);
         curl_close($curl);
