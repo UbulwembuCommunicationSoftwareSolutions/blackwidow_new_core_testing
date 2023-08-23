@@ -95,7 +95,6 @@
                                                                 <NetworkDiagram
                                                                     :nodes = "this.nodes"
                                                                     :edges = "this.edges"
-                                                                    :layputs = "this.layouts"
                                                                 />
 
                                                             </div>

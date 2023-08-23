@@ -27,6 +27,7 @@ class IncidentCategory extends Model implements Auditable
     {
         return $this->morphMany(AutoReferral::class, 'referrable');
     }
+
     public function auditSync(string $relation, array $ids, $detaching = true)
     {
         // store the original IDs
